@@ -15,7 +15,7 @@ A curated collection of plugins for AI-assisted development at Bitwarden. Enable
 | [bitwarden-designer](plugins/bitwarden-designer/)                   | 0.1.0   | Product designer persona: Code of Conduct and 30/60/90 critique, critique facilitation; dispatches into bitwarden-design-tools                              |
 | [bitwarden-design-tools](plugins/bitwarden-design-tools/)           | 0.1.0   | Design toolkit: content style guide, Figma Dev Mode MCP, Bitwarden brand application, handoff prep, Design System governance, Product and Design Jira       |
 | [bitwarden-devops-engineer](plugins/bitwarden-devops-engineer/)     | 0.1.5   | DevOps engineering assistant: workflow compliance linting, action security auditing, and org-wide CI/CD remediation                                         |
-| [bitwarden-init](plugins/bitwarden-init/)                           | 1.2.0   | Initialize and enhance CLAUDE.md files with Bitwarden's standardized template format                                                                        |
+| [bitwarden-init](plugins/bitwarden-init/)                           | 1.2.1   | Initialize and enhance CLAUDE.md files with Bitwarden's standardized template format                                                                        |
 | [bitwarden-product-analyst](plugins/bitwarden-product-analyst/)     | 0.1.5   | Product analyst agent for creating comprehensive Bitwarden requirements documents from multiple sources                                                     |
 | [bitwarden-security-engineer](plugins/bitwarden-security-engineer/) | 1.3.0   | Application security engineering: vulnerability triage, threat modeling, and secure code analysis                                                           |
 | [bitwarden-software-engineer](plugins/bitwarden-software-engineer/) | 1.0.0   | Software engineer agent for a Bitwarden product team. Implements stories, tasks, and bugs with code quality, performance, security, and team comms in mind. |
@@ -68,4 +68,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for plugin development guidelines, struct
 - [Claude Code Plugins Guide](https://docs.claude.com/en/docs/claude-code/plugins.md)
 - [Plugin Reference](https://docs.claude.com/en/docs/claude-code/plugins-reference.md)
 - [Plugin Marketplaces](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces.md)
-- [Validation Scripts](scripts/README.md)
+- [Validation Scripts](https://github.com/bitwarden/gh-actions/tree/main/validate-ai/scripts)
