@@ -5,8 +5,8 @@
 `/validate-ai-local` runs the [validate-ai](https://github.com/bitwarden/gh-actions/tree/main/validate-ai)
 review against your local checkout instead of a pull request. It finds the Claude Code
 material you changed — plugins, agents, skills, commands, hooks, `CLAUDE.md`, `.claude/` —
-runs the same checks CI runs, and writes the report to `validation-summary.md` in your
-working directory. Nothing is posted to GitHub.
+runs the same checks CI runs, and writes the report to the plugin's own data directory.
+Nothing is posted to GitHub.
 
 Use it before you push, so a version bump you forgot or an agent frontmatter mistake
 shows up on your machine rather than as a red check.
@@ -78,12 +78,34 @@ in `bitwarden/gh-actions` is their sole source of truth, and they are invoked wi
 ## Permissions
 
 The command pre-approves read-only inspection only — `git diff`, `git fetch`,
-`git rev-parse`, `git symbolic-ref`, `git ls-files`, `ls` — plus a
-`Write` scoped to the one file it produces, `validation-summary.md`. Cloning
+`git rev-parse`, `git symbolic-ref`, `git ls-files`, `date`, `ls` — plus an `Edit` rule
+scoped to `~/.claude/plugins/data/claude-config-validator*/ai-validation/`, the only
+directory it writes to. Cloning
 `gh-actions` and running its scripts are left out on purpose and will be asked for: that
 step executes shell code from outside this repository, and a blanket `Bash(bash:*)` grant
 would pre-approve arbitrary commands on the one path that fetches code from the network.
 If you run this often, allowlist the exact script invocations yourself.
+
+Three details in that rule are deliberate. It is an `Edit` rule even though the command uses
+`Write`, because Claude Code checks file permissions against `Edit(path)` and `Read(path)`
+rules only: a path rule written for `Write` is accepted, never consulted, and warned about
+at startup, while an `Edit` rule applies to every built-in tool that edits files. That
+behavior needs Claude Code 2.1.210 or later; on an older CLI the write asks for permission
+instead. The path is written out literally rather than as `${CLAUDE_PLUGIN_DATA}/...`
+because that substitution is skipped for a local `--plugin-dir` load, where it is guarded on
+the plugin having a marketplace source, so the variable can survive into the rule unexpanded
+and match nothing. A literal path covers both install kinds. And the trailing `*` is loose
+on purpose: the data directory is named from the
+plugin's install id, which is `claude-config-validator-bitwarden-marketplace` for a
+marketplace install but bare `claude-config-validator` for a local `--plugin-dir` load, so a
+required hyphen would fail to match the second case.
+
+Because the pattern is written against `~/.claude`, relocating that tree with
+`CLAUDE_CONFIG_DIR` or `CLAUDE_CODE_PLUGIN_CACHE_DIR` means the final write asks for
+permission. On Linux with the Bash sandbox enabled you may also see a startup warning that
+glob patterns in permission rules are not fully supported when deriving sandbox write paths;
+it names this rule, and the report is still written, since the permission check the write
+goes through is a separate path.
 
 ## Known local caveat
 
@@ -95,11 +117,20 @@ whenever that check runs.
 
 ## Output
 
-`validation-summary.md` in the current working directory, containing:
+`${CLAUDE_PLUGIN_DATA}/ai-validation/<repo>-<timestamp>-validation.md`, containing:
 
 - Overall result and what was validated against which base
 - Findings grouped as critical, major, and minor, each with `file:line` and a fix
 - A checks table showing what ran, what failed, and what was skipped and why
+
+`${CLAUDE_PLUGIN_DATA}` resolves to this plugin's directory under
+`~/.claude/plugins/data/`. Reports land there rather than in the checkout you validated,
+which can be any repository — so no repository needs a `.gitignore` entry for them, and
+reports from different checkouts do not overwrite each other. The trade-off is that they
+accumulate somewhere you have to go looking for; the command prints the path it wrote each
+time. `claude plugin uninstall <plugin>` deletes that directory unless you pass
+`--keep-data`; `claude plugin uninstall --help` documents both the flag and the
+`~/.claude/plugins/data/{id}/` layout the `Edit` rule is written against.
 
 The file is always written, including when everything passes and when every section was
 skipped, and it ends with `<!-- validation-complete -->` so a local report matches what
@@ -107,12 +138,12 @@ skipped, and it ends with `<!-- validation-complete -->` so a local report match
 
 ## Differences from `/validate-ai`
 
-|                          | `/validate-ai-local`                             | `/validate-ai`                                                                       |
-| ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Input                    | Working tree + branch commits                    | A pull request                                                                       |
-| Shell script checks      | Runs them                                        | Left to the workflow's own steps                                                     |
-| `.claude-pr/` trust rule | Not applicable                                   | Applied when the snapshot exists                                                     |
-| Output                   | `validation-summary.md` in the working directory | `/tmp/validation-summary.md`, plus a sticky pull request comment in interactive mode |
+|                          | `/validate-ai-local`                                              | `/validate-ai`                                                                       |
+| ------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Input                    | Working tree + branch commits                                     | A pull request                                                                       |
+| Shell script checks      | Runs them                                                         | Left to the workflow's own steps                                                     |
+| `.claude-pr/` trust rule | Not applicable                                                    | Applied when the snapshot exists                                                     |
+| Output                   | A timestamped report under `${CLAUDE_PLUGIN_DATA}/ai-validation/` | `/tmp/validation-summary.md`, plus a sticky pull request comment in interactive mode |
 
 ## Related documentation
 

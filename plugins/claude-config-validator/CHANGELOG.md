@@ -5,6 +5,18 @@ All notable changes to the Claude Config Validator Plugin will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2026-08-14
+
+### Changed
+
+- `/validate-ai-local` writes its report to `${CLAUDE_PLUGIN_DATA}/ai-validation/<repo>-<timestamp>-validation.md` instead of the working directory, so no repository it runs against needs a `.gitignore` entry for the report
+- `Edit` rule scoped to `~/.claude/plugins/data/claude-config-validator*/ai-validation/`, plus `Bash(date:*)` for the report timestamp. The path is written literally rather than as `${CLAUDE_PLUGIN_DATA}` because that substitution is skipped for a local `--plugin-dir` load; it therefore does not follow `CLAUDE_CONFIG_DIR` or `CLAUDE_CODE_PLUGIN_CACHE_DIR`
+- `/validate-ai-local` description names the report location, which is the string `/help` shows
+
+### Fixed
+
+- Both commands declared their report file as a `Write` path rule. Claude Code consults `Edit(path)` and `Read(path)` rules only, so a `Write` path rule is accepted, never consulted, and warned about at startup, leaving each command's mandatory final write unapproved. Both are now `Edit` rules, which cover every built-in file-editing tool. Requires Claude Code 2.1.210 or later; on an older CLI the write asks for permission
+
 ## [1.2.0] - 2026-08-12
 
 ### Added
