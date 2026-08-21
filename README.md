@@ -53,6 +53,17 @@ Install one of these to get a scoped set for a role. Each is a dependency manife
 | [bitwarden-software-engineer](plugins/bitwarden-software-engineer/) | 2.0.0   | Everything a Bitwarden software engineer needs to implement, review, and ship a change.                         |
 | [bitwarden-tech-lead](plugins/bitwarden-tech-lead/)                 | 4.0.0   | Everything a Bitwarden tech lead needs to scope, design, and shepherd their team's work.                        |
 
+### External plugins
+
+Sourced from outside Bitwarden and **pinned to a reviewed commit**, following the pattern Anthropic uses for third-party entries in its own marketplace. Their files are not copied into this repo; each entry references an upstream subdirectory at a fixed commit. They are not Bitwarden practice, so they sit outside the capability and bundle layers.
+
+| Plugin                                                                                                   | Author    | Description                                                                                                                                                                                                                               |
+| -------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`plugin-dev`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev)       | Anthropic | Comprehensive toolkit for developing Claude Code plugins. Includes expert skills covering hooks, MCP integration, commands, agents, and plugin structure guidance.                                                                        |
+| [`skill-creator`](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator) | Anthropic | Create new skills, improve existing skills, and measure skill performance. Use when creating a skill from scratch, optimizing an existing skill, running evals to test a skill, or benchmarking skill performance with variance analysis. |
+
+Both resolve from `anthropics/claude-plugins-official` at `340e33aef211`. The pin is the point: a floating `ref` would let upstream change what your team installs without review. To move to a newer upstream commit, update the `sha` on both entries and say what changed in the pull request.
+
 ## Usage
 
 ### Adding this marketplace to Claude Code
