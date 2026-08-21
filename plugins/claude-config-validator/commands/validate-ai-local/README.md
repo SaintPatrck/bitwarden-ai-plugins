@@ -60,10 +60,10 @@ the union of:
 ## Requirements
 
 - **`git`**, with the base ref fetchable or already local.
-- **`plugin-dev` plugin** for the plugin and skill validation sections. Install it with
-  `/plugin install plugin-dev@claude-code-plugins`, from the `claude-code-plugins`
-  marketplace at `anthropics/claude-code`. Without it those sections are reported as
-  skipped, not silently dropped.
+- **`plugin-dev` plugin** for the plugin and skill validation sections. Declared as a dependency
+  of this plugin, so installing this one pulls it in from this marketplace at its pinned commit.
+  If it is ever missing or disabled, those sections are reported as skipped, not silently
+  dropped.
 - **A `bitwarden/gh-actions` checkout** for the three shell checks. The command looks at
   `$BW_GH_ACTIONS_PATH/validate-ai/scripts`, then a sibling `../gh-actions` checkout, and
   otherwise offers to shallow-clone the repository to a temporary directory. Decline and
@@ -172,5 +172,6 @@ overridden to point at the repository being validated.
 
 ### Plugin or skill sections reported as skipped
 
-The `plugin-dev` plugin is not installed. Install it with
-`/plugin install plugin-dev@claude-code-plugins`.
+The `plugin-dev` plugin is missing or disabled. It is a declared dependency, so
+`/plugin install claude-config-validator` should have pulled it in; run
+`claude plugin install plugin-dev` to resolve it directly, or re-enable it if it was disabled.

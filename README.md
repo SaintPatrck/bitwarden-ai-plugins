@@ -35,7 +35,7 @@ Claude Code itself.
 | ----------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [bitwarden-ai-telemetry](plugins/bitwarden-ai-telemetry/)   | 1.1.0   | Claude Code hooks that emit metadata-only AI-usage telemetry (identity, git-linkage, MCP) as OTLP logs. Fail-open.                                                                                             |
 | [bitwarden-init](plugins/bitwarden-init/)                   | 1.2.2   | Initialize Claude Code configuration with Bitwarden's standardized template format                                                                                                                             |
-| [claude-config-validator](plugins/claude-config-validator/) | 2.0.1   | Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced. |
+| [claude-config-validator](plugins/claude-config-validator/) | 2.1.0   | Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced. |
 | [claude-retrospective](plugins/claude-retrospective/)       | 1.1.1   | Comprehensive analysis of Claude Code sessions to identify successful patterns, problematic areas, and opportunities for improvement.                                                                          |
 
 ### Role bundles
