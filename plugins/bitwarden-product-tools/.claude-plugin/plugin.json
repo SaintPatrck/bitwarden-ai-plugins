@@ -1,0 +1,12 @@
+{
+  "name": "bitwarden-product-tools",
+  "version": "0.3.0",
+  "description": "Turning product intent into tracked work at Bitwarden \u2014 requirements elicitation, work breakdown, and user-facing release notes.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-product-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": ["requirements", "work-breakdown", "release-notes", "product"]
+}

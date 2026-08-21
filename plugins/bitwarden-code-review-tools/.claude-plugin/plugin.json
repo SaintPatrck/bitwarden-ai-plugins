@@ -1,0 +1,24 @@
+{
+  "name": "bitwarden-code-review-tools",
+  "version": "2.0.0",
+  "description": "Reviewing a Bitwarden pull request \u2014 multi-agent review passes, finding classification and validation, dependency-approval checks, and posting inline comments and summaries.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-code-review-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": [
+    "code-review",
+    "pull-requests",
+    "review-findings",
+    "severity",
+    "dependencies",
+    "github"
+  ],
+  "commands": [
+    "./commands/code-review/code-review.md",
+    "./commands/code-review-local/code-review-local.md"
+  ],
+  "dependencies": ["bitwarden-security-tools"]
+}

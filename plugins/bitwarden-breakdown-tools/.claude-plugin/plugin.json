@@ -1,0 +1,24 @@
+{
+  "name": "bitwarden-breakdown-tools",
+  "version": "1.0.0",
+  "description": "The project-level Bitwarden Tech Breakdown process \u2014 setting up a breakdown, developing its specification and plan, decomposing it into tasks, filing those tasks as Jira work items, and archiving the finished folder. Scoped to breakdowns that coordinate a team's committed work, not to an engineer's own finer-grained personal task tracking.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-breakdown-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": [
+    "tech-breakdown",
+    "specification",
+    "planning",
+    "task-decomposition",
+    "jira",
+    "architecture-review"
+  ],
+  "dependencies": [
+    "bitwarden-architecture-tools",
+    "bitwarden-security-tools",
+    "bitwarden-contribution-tools"
+  ]
+}

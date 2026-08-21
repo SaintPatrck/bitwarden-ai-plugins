@@ -1,67 +1,21 @@
-# Bitwarden Product Analyst Plugin
+# Bitwarden Product Analyst Bundle
 
-Claude Code skills for product analysis at Bitwarden. Generic AI assistance doesn't know our requirements format, security principles, Confluence initiative structure, or how we think about plan tiers and client surfaces. These skills keep Claude focused on how we specify software here.
+The plugin set for a Bitwarden product analyst.
 
-## Agent
+## Overview
 
-| Agent             | What It Does                                                                                                                                                                                                                                                                                                                       |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `product-analyst` | Reads Confluence initiative pages, Jira tickets, and other sources to produce structured requirements documents following Bitwarden's template. Applies security principles (P01–P06), distinguishes all four web surfaces and all plan tiers, attributes TBDs by owner (PM/Design/Engineering), and surfaces post-MVP candidates. |
+This is a **role bundle**: a dependency manifest with no skills, agents, or commands of its own. Installing it pulls in the capability plugins below, which is where the skills actually live. That keeps every skill in exactly one home while still letting you install one thing and get a working set.
 
-## Skills
+It covers eliciting unambiguous requirements, breaking work down, and writing the release notes users actually read.
 
-| Skill                      | What It Does                                                                                                                                                                                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requirements-elicitation` | Extracts functional, non-functional, and security requirements from specifications. Flags ambiguities, identifies constraints, and creates testable acceptance criteria using Bitwarden security vocabulary.                                       |
-| `work-breakdown`           | Decomposes features into implementable tasks organized by phase. Identifies cross-repo dependencies (`bitwarden/server` vs. `bitwarden/clients`), task ordering, and team assignments.                                                             |
-| `writing-release-notes`    | Produces user-facing release notes from a Jira release tag and the weekly #release Slack thread. Filters to user-visible changes, respects feature flag enablement, and for server releases always surfaces flag removals in user-facing language. |
+## What you get
 
-## Installation
+| Capability plugin                                        | Skills                                                                |
+| -------------------------------------------------------- | --------------------------------------------------------------------- |
+| [`bitwarden-product-tools`](../bitwarden-product-tools/) | `requirements-elicitation`, `work-breakdown`, `writing-release-notes` |
 
-Available through Bitwarden's internal Claude Code marketplace:
+Installing this bundle enables 1 plugin and 3 skills.
 
-```bash
-# Add the Bitwarden marketplace (if not already added)
-/plugin marketplace add https://github.com/bitwarden/ai-plugins
+## What you do not get
 
-# Install the product analyst plugin
-/plugin install bitwarden-product-analyst@bitwarden-marketplace
-
-# Restart Claude Code
-```
-
-## Usage
-
-```
-Analyze requirements from https://bitwarden.atlassian.net/wiki/spaces/PROD/pages/123456/Feature-Name
-```
-
-```
-Create a spec document from PROJ-1234
-```
-
-```
-Write a spec for adding passkey support to the browser extension
-```
-
-```
-Write release notes for https://bitwarden.atlassian.net/projects/CL/versions/12345
-```
-
-```
-Draft release notes for the 2025.7.0 server release
-```
-
-## References
-
-### requirements-elicitation / product-analyst
-
-- [Bitwarden Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions) — Vault Data, Protected Data, Secure Channel, Trusted Channel vocabulary
-- [Bitwarden Security Principles](https://contributing.bitwarden.com/architecture/security/principles/) — P01–P06 foundation principles
-- [Product Initiative Template](https://bitwarden.atlassian.net/wiki/spaces/PROD/pages/171507714/Product+initiative+template) — Canonical PM template; maps to `references/requirements-template.md`
-- [Requirements Template](references/requirements-template.md) — Full requirements document structure
-
-### writing-release-notes
-
-- [Bitwarden Atlassian Tools](../bitwarden-atlassian-tools/) — Provides the `search_issues`, `get_issue`, and `get_issue_comments` MCP tools used for automated Jira lookups
-- Jira release report pages (`https://bitwarden.atlassian.net/projects/<PROJECT>/versions/<ID>/tab/release-report-all-issues`) and the weekly `#release` Slack thread are the two data sources this skill synthesizes
+A bundle is defined as much by what it leaves out. If you need something outside this set, install the capability plugin directly rather than widening the bundle; widening it changes what every person in this role receives.

@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-tech-lead` plugin will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2026-08-21
+
+### Changed
+
+- Now a role bundle: a dependency manifest with no skills, agents, or commands of its own. Installing it pulls in `bitwarden-architecture-tools`, `bitwarden-initiative-tools`, `bitwarden-contribution-tools`, `bitwarden-code-review-tools`, `bitwarden-breakdown-tools`. Skills that used to live here moved into the capability plugin for their domain, so each one has a single home.
+
 ## [3.0.1] - 2026-08-08
 
 ### Changed

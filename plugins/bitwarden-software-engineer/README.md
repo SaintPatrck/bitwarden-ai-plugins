@@ -1,47 +1,27 @@
-# Bitwarden Software Engineer Plugin
+# Bitwarden Software Engineer Bundle
+
+The plugin set for a Bitwarden software engineer.
 
 ## Overview
 
-Software engineer agent for a Bitwarden product team. Generic AI coding assistance doesn't know our zero-knowledge constraints, multi-client reality, dual-ORM strategy, Angular/RxJs conventions, or the verification commands we actually run before declaring work done — let alone the canonical Bitwarden "Software Engineer" role on the [Engineering Career Ladder](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1027899486/Engineering+Ladder) that frames what the role is evaluated on. This plugin grounds the agent in that role: implementing stories, tasks, and bugs in the team's domain with code quality, performance, and security in mind, communicating clearly, and following our Git conventions.
+This is a **role bundle**: a dependency manifest with no skills, agents, or commands of its own. Installing it pulls in the capability plugins below, which is where the skills actually live. That keeps every skill in exactly one home while still letting you install one thing and get a working set.
 
-## Agent
+It covers implementing assigned work, getting it committed and reviewed, and knowing what it is already tested by.
 
-| Agent                         | What It Does                                                                                                                                                                                                                           |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-software-engineer` | Implements stories, tasks, and bugs in the team's domain; runs the appropriate build/lint/test verifications for the repo; participates in refinement and PR review; surfaces ambiguity rather than guessing; prepares the deliverable |
+## What you get
 
-## Cross-Plugin Integration
+| Capability plugin                                                  | Skills                                                                                                                                                                                         |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`bitwarden-contribution-tools`](../bitwarden-contribution-tools/) | `addressing-code-review-comments`, `committing-changes`, `creating-pull-request`, `force-multiplier`, `labeling-changes`, `perform-preflight`                                                  |
+| [`bitwarden-code-review-tools`](../bitwarden-code-review-tools/)   | `avoiding-false-positives`, `classifying-review-findings`, `performing-multi-agent-code-review`, `posting-bitwarden-review-comments`, `posting-review-summary`, `reviewing-dependency-changes` |
+| [`bitwarden-testing-tools`](../bitwarden-testing-tools/)           | `assessing-test-coverage`, `writing-manual-test-cases`                                                                                                                                         |
 
-| Plugin                        | How It's Used                                                                                                                           |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-delivery-tools`    | `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes` for the day-to-day PR loop                       |
-| `bitwarden-atlassian-tools`   | `researching-jira-issues` when picking up a story                                                                                       |
-| `bitwarden-security-engineer` | `reviewing-security-architecture`, `analyzing-code-security`, `reviewing-dependencies`, `detecting-secrets` when relevant to the change |
+Pulled in transitively, because the plugins above depend on them:
 
-Per-repo skills (`implementing-dapper-queries`, `implementing-ef-core`, `writing-database-queries`, and similar) live in the relevant Bitwarden repos and are picked up by Claude Code's progressive disclosure.
+- [`bitwarden-security-tools`](../bitwarden-security-tools/) — `analyzing-code-security`, `auditing-hackerone-vulns`, `bitwarden-security-context`, `detecting-secrets`, `perform-security-review`, `reviewing-dependencies`, `reviewing-security-architecture`, `threat-modeling`, `triaging-security-findings`
 
-## Related Plugins
+Installing this bundle enables 4 plugins and 23 skills.
 
-- **`bitwarden-tech-lead`** — the next rung on the career ladder. Use that plugin when planning or architecting work inside a team's domain rather than implementing it.
+## What you do not get
 
-## Installation
-
-```bash
-/plugin install bitwarden-software-engineer@bitwarden-marketplace
-```
-
-## Usage
-
-```
-Use the bitwarden-software-engineer agent to implement Jira story PM-12345.
-```
-
-```
-Review PR #12345 with the bitwarden-software-engineer agent.
-```
-
-## References
-
-- [Software Engineer role definition](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1028423725/Software+Engineer)
-- [Engineering Career Ladder](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1027899486/Engineering+Ladder)
-- [Bitwarden Contributing Guidelines](https://contributing.bitwarden.com/contributing/)
+The project-level Tech Breakdown process is deliberately absent. Engineers decompose their own work at a finer grain than a Jira work item, with no review or archival obligation, and `bitwarden-breakdown-tools` targets the team-coordination artifact instead. Install it directly if you are authoring one.

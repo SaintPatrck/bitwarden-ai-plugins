@@ -1,0 +1,19 @@
+{
+  "name": "bitwarden-actions-tools",
+  "version": "0.3.0",
+  "description": "Bitwarden's GitHub Actions conventions \u2014 workflow linter rules and naming standards, action and workflow auditing, and org-wide remediation with draft PRs.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-actions-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": [
+    "github-actions",
+    "ci",
+    "workflows",
+    "linting",
+    "action-pinning",
+    "remediation"
+  ]
+}

@@ -1,0 +1,67 @@
+// Process flow for Skill(developing-breakdown-plan).
+// cspell:ignore Tpng rankdir fontname
+// Render with: dot -Tpng process-flow.dot -o process-flow.png
+//
+// Boxes are activities; diamonds are decision points; ellipses are terminal states.
+// Both fresh and resume entry points run the gates first. On resume, after gates
+// pass, Triage dispatches to the next unfinished activity. The final activity is
+// a fresh-eyes review that runs three passes against the file on disk
+// (writing quality, substance lenses, reviewer readiness);
+// findings are applied inline, except an unrecorded architecture review
+// screening, which returns to Activity 5 for the engineer's answers and then
+// resumes the readiness pass; only the screening record is revisited. The
+// optional Prototype step runs after the breakdown is reviewer-ready.
+
+digraph developing_the_breakdown_plan {
+  rankdir=TB;
+  node [fontname="Helvetica"];
+  edge [fontname="Helvetica"];
+
+  Start          [shape=ellipse, label="Start"];
+  EntryMode      [shape=diamond, label="Fresh or resume?"];
+  GatesPass      [shape=diamond, label="Spec filled?"];
+  StopGate       [shape=ellipse, label="Stop:\nreturn to Spec"];
+  Triage         [shape=box,     label="Triage:\nwhich activities are\ncomplete vs. remaining"];
+  Architecture   [shape=box,     label="Activity 1:\nTechnical architecture\n(invoke architecting-solutions and\nbitwarden-security-context;\nsave Current State + Architecture,\nincluding Tech Debt subsection)"];
+  Areas          [shape=box,     label="Activity 2:\nMap impact across areas\n(walk Changes by area:\nData model → Background jobs)"];
+  Deployment     [shape=box,     label="Activity 3:\nAddress deployment considerations\n(Flagging and environments,\nObservability & operations)"];
+  Security       [shape=box,     label="Activity 4:\nCapture security surface\n(walk 4-question checklist;\ninvoke threat-modeling\nif SDs needed)"];
+  Screening      [shape=box,     label="Activity 5:\nScreen against the\narchitecture involvement rubric\n(surfaces known from\nActivities 2 and 4)"];
+  CrossTeam      [shape=box,     label="Activity 6:\nCross-team impacts and\nin-flight collisions\n(one scan; route to\nsignoff table or\ncoordination notes)"];
+  Testing        [shape=box,     label="Activity 7:\nWalk the Testing strategy\n(work the checklist;\ncapture coverage or gaps)"];
+  SelfReview     [shape=box,     label="Activity 8:\nFresh-eyes review\n(three passes: writing quality,\nsubstance lenses, reviewer readiness;\napply findings inline)"];
+  ReviewerReady  [shape=diamond, label="Reviewer-ready?"];
+  OfferPrototype [shape=diamond, label="Create prototype\ndraft PR?"];
+  Prototype      [shape=box,     label="Optional:\nPrototype draft PR(s)\n(one draft PR per affected repo,\nlinked back to the breakdown)"];
+  Done           [shape=ellipse, label="Done →\nteam-internal review,\nthen move to Proposed"];
+
+  Start         -> EntryMode;
+  EntryMode     -> GatesPass     [label="fresh"];
+  EntryMode     -> GatesPass     [label="resume\n(re-read breakdown\nto reload context)"];
+  GatesPass     -> StopGate      [label="no"];
+  GatesPass     -> Architecture  [label="yes (fresh)"];
+  GatesPass     -> Triage        [label="yes (resume)"];
+  Triage        -> Architecture  [label="resume at 1"];
+  Triage        -> Areas         [label="resume at 2"];
+  Triage        -> Deployment    [label="resume at 3"];
+  Triage        -> Security      [label="resume at 4"];
+  Triage        -> Screening     [label="resume at 5"];
+  Triage        -> CrossTeam     [label="resume at 6"];
+  Triage        -> Testing       [label="resume at 7"];
+  Triage        -> SelfReview    [label="resume at 8"];
+  Architecture  -> Areas;
+  Areas         -> Deployment;
+  Deployment    -> Security;
+  Security      -> Screening;
+  Screening     -> CrossTeam     [label="first pass"];
+  Screening     -> SelfReview    [label="screening recorded\n(resume the readiness pass)"];
+  CrossTeam     -> Testing;
+  Testing       -> SelfReview;
+  SelfReview    -> Screening     [label="screening unrecorded\n(ask the engineer;\nnever self-certify)"];
+  SelfReview    -> ReviewerReady [label="passes complete"];
+  ReviewerReady -> SelfReview    [label="no, fix inline"];
+  ReviewerReady -> OfferPrototype [label="yes"];
+  OfferPrototype -> Prototype    [label="yes"];
+  OfferPrototype -> Done         [label="no"];
+  Prototype     -> Done;
+}

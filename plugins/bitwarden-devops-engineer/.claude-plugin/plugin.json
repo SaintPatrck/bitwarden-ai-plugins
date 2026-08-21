@@ -1,19 +1,13 @@
 {
   "name": "bitwarden-devops-engineer",
-  "version": "0.2.0",
-  "description": "GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation.",
+  "version": "0.3.0",
+  "description": "Everything a Bitwarden DevOps engineer needs for CI workflow compliance and org-wide remediation.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
   },
   "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-devops-engineer",
   "repository": "https://github.com/bitwarden/ai-plugins",
-  "keywords": [
-    "devops",
-    "github-actions",
-    "workflow",
-    "security",
-    "linter",
-    "audit"
-  ]
+  "keywords": ["devops-engineer", "role-bundle", "ci"],
+  "dependencies": ["bitwarden-actions-tools", "bitwarden-contribution-tools"]
 }

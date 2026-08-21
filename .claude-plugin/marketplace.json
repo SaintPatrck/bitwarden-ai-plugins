@@ -10,40 +10,22 @@
   },
   "plugins": [
     {
-      "name": "claude-retrospective",
-      "source": "./plugins/claude-retrospective",
-      "version": "1.1.1",
-      "description": "Comprehensive analysis of Claude Code sessions to identify successful patterns, problematic areas, and opportunities for improvement."
+      "name": "bitwarden-actions-tools",
+      "source": "./plugins/bitwarden-actions-tools",
+      "version": "0.3.0",
+      "description": "Bitwarden's GitHub Actions conventions \u2014 workflow linter rules and naming standards, action and workflow auditing, and org-wide remediation with draft PRs."
     },
     {
-      "name": "claude-config-validator",
-      "source": "./plugins/claude-config-validator",
-      "version": "2.0.1",
-      "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced."
+      "name": "bitwarden-ai-telemetry",
+      "source": "./plugins/bitwarden-ai-telemetry",
+      "version": "1.1.0",
+      "description": "Claude Code hooks that emit metadata-only AI-usage telemetry (identity, git-linkage, MCP) as OTLP logs. Fail-open."
     },
     {
-      "name": "bitwarden-code-review",
-      "source": "./plugins/bitwarden-code-review",
-      "version": "1.13.1",
-      "description": "Comprehensive code review system with organization-wide standards."
-    },
-    {
-      "name": "bitwarden-init",
-      "source": "./plugins/bitwarden-init",
-      "version": "1.2.2",
-      "description": "Initialize Claude Code configuration with Bitwarden's standardized template format"
-    },
-    {
-      "name": "bitwarden-product-analyst",
-      "source": "./plugins/bitwarden-product-analyst",
-      "version": "0.1.6",
-      "description": "Product analyst agent for creating comprehensive Bitwarden requirements documents from multiple sources, and writing user-facing release notes"
-    },
-    {
-      "name": "bitwarden-software-engineer",
-      "source": "./plugins/bitwarden-software-engineer",
+      "name": "bitwarden-architecture-tools",
+      "source": "./plugins/bitwarden-architecture-tools",
       "version": "1.0.0",
-      "description": "Software engineer agent for a Bitwarden product team. Implements stories, tasks, and bugs in the team's domain with code quality, performance, and security in mind. Participates in refinement, reviews PRs, collaborates with QA, and follows Git conventions."
+      "description": "Architectural judgment for Bitwarden changes \u2014 team-level solution design that stays coherent with the holistic architecture, security posture, and multi-client constraints."
     },
     {
       "name": "bitwarden-atlassian-tools",
@@ -52,58 +34,130 @@
       "description": "Atlassian access via MCP server with deep Jira issue research skill, JQL search, Confluence pages, CQL search, attachments, and opt-in Jira write tools"
     },
     {
-      "name": "bitwarden-security-engineer",
-      "source": "./plugins/bitwarden-security-engineer",
-      "version": "1.3.0",
-      "description": "Application security engineering assistant for vulnerability triage, threat modeling, and secure code analysis."
+      "name": "bitwarden-breakdown-tools",
+      "source": "./plugins/bitwarden-breakdown-tools",
+      "version": "1.0.0",
+      "description": "The Bitwarden Tech Breakdown lifecycle \u2014 setting up a breakdown, developing its specification and plan, decomposing it into tasks, filing those tasks as Jira work items, and archiving the finished folder."
     },
     {
-      "name": "bitwarden-devops-engineer",
-      "source": "./plugins/bitwarden-devops-engineer",
-      "version": "0.2.0",
-      "description": "GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation."
+      "name": "bitwarden-code-review-tools",
+      "source": "./plugins/bitwarden-code-review-tools",
+      "version": "2.0.0",
+      "description": "Reviewing a Bitwarden pull request \u2014 multi-agent review passes, finding classification and validation, dependency-approval checks, and posting inline comments and summaries."
     },
     {
-      "name": "bitwarden-tech-lead",
-      "source": "./plugins/bitwarden-tech-lead",
-      "version": "3.0.1",
-      "description": "Tech lead agent for a Bitwarden product team. The team's primary technical resource — architects solutions in the team's domain, partners with the EM on scoping and backlog, partners with peer tech leads on cross-team architecture, and serves as the team's conduit for cross-team technical decisions."
-    },
-    {
-      "name": "bitwarden-shepherd",
-      "source": "./plugins/bitwarden-shepherd",
-      "version": "1.0.1",
-      "description": "Champion-of-a-technical-strategy agent for Bitwarden. Shepherds a Technical Strategy Idea through Architecture's evaluation into the Software Initiative Funnel, then drives the resulting initiative across all five funnel phases to durable adoption."
-    },
-    {
-      "name": "bitwarden-delivery-tools",
-      "source": "./plugins/bitwarden-delivery-tools",
-      "version": "3.1.0",
-      "description": "Delivery lifecycle skills for Bitwarden initiatives — initiative funnel navigation, work transitions, architectural judgment, commits, pull requests, preflight checks, change labeling, and Jira ticket filing."
-    },
-    {
-      "name": "bitwarden-designer",
-      "source": "./plugins/bitwarden-designer",
-      "version": "0.1.0",
-      "description": "Product designer agent for Bitwarden. Holds the design team's Code of Conduct and the 30/60/90 critique framework, and dispatches into the bitwarden-design-tools toolkit for content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow."
+      "name": "bitwarden-contribution-tools",
+      "source": "./plugins/bitwarden-contribution-tools",
+      "version": "4.0.0",
+      "description": "Getting a change into a Bitwarden repository \u2014 commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
     },
     {
       "name": "bitwarden-design-tools",
       "source": "./plugins/bitwarden-design-tools",
-      "version": "0.1.0",
-      "description": "Design toolkit for Bitwarden — non-persona skills for the design lifecycle. Content style guide reference, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, and the Product and Design Jira workflow. Composed by the bitwarden-designer agent and usable standalone."
+      "version": "0.2.0",
+      "description": "Bitwarden's product design practice \u2014 brand application, content style, Figma Dev Mode reads, Design System governance, engineering handoff, critique, and the Product and Design Jira workflow."
     },
     {
-      "name": "bitwarden-ai-telemetry",
-      "source": "./plugins/bitwarden-ai-telemetry",
-      "version": "1.1.0",
-      "description": "Claude Code hooks emitting metadata-only AI-usage telemetry (identity, git-linkage, MCP) via OTLP."
+      "name": "bitwarden-designer",
+      "source": "./plugins/bitwarden-designer",
+      "version": "0.2.0",
+      "description": "Everything a Bitwarden product designer needs, from brand and content through critique and engineering handoff.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-devops-engineer",
+      "source": "./plugins/bitwarden-devops-engineer",
+      "version": "0.3.0",
+      "description": "Everything a Bitwarden DevOps engineer needs for CI workflow compliance and org-wide remediation.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-init",
+      "source": "./plugins/bitwarden-init",
+      "version": "1.2.2",
+      "description": "Initialize Claude Code configuration with Bitwarden's standardized template format"
+    },
+    {
+      "name": "bitwarden-initiative-tools",
+      "source": "./plugins/bitwarden-initiative-tools",
+      "version": "2.0.0",
+      "description": "Bitwarden's Software Initiative Funnel \u2014 championing and curating Technical Strategy Ideas, architectural assessments, proofs of concept, scoping and team handoffs, cross-team implementation, and work transitions."
+    },
+    {
+      "name": "bitwarden-product-analyst",
+      "source": "./plugins/bitwarden-product-analyst",
+      "version": "0.2.0",
+      "description": "Everything a Bitwarden product analyst needs to elicit requirements, break down work, and communicate releases.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-product-tools",
+      "source": "./plugins/bitwarden-product-tools",
+      "version": "0.3.0",
+      "description": "Turning product intent into tracked work at Bitwarden \u2014 requirements elicitation, work breakdown, and user-facing release notes."
+    },
+    {
+      "name": "bitwarden-qa-engineer",
+      "source": "./plugins/bitwarden-qa-engineer",
+      "version": "1.0.0",
+      "description": "Everything a Bitwarden QA engineer needs to assess coverage and author manual test cases.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-security-engineer",
+      "source": "./plugins/bitwarden-security-engineer",
+      "version": "2.0.0",
+      "description": "Everything a Bitwarden application security engineer needs to model threats, analyze code, and triage findings.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-security-tools",
+      "source": "./plugins/bitwarden-security-tools",
+      "version": "2.0.0",
+      "description": "Application security practice at Bitwarden \u2014 security principles and data classification, threat modeling, code and architecture security analysis, secret detection, dependency and HackerOne triage."
+    },
+    {
+      "name": "bitwarden-shepherd",
+      "source": "./plugins/bitwarden-shepherd",
+      "version": "2.0.0",
+      "description": "Everything an initiative shepherd needs to carry a Technical Strategy Idea through the funnel to adoption.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-software-engineer",
+      "source": "./plugins/bitwarden-software-engineer",
+      "version": "2.0.0",
+      "description": "Everything a Bitwarden software engineer needs to implement, review, and ship a change.",
+      "category": "role-bundle"
+    },
+    {
+      "name": "bitwarden-tech-lead",
+      "source": "./plugins/bitwarden-tech-lead",
+      "version": "4.0.0",
+      "description": "Everything a Bitwarden tech lead needs to scope, design, and shepherd their team's work.",
+      "category": "role-bundle"
     },
     {
       "name": "bitwarden-testing-tools",
       "source": "./plugins/bitwarden-testing-tools",
       "version": "1.1.0",
-      "description": "Testing tools for Bitwarden — analyzing and improving test quality across its repositories."
+      "description": "Testing tools for Bitwarden \u2014 analyzing and improving test quality across its repositories."
+    },
+    {
+      "name": "claude-config-validator",
+      "source": "./plugins/claude-config-validator",
+      "version": "2.0.1",
+      "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced."
+    },
+    {
+      "name": "claude-retrospective",
+      "source": "./plugins/claude-retrospective",
+      "version": "1.1.1",
+      "description": "Comprehensive analysis of Claude Code sessions to identify successful patterns, problematic areas, and opportunities for improvement."
     }
-  ]
+  ],
+  "renames": {
+    "bitwarden-code-review": "bitwarden-code-review-tools",
+    "bitwarden-delivery-tools": "bitwarden-contribution-tools"
+  }
 }

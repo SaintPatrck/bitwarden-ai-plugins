@@ -1,58 +1,11 @@
 # Changelog
 
-All notable changes to the Bitwarden Product Analyst plugin will be documented in this file.
-
+All notable changes to this plugin will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.6] - 2026-08-04
+## [0.2.0] - 2026-08-21
 
 ### Added
 
-- `writing-release-notes` skill for producing user-facing release notes from a Jira release tag and the weekly #release Slack thread. Filters to user-visible changes, gates items against feature flag enablement, and for server releases surfaces flag removals in user-facing benefit-forward language (targeting self-hosted users receiving the feature for the first time).
-
-## [0.1.5] - 2026-04-03
-
-### Changed
-
-- Update Atlassian integration references from `Skill(atlassian-reader)` to `Skill(researching-jira-issues)` and direct MCP tools following the consolidation of `atlassian-reader` into `bitwarden-atlassian-tools`
-
-## [0.1.4] - 2026-03-12
-
-### Changed
-
-- Remove redundant `skills` field from `plugin.json`; skills are auto-discovered from the `skills/` directory
-
-## [0.1.3] - 2026-03-12
-
-### Changed
-
-- Remove duplicated section list from agent; agent now reads `references/requirements-template.md` directly at the Documentation Phase
-
-## [0.1.2] - 2026-03-12
-
-### Fixed
-
-- Corrected agent path in `plugin.json` from `./agents/product-analyst/AGENT.md` to `./agents/product-analyst.md` so the plugin can discover its agent
-- Fixed malformed code fence in `references/requirements-template.md` where the outer `````markdown` block closed prematurely after section 9, leaving sections 10–15 outside the template block
-
-## [0.1.1] - 2026-03-10
-
-### Changed
-
-- Add local files and directories as a first-class spec source (Read, Glob, Grep)
-- Add generic web URLs as a spec source (WebFetch)
-- Save generated specs to the current working directory instead of the plugin's specs/ folder
-
-## [0.1.0] - 2026-03-04
-
-### Added
-
-- Initial release of Bitwarden Product Analyst plugin
-- Product analyst agent for creating comprehensive Bitwarden requirements documents
-- `requirements-elicitation` skill for extracting and organizing requirements
-- `work-breakdown` skill for decomposing features into implementable tasks
-- Requirements document template following Bitwarden standards
-- Integration with Bitwarden security vocabulary and principles (P01-P06)
-- Support for analyzing multiple sources (GitHub issues, technical docs, user requests)
-- Structured requirements output with security considerations
+- Role bundle for the QA engineer: a dependency manifest with no skills of its own, pulling in `bitwarden-product-tools`.

@@ -74,7 +74,7 @@ class SlashExpansionTest(unittest.TestCase):
     SLASH = {
         "hook_event_name": "UserPromptExpansion",
         "expansion_type": "slash_command",
-        "command_name": "bitwarden-delivery-tools:labeling-changes",
+        "command_name": "bitwarden-contribution-tools:labeling-changes",
         "command_args": "what are the supported labels?",
         "command_source": "plugin",
         "session_id": "session-4",
@@ -83,7 +83,7 @@ class SlashExpansionTest(unittest.TestCase):
 
     def test_slash_expansion_recovers_skill_name(self):
         attrs = _build_identity_attrs(self.SLASH)
-        self.assertEqual(attrs["bw.skill"], "bitwarden-delivery-tools:labeling-changes")
+        self.assertEqual(attrs["bw.skill"], "bitwarden-contribution-tools:labeling-changes")
 
     def test_slash_expansion_reports_skill_tool_for_query_parity(self):
         attrs = _build_identity_attrs(self.SLASH)
@@ -100,9 +100,9 @@ class SlashExpansionTest(unittest.TestCase):
     def test_plugin_command_is_recorded_like_a_skill(self):
         # command == skill by design; the two are deliberately not distinguished.
         attrs = _build_identity_attrs({
-            **self.SLASH, "command_name": "bitwarden-code-review:code-review-local",
+            **self.SLASH, "command_name": "bitwarden-code-review-tools:code-review-local",
         })
-        self.assertEqual(attrs["bw.skill"], "bitwarden-code-review:code-review-local")
+        self.assertEqual(attrs["bw.skill"], "bitwarden-code-review-tools:code-review-local")
 
     def test_tool_path_still_wins_over_expansion(self):
         attrs = _build_identity_attrs({

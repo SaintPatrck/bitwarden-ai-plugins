@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-software-engineer` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-08-21
+
+### Changed
+
+- Now a role bundle: a dependency manifest with no skills, agents, or commands of its own. Installing it pulls in `bitwarden-contribution-tools`, `bitwarden-code-review-tools`, `bitwarden-testing-tools`. Skills that used to live here moved into the capability plugin for their domain, so each one has a single home.
+
 ## [1.0.0] - 2026-05-19
 
 ### Changed

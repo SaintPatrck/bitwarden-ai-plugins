@@ -1,0 +1,42 @@
+// Process flow for Skill(developing-breakdown-spec).
+// cspell:ignore Tpng rankdir fontname
+// Render with: dot -Tpng process-flow.dot -o process-flow.png
+//
+// Boxes are phases; diamonds are decision points; ellipses are terminal states.
+// The "resume" entry point re-enters the flow at the Triage step after re-fetching
+// external sources (Jira, PRD, PoC); the user picks up from whichever phase remains
+// unfinished.
+
+digraph developing_breakdown_spec {
+  rankdir=TB;
+  node [fontname="Helvetica"];
+  edge [fontname="Helvetica"];
+
+  Start             [shape=ellipse, label="Start"];
+  EntryMode         [shape=diamond, label="Fresh or resume?"];
+  GatherContext     [shape=box,     label="Phase 1: Gather context\n(Jira, PRD, PoC, prior decisions)"];
+  Triage            [shape=box,     label="Triage:\nDecided / Open / Gaps"];
+  GapsBlock         [shape=diamond, label="Foundational\ngaps?"];
+  Resolve           [shape=box,     label="Phase 2: Resolve open questions\n(one at a time)"];
+  AllResolved       [shape=diamond, label="All resolved?"];
+  Alternatives      [shape=box,     label="Phase 3: Explore scope alternatives\n(before writing;\ncandidate shapes for the Spec)"];
+  Articulate        [shape=box,     label="Phase 4: Articulate the Spec\n(Description / User Value / Functional\nRequirements / Alternatives / Success Criteria)"];
+  SpecReady         [shape=diamond, label="Spec complete?"];
+  Stop              [shape=ellipse, label="Stop:\nclose gaps before\nproceeding"];
+  Done              [shape=ellipse, label="Done →\nDevelop the Plan"];
+
+  Start         -> EntryMode;
+  EntryMode     -> GatherContext [label="fresh"];
+  EntryMode     -> Triage        [label="resume\n(re-fetch sources)"];
+  GatherContext -> Triage;
+  Triage        -> GapsBlock;
+  GapsBlock     -> Stop          [label="yes"];
+  GapsBlock     -> Resolve       [label="no"];
+  Resolve       -> AllResolved;
+  AllResolved   -> Resolve       [label="no, next question\n(new ones may surface)"];
+  AllResolved   -> Alternatives  [label="yes"];
+  Alternatives  -> Articulate;
+  Articulate    -> SpecReady;
+  SpecReady     -> Articulate    [label="no, revise"];
+  SpecReady     -> Done          [label="yes"];
+}

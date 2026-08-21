@@ -1,0 +1,58 @@
+// Process flow for Skill(decomposing-into-tasks).
+// cspell:ignore Tpng rankdir fontname
+// Render with: dot -Tpng process-flow.dot -o process-flow.png
+//
+// Boxes are activities; diamonds are decision points; ellipses are terminal states.
+// Tasks live in a sibling `tasks.md` file next to the breakdown. The HARD-GATE
+// (breakdown orientation + Plan complete + Spec filled) fires before Phase 1.
+// Phase 2 agrees on a splitting shape (by user-visible slice, client + server
+// pair, feature-flag rollout stage, or sequential phase); Phase 3 drafts every
+// entry within that shape into tasks.md without stopping for per-entry approval.
+// The engineer approves the full set in Phase 5.
+
+digraph decomposing_into_tasks {
+  rankdir=TB;
+  node [fontname="Helvetica"];
+  edge [fontname="Helvetica"];
+
+  Start              [shape=ellipse, label="Start"];
+  ResolveBreakdown   [shape=box,     label="Resolve breakdown path\n(path, Jira key, or team/slug;\nGlob bitwarden/tech-breakdowns/;\nconfirm via AskUserQuestion)"];
+  GatesPass          [shape=diamond, label="Plan complete\nand Spec filled?"];
+  StopGate           [shape=ellipse, label="Stop:\nsurface gaps;\nawait user permission"];
+  LocateTasks        [shape=box,     label="Phase 1: Derive tasks.md path\n(sibling of breakdown.md)"];
+  TasksExist         [shape=diamond, label="tasks.md exists?"];
+  CreateFromTemplate [shape=box,     label="Create tasks.md from\ntech-breakdowns/templates/tasks.md"];
+  SurfacePaths       [shape=box,     label="Surface resolved paths\n(breakdown + tasks.md,\nnew | resuming)"];
+  AgreeShape         [shape=box,     label="Phase 2: Agree on the splitting shape\n(by user-visible slice, client + server pair,\nfeature-flag rollout stage,\nor sequential phase;\npropose 2-3 options,\nengineer picks)"];
+  DraftEntries       [shape=box,     label="Phase 3: Draft all entries within the shape\ndirectly to tasks.md\n(no per-entry approval;\nengineer approves the full set in Phase 5)"];
+  Ambiguity          [shape=diamond, label="Scope or boundary\nambiguity?"];
+  AskUser            [shape=box,     label="AskUserQuestion:\n2-3 split/merge options\nwith tradeoffs"];
+  EntryCount         [shape=diamond, label="10 or more entries?"];
+  SoftPrompt         [shape=box,     label="Soft prompt:\nconsider splitting at a\nnatural boundary"];
+  SelfReview         [shape=box,     label="Phase 4: Self-review\n(placeholder scan,\nspec coverage,\ndependency graph sanity,\nstand-alone check,\nowner attribution,\nMECE)"];
+  IssuesFound        [shape=diamond, label="Issues found?"];
+  FixOrSurface       [shape=box,     label="Fix inline in tasks.md\nor surface to user\nfor clarification"];
+  Done               [shape=ellipse, label="Phase 5: Output\ntasks.md ready at\n<breakdown-folder>/tasks.md"];
+
+  Start              -> ResolveBreakdown;
+  ResolveBreakdown   -> GatesPass;
+  GatesPass          -> StopGate           [label="no"];
+  GatesPass          -> LocateTasks        [label="yes"];
+  LocateTasks        -> TasksExist;
+  TasksExist         -> CreateFromTemplate [label="no (fresh)"];
+  TasksExist         -> SurfacePaths       [label="yes (resume)"];
+  CreateFromTemplate -> SurfacePaths;
+  SurfacePaths       -> AgreeShape;
+  AgreeShape         -> DraftEntries;
+  DraftEntries          -> Ambiguity;
+  Ambiguity          -> AskUser            [label="yes"];
+  AskUser            -> DraftEntries;
+  Ambiguity          -> EntryCount           [label="no"];
+  EntryCount           -> SoftPrompt         [label="yes"];
+  SoftPrompt         -> SelfReview;
+  EntryCount           -> SelfReview         [label="no"];
+  SelfReview         -> IssuesFound;
+  IssuesFound        -> FixOrSurface       [label="yes"];
+  FixOrSurface       -> SelfReview;
+  IssuesFound        -> Done               [label="no"];
+}

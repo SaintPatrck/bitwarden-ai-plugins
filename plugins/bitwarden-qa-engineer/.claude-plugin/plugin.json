@@ -1,0 +1,13 @@
+{
+  "name": "bitwarden-qa-engineer",
+  "version": "1.0.0",
+  "description": "Everything a Bitwarden QA engineer needs to assess coverage and author manual test cases.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-qa-engineer",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": ["qa-engineer", "role-bundle", "testing"],
+  "dependencies": ["bitwarden-testing-tools", "bitwarden-contribution-tools"]
+}
