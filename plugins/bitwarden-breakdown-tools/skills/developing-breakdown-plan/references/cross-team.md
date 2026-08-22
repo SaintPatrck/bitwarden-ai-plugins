@@ -39,7 +39,7 @@ gh api repos/bitwarden/<repo>/commits\?path=\<path\>\&since=\<YYYY-MM-DD\> \
 
 ## Work the template checklists
 
-`Consuming other teams' APIs`, `Changes required in other teams' code`, and `Cross-team sequencing & ordering` each carry a checklist in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`. Work each question in order, in place, before routing scan findings below.
+`Consuming other teams' APIs`, `Changes required in other teams' code`, and `Cross-team sequencing & ordering` each carry a checklist in `templates/breakdown.md`. Work each question in order, in place, before routing scan findings below.
 
 ## Step 3: Route each finding
 

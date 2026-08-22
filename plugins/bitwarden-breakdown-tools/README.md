@@ -4,9 +4,9 @@ The project-level Bitwarden Tech Breakdown process, end to end.
 
 ## Overview
 
-A Tech Breakdown is how a team turns a committed piece of work into a specification, a plan, and a set of Jira work items. This plugin ships the whole lifecycle as six skills that hand off to each other in order, plus the canonical templates they write from.
+A Tech Breakdown is how a team turns a committed piece of work into a specification, a plan, and a set of Jira work items. This plugin ships the whole lifecycle as six skills that hand off to each other in order.
 
-Breakdown artifacts live in [`bitwarden/tech-breakdowns`](https://github.com/bitwarden/tech-breakdowns), one folder per breakdown under its team directory. These skills expect to run from inside that working copy, because that is where they write; the templates themselves ship with the plugin, so the checkout does not need to supply them.
+Breakdown artifacts live in [`bitwarden/tech-breakdowns`](https://github.com/bitwarden/tech-breakdowns), one folder per breakdown under its team directory. These skills run from inside that working copy, which is where they write and where they resolve the templates from.
 
 ## Scope
 
@@ -40,4 +40,8 @@ They run in order, and each hands off to the next when it completes.
 
 ## Shared References
 
-`references/writing-quality.md` holds twenty named prose rules applied while drafting the Specification, Plan, and task entries, and again as a review pass. `templates/breakdown.md` and `templates/tasks.md` are the canonical templates; skills read them from `${CLAUDE_PLUGIN_ROOT}` and never edit them in place.
+`references/writing-quality.md` ships with this plugin and holds twenty named prose rules applied while drafting the Specification, Plan, and task entries, and again as a review pass.
+
+The templates do not ship here. `templates/breakdown.md` and `templates/tasks.md` stay canonical in `bitwarden/tech-breakdowns`, resolved from the working copy at run time and never edited in place. They are human document templates: an engineer can copy and fill one in with no plugin installed, and they are owned by the same group that owns the breakdown folders they seed. Keeping them there means a template edit is one pull request in that repository rather than a plugin release.
+
+Skills therefore read the template's structure rather than asserting it, so adding or rewording a subsection needs no change here.

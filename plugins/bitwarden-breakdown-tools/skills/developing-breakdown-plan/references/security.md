@@ -10,7 +10,7 @@ Invoke `Skill(bitwarden-security-tools:bitwarden-security-context)` before worki
 
 ## Work the template checklist
 
-The four-question Security checklist and its cryptography review-routing block live in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`. Work each question in order, in place.
+The four-question Security checklist and its cryptography review-routing block live in `templates/breakdown.md`. Work each question in order, in place.
 
 ## Referencing existing Security Definitions
 

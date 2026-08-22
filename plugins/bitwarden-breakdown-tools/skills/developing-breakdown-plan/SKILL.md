@@ -25,7 +25,7 @@ This skill runs from inside the `tech-breakdowns/` working copy.
 
 Orientation within a breakdown is required. If `$breakdown` was provided at invocation, treat it as the breakdown identifier (path, Jira key, or slug) and resolve it under the current working copy. Otherwise, ask the user which breakdown to work against; they can give a path, a Jira key, or a slug. Resolve the same way. When given a Jira key, `Glob` `**/<JIRA-KEY>-*/breakdown.md` and `**/<JIRA-KEY>-*.md` case-insensitively to match either a per-breakdown folder or a flat file directly under `<team>/`. When given a team/slug, use `<team>/*<slug>*/breakdown.md` and `<team>/*<slug>*.md`. Exclude archived breakdowns from resolution: discard any hit whose path contains `/complete/`; if that leaves no match, stop and tell the user the breakdown is archived rather than editing it. Confirm the resolved path with `AskUserQuestion` before proceeding.
 
-The Specification section must be filled before drafting Plan content. Read the five Spec subsections (**Description**, **User Value**, **Functional Requirements**, **Alternatives**, **Success Criteria**) defined in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`. A subsection is unfilled if it is empty, contains only a bare `-`, or still carries the template's italic exemplar — specifically the `- **Alternative name** — _description; why rejected; trade-off accepted._` row for Alternatives, and the `- ***` placeholder row for Success Criteria. If any subsection is unfilled by that test, stop and offer to invoke `Skill(developing-breakdown-spec)` against the same breakdown. Do not attempt to fill Spec content from this skill.
+The Specification section must be filled before drafting Plan content. Read every Specification subsection the template defines. A subsection is unfilled if it is empty, contains only a bare `-`, or still carries the template's italic exemplar — specifically the `- **Alternative name** — _description; why rejected; trade-off accepted._` row for Alternatives, and the `- ***` placeholder row for Success Criteria. If any subsection is unfilled by that test, stop and offer to invoke `Skill(developing-breakdown-spec)` against the same breakdown. Do not attempt to fill Spec content from this skill.
 
 Do NOT draft Plan content into `breakdown.md` until the engineer has approved a high-level architecture summary. Present 2 or 3 candidate architectures in-chat, recommend one, wait for the engineer to pick or push back; only then start writing to the Plan section.
 
@@ -66,17 +66,17 @@ Create a task for each section as you start it (`TaskCreate`), mark it in progre
 
 ## Step 1: Orienting in Specification
 
-Carefully read the Specification section. The requirements should be the input into your design, constrained by Bitwarden's architectural best practices. The HARD-GATE already verified the five Spec subsections are non-placeholder; this step is a re-read for design context, not a completeness check.
+Carefully read the Specification section. The requirements should be the input into your design, constrained by Bitwarden's architectural best practices. The HARD-GATE already verified the Specification subsections are non-placeholder; this step is a re-read for design context, not a completeness check.
 
 **Are there open clarifications?** If `Open` items exist, prompt the engineer to confirm they are not material to the implementation shape.
 
 ## Step 2: Developing the Plan
 
-Work through these activities in order. Most activities have a reference file with the concrete guidance and shell commands; this SKILL.md carries the orchestration. Activity 7 (Testing strategy) is the exception: its checklist lives in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md` directly.
+Work through these activities in order. Most activities have a reference file with the concrete guidance and shell commands; this SKILL.md carries the orchestration. Activity 7 (Testing strategy) is the exception: its checklist lives in `templates/breakdown.md` directly.
 
 ### Activity 1. Agree on the technical architecture
 
-Architecture is the most important checkpoint. Invoke `Skill(bitwarden-architecture-tools:architecting-solutions)` and `Skill(bitwarden-security-tools:bitwarden-security-context)` first, then present 2 or 3 candidate architectures to the engineer with tradeoffs. Once the engineer picks, save the Current State subsection (from the grounding pass), the Architecture subsection, and the three Architecture subsections that scope the pick (`### Out of Scope`, `### Known Limitations`, `### Tech Debt`) together before drafting anything else. `N/A: <reason>` is a valid answer for any of the three subsections when the pick has none.
+Architecture is the most important checkpoint. Invoke `Skill(bitwarden-architecture-tools:architecting-solutions)` and `Skill(bitwarden-security-tools:bitwarden-security-context)` first, then present 2 or 3 candidate architectures to the engineer with tradeoffs. Once the engineer picks, save the Current State subsection (from the grounding pass), the Architecture subsection, and the scoping subsections the template nests under Architecture, such as out-of-scope, known limitations, and tech debt together before drafting anything else. `N/A: <reason>` is a valid answer for any of the three subsections when the pick has none.
 
 See `references/architecture.md`. _Captured in **Plan → Current State** and **Plan → Architecture** (including `### Out of Scope`, `### Known Limitations`, `### Tech Debt`)._
 
@@ -114,7 +114,7 @@ See `references/cross-team.md`. _Captured in **Plan → Cross-team engagement**.
 
 ### Activity 7. Walk the Testing strategy
 
-Work the `Testing strategy` checklist in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`. For each item, either confirm coverage in the drafted Plan or capture the gap. Testing strategy is a top-level section outside `Plan`; do not skip it because of that.
+Work the `Testing strategy` checklist in `templates/breakdown.md`. For each item, either confirm coverage in the drafted Plan or capture the gap. Testing strategy is a top-level section outside `Plan`; do not skip it because of that.
 
 _Captured in **Testing strategy**._
 
@@ -165,6 +165,6 @@ Constraints:
 
 - **Include all repos.** If the solution space includes multiple repositories, create a prototype pull request for each, linked to each other in the summary.
 - **Mark it clearly.** Title prefix `[Prototype]`. Body opens with: `Prototype for breakdown <link>. Not for merge. Validates: <one-sentence>. Out of scope: <list>.`
-- **Link back.** Add the PR link into the breakdown's `## Prototypes` section — an h2 nested under `# Plan` in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`, not a top-level heading — so reviewers see the artifact alongside the design. Do not create a new top-level `# Prototypes`; use the existing section.
+- **Link back.** Add the PR link into the breakdown's `## Prototypes` section — an h2 nested under `# Plan` in `templates/breakdown.md`, not a top-level heading — so reviewers see the artifact alongside the design. Do not create a new top-level `# Prototypes`; use the existing section.
 
 Invoke `Skill(bitwarden-contribution-tools:creating-pull-request)` for the PR mechanics, and ensure the PR is opened as a **draft**. If the skill is unavailable (the `bitwarden-contribution-tools` plugin is not installed), fall back to `gh pr create --draft` and apply the title/body constraints above manually. Surface any findings from prototyping (interface friction, hidden dependencies, larger-than-expected interface change) back into the Plan.

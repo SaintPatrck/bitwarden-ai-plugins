@@ -21,7 +21,7 @@ Orientation within a breakdown is required. If `$breakdown` was provided at invo
 
 If no match exists, ask the user to create the breakdown, or offer to do so by invoking `Skill(starting-breakdown)`.
 
-Do NOT write any text into the Specification section of the breakdown file until the engineer has approved, one subsection at a time, the draft for each of: **Description**, **User Value**, **Functional Requirements**, **Alternatives**, and **Success Criteria** — the five subsections defined in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`. Proposing content in-chat and asking for a thumbs-up before writing to disk is the whole point of this skill. Nothing lands in the file that the engineer hasn't signed off on.
+Do NOT write any text into the Specification section of the breakdown file until the engineer has approved, one subsection at a time, the draft for each of: **Description**, **User Value**, **Functional Requirements**, **Alternatives**, and **Success Criteria** — the five subsections defined in `templates/breakdown.md`. Proposing content in-chat and asking for a thumbs-up before writing to disk is the whole point of this skill. Nothing lands in the file that the engineer hasn't signed off on.
 </HARD-GATE>
 
 ## Key Principles
@@ -41,7 +41,7 @@ Do NOT write any text into the Specification section of the breakdown file until
 
 ## Phases
 
-Create a task for each phase as you start it (`TaskCreate`), mark it in progress, and complete it before moving on. If resuming, re-read `breakdown.md` first — the five Spec subsections and the Clarifications Log — to reload the on-disk state before doing anything else. Then use `AskUserQuestion` to confirm which phase to enter and re-fetch external sources (Jira, PRD, PoC) before continuing. Do not overwrite a populated subsection without engineer confirmation. See `references/process-flow.dot` for the full phase + decision graph.
+Create a task for each phase as you start it (`TaskCreate`), mark it in progress, and complete it before moving on. If resuming, re-read `breakdown.md` first, both the Specification subsections and the clarifications log, to reload the on-disk state before doing anything else. Then use `AskUserQuestion` to confirm which phase to enter and re-fetch external sources (Jira, PRD, PoC) before continuing. Do not overwrite a populated subsection without engineer confirmation. See `references/process-flow.dot` for the full phase + decision graph.
 
 ### Phase 1: Gather context
 
@@ -75,7 +75,7 @@ Work each Open question one at a time. For each:
 3. Verify against actual code or docs when the question turns on what exists.
 4. Wait for the user's decision.
 5. Fold the decision straight into the relevant Spec subsection when you draft it in Phase 4. Additionally, for each candidate the engineer did not pick, capture the rejected option, the reason it was rejected, and the trade-off the rejection accepts; record these under **Alternatives** when you draft that subsection in Phase 4 so a future reader doesn't re-litigate the decision. Do not add a row to the Clarifications Log for a question you and the engineer resolved together — that log is for stakeholders outside the session.
-6. If the question turned out to need someone outside the session (PM, legal, security, another team), and it's still open, add a row to the Clarifications Log matching the template's five columns (see `## Clarifications Log` in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`): **Status** (set to `Open`), **Question** (the specific ask), **Raised by** (you, or the engineer who surfaced it), **Owner** (the person who has to answer, external to the session), **Resolution** (needed-by date while the row is `Open`; short answer with link to the relevant §section once resolved, per the template's row shape).
+6. If the question turned out to need someone outside the session (PM, legal, security, another team), and it's still open, add a row to the Clarifications Log matching the template's five columns (see `## Clarifications Log` in `templates/breakdown.md`): **Status** (set to `Open`), **Question** (the specific ask), **Raised by** (you, or the engineer who surfaced it), **Owner** (the person who has to answer, external to the session), **Resolution** (needed-by date while the row is `Open`; short answer with link to the relevant §section once resolved, per the template's row shape).
 
 If a decision reveals a new question, add it and continue. Before exiting Phase 2, ask: _"Any other open points before we move to the specification?"_
 
@@ -87,7 +87,7 @@ Present 2 or 3 candidate scopes with tradeoffs — e.g., "narrow slice targeting
 
 ### Phase 4: Articulate the Spec, subsection by subsection
 
-Work through the five Specification subsections defined in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md` — **Description**, **User Value**, **Functional Requirements**, **Alternatives**, **Success Criteria** — in that order. Read the per-subsection blockquote in the template before drafting each one; those blockquotes are the shape the reviewer will grade against and the single source of truth for what each subsection must contain. For each subsection: draft the content in-chat, present it to the engineer, refine based on their response, and only write it to `breakdown.md` after they approve. Do not batch subsections into a single push.
+Read the Specification subsections the template defines and work through them in template order. The template is the single source of truth for which subsections exist and what each must contain: read the quoted note under each one before drafting it, since that note is the shape the reviewer will grade against. For each subsection: draft the content in-chat, present it to the engineer, refine based on their response, and only write it to `breakdown.md` after they approve. Do not batch subsections into a single push.
 
 **Alternatives** is filled from both Phase 2 design rejections and Phase 3 scope rejections — for each, capture the option, why it was rejected, and what trade-off the rejection accepts. The other four subsections draft from Phase 1 and 2 context.
 

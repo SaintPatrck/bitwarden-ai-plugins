@@ -50,7 +50,7 @@ Create a task for each phase as you start it (`TaskCreate`), mark it in progress
 
 Once the breakdown file is known, derive the Tasks file path: `tasks.md` in the same folder as the breakdown. Check whether it exists:
 
-- **`tasks.md` does not exist.** This is a fresh decomposition. Create `tasks.md` from the template at `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md` and continue.
+- **`tasks.md` does not exist.** This is a fresh decomposition. Create `tasks.md` from the template at `templates/tasks.md` and continue.
 - **`tasks.md` exists.** This is a resumption. Continue with the existing `tasks.md`.
 
 Surface the resolved paths to the engineer once before moving on: _"Working against breakdown `<path>`, Tasks file at `<path>/tasks.md` (<new | resuming>)."_
@@ -78,7 +78,7 @@ Name the one you'd recommend and why. Wait for the engineer to pick or push back
 
 Within the chosen shape, identify units of change that would land independently, in reviewable, testable chunks. Each unit becomes one entry. Bias toward smaller PRs: if an entry's Description needs more than one sentence, propose a split.
 
-For each entry, draft every field the template requires and write it to `tasks.md`. Do not pause for engineer approval between entries; the engineer reviews the completed set in Phase 5. The nine fields, in `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md` order:
+For each entry, draft every field the template requires and write it to `tasks.md`. Do not pause for engineer approval between entries; the engineer reviews the completed set in Phase 5. The nine fields, in `templates/tasks.md` order:
 
 1. **Task** — title, with layer prefix in brackets if single-layer, e.g., `[Server]`, `[Extension]`.
 2. **Owner** — driving team, or another team if the entry is a cross-team dependency.
@@ -103,8 +103,8 @@ If you encounter gaps that the tasks will not fill, or duplicative work between 
 
 Final pass before `tasks.md` is reviewer-ready. Run it yourself against the saved file; no subagent.
 
-1. **All nine fields present.** For every entry, verify all nine `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md` fields are filled: **Task**, **Owner**, **Affected files / crates / modules**, **Blocked by**, **Depends on**, **Description**, **Acceptance Criteria** (in GIVEN/WHEN/THEN format), **QA Testing Notes**, **Tech Breakdown**. Missing fields are a defect; either fill them or record `N/A: <reason>` per field. An empty **Tech Breakdown** fence is not acceptable unless the entry is a pure documentation change.
-2. **Placeholder scan.** Verify `tasks.md` contains no `TBD`, `TODO`, "decide later", "figure out during implementation", "various", "as needed", "handle edge cases" without a named set, "wire up existing service" without naming the service, "update tests" without naming the test files. Also verify the template's authoring scaffold — the `> _For each task, include:_` block, the italic field-description bullets, and the empty ` ```diff ` fence that follows them in `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md` — has been removed from the copy in this breakdown's folder. Rewrite anything that matches into a concrete entry.
+1. **All nine fields present.** For every entry, verify all nine `templates/tasks.md` fields are filled: **Task**, **Owner**, **Affected files / crates / modules**, **Blocked by**, **Depends on**, **Description**, **Acceptance Criteria** (in GIVEN/WHEN/THEN format), **QA Testing Notes**, **Tech Breakdown**. Missing fields are a defect; either fill them or record `N/A: <reason>` per field. An empty **Tech Breakdown** fence is not acceptable unless the entry is a pure documentation change.
+2. **Placeholder scan.** Verify `tasks.md` contains no `TBD`, `TODO`, "decide later", "figure out during implementation", "various", "as needed", "handle edge cases" without a named set, "wire up existing service" without naming the service, "update tests" without naming the test files. Also verify the template's authoring scaffold — the `> _For each task, include:_` block, the italic field-description bullets, and the empty ` ```diff ` fence that follows them in `templates/tasks.md` — has been removed from the copy in this breakdown's folder. Rewrite anything that matches into a concrete entry.
 3. **Description length check.** For each entry, can its Description be given in one sentence? If not, propose a split.
 4. **Spec coverage.** Walk the Specification's Functional Requirements and Success Criteria in the breakdown. For each, point to the entry in `tasks.md` that implements it. Any Functional Requirement or Success Criterion with no Task entry is a coverage gap; surface it before continuing.
 5. **Dependency graph sanity.**
@@ -113,7 +113,7 @@ Final pass before `tasks.md` is reviewer-ready. Run it yourself against the save
    - No cycles. If Task A blocks Task B and Task B blocks Task A, the decomposition is wrong; surface and split.
 6. **Stand-alone check.** No entry references "Similar to Task N" or relies on a sibling entry for its content. Each entry reads completely on its own.
 7. **Owner attribution.** Every entry has an Owner. Cross-team entries match the Cross-team engagement section of the breakdown; an entry whose Owner is another team must also be reflected in that team's signoff row. If it is not, surface as a Cross-team engagement gap (not fixed here).
-8. **Sizing check.** If `tasks.md` has 10 or more entries, look for natural split points (sequential phases, independently-shippable subsets) and surface a split proposal to the engineer per the sizing nudge at the top of `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md`.
+8. **Sizing check.** If `tasks.md` has 10 or more entries, look for natural split points (sequential phases, independently-shippable subsets) and surface a split proposal to the engineer per the sizing nudge at the top of `templates/tasks.md`.
 9. Tasks are mutually exclusive and collectively exhaustive.
 
 If you find issues, fix them inline in `tasks.md` or surface them to the engineer if there is any clarification needed.
@@ -139,7 +139,7 @@ Do not edit the breakdown document. The breakdown and `tasks.md` are siblings: t
 
 `tasks.md` is a flat markdown file.
 
-The template at `${CLAUDE_PLUGIN_ROOT}/templates/tasks.md` contains a sample format. Use that format for all tasks.
+The template at `templates/tasks.md` contains a sample format. Use that format for all tasks.
 
 ### Tech Breakdown examples
 

@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-breakdown-tools",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The project-level Bitwarden Tech Breakdown process \u2014 setting up a breakdown, developing its specification and plan, decomposing it into tasks, filing those tasks as Jira work items, and archiving the finished folder. Scoped to breakdowns that coordinate a team's committed work, not to an engineer's own finer-grained personal task tracking.",
   "author": {
     "name": "Bitwarden",

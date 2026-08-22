@@ -108,7 +108,7 @@ Do not use `—` or `--` as a catch-all substitute for real punctuation. Use the
 
 Multiple em-dashes in a single sentence is always wrong. Grep for `—` and standalone `--` in prose; rewrite each occurrence per the relationship above.
 
-This rule applies to prose sentences. Structured list rows that use `—` as a field separator (the `Team — interface — …` shapes in `${CLAUDE_PLUGIN_ROOT}/templates/breakdown.md`) are not prose; leave them.
+This rule applies to prose sentences. Structured list rows that use `—` as a field separator (the `Team — interface — …` shapes in `templates/breakdown.md`) are not prose; leave them.
 
 ### No parenthetical clarifying lists
 
