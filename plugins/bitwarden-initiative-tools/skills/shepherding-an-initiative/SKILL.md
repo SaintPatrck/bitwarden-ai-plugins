@@ -13,7 +13,7 @@ End-to-end umbrella playbook for an initiative shepherd, covering all five phase
 
 Every phase has a single sentence to remember: when you start writing the team's stories, the team won't own the work. When you stop coordinating across teams, the initiative drifts. Both failures are yours to prevent.
 
-For the agent-neutral, team-side view of the same boundary (the version tech leads read), invoke `Skill(navigating-the-initiative-funnel)` in `bitwarden-delivery-tools`. Reading both perspectives keeps you honest about where the line actually sits.
+For the agent-neutral, team-side view of the same boundary (the version tech leads read), invoke `Skill(navigating-the-initiative-funnel)`. Reading both perspectives keeps you honest about where the line actually sits.
 
 ## Time and Effort Expectations
 
@@ -102,7 +102,7 @@ Total: 150–300 hours of shepherd time over 4–9 months for a medium initiativ
 
 **Critical anti-pattern:** You writing the team's stories. The team does the breakdown — not you. You review breakdowns for consistency with the initiative's vision, not to rewrite stories.
 
-**Deep skill:** `Skill(scoping-and-handing-off-to-teams)`. The Phase 4→5 handoff is a work transition from the originating side; that skill composes `Skill(running-work-transitions)` from `bitwarden-delivery-tools` for the transition mechanics.
+**Deep skill:** `Skill(scoping-and-handing-off-to-teams)`. The Phase 4→5 handoff is a work transition from the originating side; that skill composes `Skill(running-work-transitions)` for the transition mechanics.
 
 ### Phase 5 — Implementation
 
@@ -122,7 +122,7 @@ Total: 150–300 hours of shepherd time over 4–9 months for a medium initiativ
 - An impact measurement 3–6 months later against the success metrics defined in Scoping.
 - ARCH idea status updated to "5️⃣ Implementation", then to its final status at completion.
 
-**Deep skill:** `Skill(coordinating-implementation-across-teams)`. For the Phase 4→5 transition's later stages (Phases 3–6 of the Work Transition Playbook on the originating side — pulse check at ~30 days, retrospective at ~90 days, closure), that skill composes `Skill(running-work-transitions)` from `bitwarden-delivery-tools`.
+**Deep skill:** `Skill(coordinating-implementation-across-teams)`. For the Phase 4→5 transition's later stages (Phases 3–6 of the Work Transition Playbook on the originating side — pulse check at ~30 days, retrospective at ~90 days, closure), that skill composes `Skill(running-work-transitions)`.
 
 ## Cross-Cutting Practices
 
@@ -154,4 +154,4 @@ The minimum invariant regardless of scope: a documented problem, a documented de
 - [Idea-Based Initiatives](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2785181779) — canonical BW Initiative anatomy, description template, link conventions, phase-by-phase initiative evolution.
 - [Work Transition Playbook](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2521038855) — canonical six-phase transition reference; the Phase 4→5 handoff is a transition from the originating side.
 - [Architecture / Engineering Operating Model](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1286963201) — how Architecture's initiative portfolio gets communicated (Architecture Initiative Review, Architecture/Platform sync).
-- Related: `Skill(running-an-architectural-assessment)`, `Skill(running-a-proof-of-concept)`, `Skill(scoping-and-handing-off-to-teams)`, `Skill(coordinating-implementation-across-teams)`, `Skill(curating-the-strategy-ideas-backlog)`; from `bitwarden-delivery-tools`: `Skill(navigating-the-initiative-funnel)`, `Skill(running-work-transitions)`.
+- Related: `Skill(running-an-architectural-assessment)`, `Skill(running-a-proof-of-concept)`, `Skill(scoping-and-handing-off-to-teams)`, `Skill(coordinating-implementation-across-teams)`, `Skill(curating-the-strategy-ideas-backlog)`, `Skill(navigating-the-initiative-funnel)`, `Skill(running-work-transitions)`.
