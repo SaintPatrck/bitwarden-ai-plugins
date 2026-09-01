@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-security-tools",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Application security practice at Bitwarden — security principles and data classification, threat modeling, code and architecture security analysis, secret detection, dependency and HackerOne triage.",
   "author": {
     "name": "Bitwarden",
