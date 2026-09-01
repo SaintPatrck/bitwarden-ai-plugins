@@ -4,11 +4,11 @@ Claude Code skills for product analysis at Bitwarden. Generic AI assistance does
 
 ## Skills
 
-| Skill                      | What It Does                                                                                                                                                                                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requirements-elicitation` | Extracts functional, non-functional, and security requirements from specifications. Flags ambiguities, identifies constraints, and creates testable acceptance criteria using Bitwarden security vocabulary.                                       |
-| `work-breakdown`           | Decomposes features into implementable tasks organized by phase. Identifies cross-repo dependencies (`bitwarden/server` vs. `bitwarden/clients`), task ordering, and team assignments.                                                             |
-| `writing-release-notes`    | Produces user-facing release notes from a Jira release tag and the weekly #release Slack thread. Filters to user-visible changes, respects feature flag enablement, and for server releases always surfaces flag removals in user-facing language. |
+| Skill                            | What It Does                                                                                                                                                                                                                                       |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requirements-elicitation`       | Extracts functional, non-functional, and security requirements from specifications. Flags ambiguities, identifies constraints, and creates testable acceptance criteria using Bitwarden security vocabulary.                                       |
+| `writing-requirements-documents` | Gathers sources directly (Confluence, Jira, GitHub issues, web URLs, local files), dispatches `requirements-elicitation` for extraction, and assembles a comprehensive requirements document following Bitwarden's 15-section template.            |
+| `writing-release-notes`          | Produces user-facing release notes from a Jira release tag and the weekly #release Slack thread. Filters to user-visible changes, respects feature flag enablement, and for server releases always surfaces flag removals in user-facing language. |
 
 ## Installation
 
@@ -48,7 +48,7 @@ Draft release notes for the 2025.7.0 server release
 
 ## References
 
-### requirements-elicitation
+### requirements-elicitation / writing-requirements-documents
 
 - [Bitwarden Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions) — Vault Data, Protected Data, Secure Channel, Trusted Channel vocabulary
 - [Bitwarden Security Principles](https://contributing.bitwarden.com/architecture/security/principles/) — P01–P06 foundation principles
