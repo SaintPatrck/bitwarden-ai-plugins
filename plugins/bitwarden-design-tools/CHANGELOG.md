@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-design-tools` plugin will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-09-01
+
+### Added
+
+- `facilitating-design-critique`'s parking-lot mechanism now names the PM/tech-lead/researcher boundary as an example of what gets parked rather than absorbed during a live critique. Folded in from the now-deleted `designer` agent in `bitwarden-designer`, which held this as its one non-duplicate claim.
+
 ## [0.2.0] - 2026-09-01
 
 ### Added
