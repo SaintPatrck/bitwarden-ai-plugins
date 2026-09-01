@@ -14,7 +14,7 @@ allowed-tools: Read, Glob, Grep, Skill, Bash(gh search code:*)
 
 ## Ownership
 
-This skill covers only what `bwwl` cannot check. For anything the linter enforces, invoke `Skill(bitwarden-devops-engineer:bitwarden-workflow-linter-rules)` — that skill is the source of truth for all `bwwl` rules, including their triggers and fix procedures. Do not report a finding here that duplicates a linter rule.
+This skill covers only what `bwwl` cannot check. For anything the linter enforces, invoke `Skill(bitwarden-actions-tools:bitwarden-workflow-linter-rules)` — that skill is the source of truth for all `bwwl` rules, including their triggers and fix procedures. Do not report a finding here that duplicates a linter rule.
 
 | Naming category                        | Owner                                                                 |
 | -------------------------------------- | --------------------------------------------------------------------- |
