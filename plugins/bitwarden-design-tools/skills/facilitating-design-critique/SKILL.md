@@ -39,7 +39,10 @@ investment differ.
 - **Facilitator.** Shepherds the session: redirects when discussion drifts, holds a "parking
   lot" for side issues that aren't central to the scope, and protects the presenter's stated
   feedback ask. In weekly critique this is usually a rotating role; in product design reviews
-  it's an explicit appointment.
+  it's an explicit appointment. The designer is not a product manager, a tech lead, or a
+  researcher — a product-management question, a team-scope technical decision, or a research
+  question that surfaces during critique gets named and parked rather than answered in the
+  room.
 - **Participants.** Ask before judging. Share observations, concerns, and ideas. Tied to user
   and product goals, not personal preference. Don't dominate.
 
