@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-designer` plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `designer` agent, deleted entirely. Every substantive claim duplicated a skill in `bitwarden-design-tools` — two of them word-for-word (`design-review`'s critique framing, `content-style-guide`'s voice framing). The one non-duplicate claim (the PM/tech-lead/researcher boundary) folded into `facilitating-design-critique`'s existing parking-lot mechanism. This bundle now holds no agent of its own.
+
 ## [0.2.1] - 2026-09-01
 
 ### Added
