@@ -22,9 +22,9 @@
       "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced."
     },
     {
-      "name": "bitwarden-code-review",
-      "source": "./plugins/bitwarden-code-review",
-      "version": "1.14.1",
+      "name": "bitwarden-code-review-tools",
+      "source": "./plugins/bitwarden-code-review-tools",
+      "version": "2.0.0",
       "description": "Comprehensive code review system with organization-wide standards."
     },
     {
@@ -76,10 +76,22 @@
       "description": "Champion-of-a-technical-strategy agent for Bitwarden. Shepherds a Technical Strategy Idea through Architecture's evaluation into the Software Initiative Funnel, then drives the resulting initiative across all five funnel phases to durable adoption."
     },
     {
-      "name": "bitwarden-delivery-tools",
-      "source": "./plugins/bitwarden-delivery-tools",
-      "version": "3.1.0",
-      "description": "Delivery lifecycle skills for Bitwarden initiatives — initiative funnel navigation, work transitions, architectural judgment, commits, pull requests, preflight checks, change labeling, and Jira ticket filing."
+      "name": "bitwarden-contribution-tools",
+      "source": "./plugins/bitwarden-contribution-tools",
+      "version": "4.0.0",
+      "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
+    },
+    {
+      "name": "bitwarden-architecture-tools",
+      "source": "./plugins/bitwarden-architecture-tools",
+      "version": "1.0.0",
+      "description": "Architectural judgment for Bitwarden changes — team-level solution design that stays coherent with the holistic architecture, security posture, and multi-client constraints."
+    },
+    {
+      "name": "bitwarden-initiative-tools",
+      "source": "./plugins/bitwarden-initiative-tools",
+      "version": "2.0.0",
+      "description": "Bitwarden's Software Initiative Funnel — championing and curating Technical Strategy Ideas, architectural assessments, proofs of concept, scoping and team handoffs, cross-team implementation, and work transitions."
     },
     {
       "name": "bitwarden-designer",
