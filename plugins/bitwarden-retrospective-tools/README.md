@@ -68,7 +68,7 @@ Intelligent handling of large sessions to prevent context overflow:
 ### Install the Plugin
 
 ```bash
-/plugin install claude-retrospective@bitwarden-marketplace
+/plugin install bitwarden-retrospective-tools@bitwarden-marketplace
 ```
 
 ## Usage
@@ -327,7 +327,7 @@ Analyze all sessions from the last week and identify trends
 ## File Organization
 
 ```
-plugins/claude-retrospective/
+plugins/bitwarden-retrospective-tools/
 ├── .claude-plugin/
 │   └── plugin.json                       # Plugin manifest
 ├── skills/

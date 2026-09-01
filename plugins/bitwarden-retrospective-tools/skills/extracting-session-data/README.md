@@ -168,7 +168,7 @@ scripts/extract-data.sh --type metadata --project /path/to/project
 ## File Organization
 
 ```
-plugins/claude-retrospective/skills/extracting-session-data/
+plugins/bitwarden-retrospective-tools/skills/extracting-session-data/
 ├── README.md                  # This file (user documentation)
 ├── SKILL.md                   # Instructions for Claude
 └── scripts/
