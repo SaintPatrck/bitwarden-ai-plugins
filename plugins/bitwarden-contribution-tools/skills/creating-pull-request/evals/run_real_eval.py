@@ -3,7 +3,7 @@
 
 The skill-creator harness registers a temp copy named
 `creating-pull-request-skill-<uuid>` and only counts invocations of that name
-as triggers. When the real `bitwarden-delivery-tools:creating-pull-request`
+as triggers. When the real `bitwarden-contribution-tools:creating-pull-request`
 skill is already installed in the environment running the eval, the model
 invokes the real one and the harness records a false negative.
 
