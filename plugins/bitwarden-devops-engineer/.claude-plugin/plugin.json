@@ -17,7 +17,7 @@
     "audit"
   ],
   "dependencies": [
-    "bitwarden-actions-tools",
+    "bitwarden-github-action-tools",
     "bitwarden-code-contribution-tools"
   ]
 }
