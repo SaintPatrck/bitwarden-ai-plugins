@@ -145,7 +145,7 @@ Simply mention "review my skill" or "check skill quality" to trigger it.
 
 #### 5. Run security validation
 
-Use the **reviewing-claude-config** skill from `claude-config-validator` to scan for:
+Use the **reviewing-claude-config** skill from `bitwarden-claude-config-tools` to scan for:
 
 - Committed secrets (API keys, tokens, passwords)
 - Hardcoded credentials in code
