@@ -48,7 +48,7 @@
     {
       "name": "bitwarden-software-engineer",
       "source": "./plugins/bitwarden-software-engineer",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "description": "Software engineer bundle for a Bitwarden product team. Depends on the contribution and code-review capability plugins — the implementor agent, commit/PR mechanics, and reviewing teammates' PRs."
     },
     {
