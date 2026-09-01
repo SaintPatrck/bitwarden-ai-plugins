@@ -1,0 +1,99 @@
+# Bitwarden Security Tools
+
+Claude Code skills for application security at Bitwarden. Generic AI coding assistance doesn't know our scanner toolchain, triage workflows, or threat modeling practices. These skills keep Claude focused on how we secure software here.
+
+## Overview
+
+This plugin provides specialized skills for security engineering tasks — from triaging scanner findings and threat modeling to conducting multi-agent security code reviews. Skills can be invoked individually or orchestrated together for comprehensive coverage across code, dependencies, secrets, and architecture.
+
+## Prerequisites
+
+`triaging-security-findings`, `reviewing-dependencies`, and `perform-security-review` query the Aikido feed via the `aikido:issues` skill. That skill ships in the separate `aikido` plugin — Aikido Security's own Claude Code plugin — and requires an authenticated MCP session. Install it with `/plugin install aikido@claude-plugins-official` and run `/aikido:setup` before using those skills. For `triaging-security-findings` and `reviewing-dependencies`, Aikido is the primary data source: if it isn't installed, these skills stop and ask you to install it rather than silently returning no findings. `perform-security-review` treats Aikido SAST/IaC/SCA/container evidence as one of several best-effort corroborating sources rather than a hard requirement — if it's unavailable, the review continues using whichever sources it could reach.
+
+## Skills
+
+| Skill                              | What It Does                                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-security-context`       | Bitwarden's security principles (P01-P06), security vocabulary, and data classification standards — foundational context for any security task.                                                                                                                                                                                                                                           |
+| `triaging-security-findings`       | Triage Aikido feed findings (SAST, IaC, SCA, secrets, cloud, container, malware, EOL, license) via Jira, plus GitHub Dependabot and secret scanning alerts. Includes severity mapping, group-scope verification, false positive protocol, and fix patterns.                                                                                                                               |
+| `threat-modeling`                  | Generate security definitions, data flow diagrams, and threat catalogs using STRIDE. Follows Bitwarden's 4-phase AppSec engagement model.                                                                                                                                                                                                                                                 |
+| `analyzing-code-security`          | Security code review against OWASP Web/API/Mobile Top 10, CWE Top 25. Step-by-step review workflow with adversarial mindset guidance.                                                                                                                                                                                                                                                     |
+| `reviewing-dependencies`           | Dependabot triage, Aikido open-source and container scanning, transitive dependency risk analysis. NuGet and npm platform-specific guidance.                                                                                                                                                                                                                                              |
+| `detecting-secrets`                | Hardcoded credential detection with context-aware analysis. GitHub secret scanning integration, Azure Key Vault remediation.                                                                                                                                                                                                                                                              |
+| `reviewing-security-architecture`  | Architecture-level review for authentication, authorization, encryption, trust boundaries, and cryptographic patterns.                                                                                                                                                                                                                                                                    |
+| `perform-security-review`          | Multi-agent security code review with 4 specialized agents, two-axis Severity × Confidence scoring, Aikido SAST/IaC/SCA/container evidence plus secret scanning and Dependabot evidence (the latter two are interactive only — not pre-approved, so CI records them as not checked), `--base-ref <ref>` to pick the comparison base, and flexible output (chat, file, or GitHub Actions). |
+| `auditing-hackerone-vulns`         | Audit open HackerOne-sourced VULN Jira tickets and their linked engineering child items, outputting a prioritized, sorted action table.                                                                                                                                                                                                                                                   |
+| `auditing-external-claude-plugins` | Security audit of a third-party Claude Code plugin before it's vendored, covering MCP config, dependency supply chain, tool permission scope, and prompt-injection surface. Runs as an isolated subagent and writes a report file.                                                                                                                                                        |
+
+## Installation
+
+```bash
+/plugin install bitwarden-security-tools@bitwarden-marketplace
+```
+
+## Usage
+
+```
+Triage the open Aikido findings on this PR.
+```
+
+```
+Create a threat model for the new Send feature.
+```
+
+```
+Review this code for OWASP Top 10 vulnerabilities.
+```
+
+`auditing-external-claude-plugins` takes positional arguments instead:
+
+```
+/bitwarden-security-tools:auditing-external-claude-plugins https://github.com/org/plugin <commit-sha>
+```
+
+## References
+
+External resources that informed each skill. Useful for maintainers updating skill content when upstream sources change.
+
+### threat-modeling
+
+- [Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions) — Official vocabulary and terminology
+- [Security Principles](https://contributing.bitwarden.com/architecture/security/principles/) — P01-P06 foundation principles
+- [Security Requirements](https://contributing.bitwarden.com/architecture/security/requirements) — VD/EK/AT/SC/TC requirement categories
+- [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/)
+- [Threat Modeling Guide for Software Teams](https://martinfowler.com/articles/agile-threat-modelling.html)
+- [OWASP Threat Modeling Process](https://owasp.org/www-community/Threat_Modeling_Process)
+
+### triaging-security-findings
+
+- [Aikido Documentation](https://help.aikido.dev/)
+- [GitHub Dependabot API](https://docs.github.com/en/rest/dependabot)
+- [GitHub Secret Scanning API](https://docs.github.com/en/rest/secret-scanning)
+
+### analyzing-code-security
+
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+- [OWASP API Security Top 10](https://owasp.org/API-Security/editions/2023/en/0x11-t10/)
+- [OWASP Mobile Top 10 2024](https://owasp.org/www-project-mobile-top-10/)
+- [CWE Top 25 Most Dangerous Software Weaknesses](https://cwe.mitre.org/top25/archive/2024/2024_cwe_top25.html)
+- [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
+
+### reviewing-dependencies
+
+- [GitHub Dependabot Documentation](https://docs.github.com/en/code-security/dependabot)
+- [Aikido Documentation](https://help.aikido.dev/)
+- [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
+- [npm Security Best Practices](https://docs.npmjs.com/packages-and-modules/securing-your-code)
+
+### detecting-secrets
+
+- [GitHub Secret Scanning Documentation](https://docs.github.com/en/code-security/secret-scanning)
+- [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html)
+- [git-filter-repo Documentation](https://github.com/newren/git-filter-repo)
+
+### reviewing-security-architecture
+
+- [OWASP Application Security Verification Standard (ASVS)](https://owasp.org/www-project-application-security-verification-standard/)
+- [OWASP Cheat Sheet Series](https://cheatsheetseries.owasp.org/)
+- [Bitwarden Security Whitepaper](https://bitwarden.com/help/bitwarden-security-white-paper/)
+- [NIST Cryptographic Standards](https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines)
