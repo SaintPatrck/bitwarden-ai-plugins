@@ -19,7 +19,7 @@ Available through Bitwarden's internal Claude Code marketplace:
 /plugin marketplace add https://github.com/bitwarden/ai-plugins
 
 # Install the product tools plugin
-/plugin install bitwarden-product-tools@bitwarden-marketplace
+/plugin install bitwarden-product-management-tools@bitwarden-marketplace
 
 # Restart Claude Code
 ```
