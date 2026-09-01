@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-shepherd` plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-09-01
+
+### Changed
+
+- Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-initiative-tools` and `bitwarden-architecture-tools`, not a placement requirement.
+
 ## [2.0.0] - 2026-09-01
 
 ### Removed
