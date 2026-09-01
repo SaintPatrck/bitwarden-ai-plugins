@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `writing-requirements-documents` skill — multi-source gathering (Confluence/Jira/GitHub/web/local-file fetch) and 15-section requirements-document assembly, ported from the now-eliminated `product-analyst` agent in `bitwarden-product-analyst`. Dispatches `requirements-elicitation` internally for extraction.
+- `writing-requirements-documents` skill — multi-source gathering (Confluence/Jira/GitHub/web/local-file fetch) and document assembly against the requirements template, ported from the now-eliminated `product-analyst` agent in `bitwarden-product-analyst`. Dispatches `requirements-elicitation` internally for extraction.
 
 ### Removed
 
