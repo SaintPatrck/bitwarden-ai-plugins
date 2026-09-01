@@ -5,6 +5,12 @@ All notable changes to the Bitwarden Product Analyst plugin will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `product-analyst` agent, eliminated. `work-breakdown` retired outright (superseded by `decomposing-into-tasks` in `bitwarden/tech-breakdowns`). The agent's genuinely-unclaimed content (multi-source gathering, 15-section template assembly) became a new skill, `writing-requirements-documents`, in `bitwarden-product-tools`. This bundle now holds no agent of its own.
+
 ## [0.2.0] - 2026-09-01
 
 ### Added
