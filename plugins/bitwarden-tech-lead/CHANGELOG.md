@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-tech-lead` plugin will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `tech-lead` agent, deleted entirely. Two of its statements folded into `navigating-the-initiative-funnel` and `coordinating-implementation-across-teams` (both in `bitwarden-initiative-tools`); everything else (org framing, EM-backed authority claim, the stale Cross-Plugin Integration block) was dropped, not relocated. This bundle now holds no agent of its own.
+
 ## [3.1.0] - 2026-09-01
 
 ### Added
