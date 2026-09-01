@@ -5,6 +5,19 @@ All notable changes to the `bitwarden-delivery-tools` plugin will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2026-09-01
+
+### Changed
+
+- Renamed from `bitwarden-delivery-tools`. The plugin now covers a single subject: getting a change into a Bitwarden repository.
+- Gained `addressing-code-review-comments` from `bitwarden-code-review`, since responding to review feedback is author-side work.
+
+### Removed
+
+- `architecting-solutions` moved to `bitwarden-architecture-tools`.
+- `navigating-the-initiative-funnel` and `running-work-transitions` moved to `bitwarden-initiative-tools`.
+- `filing-breakdown-tasks` removed — Tech Breakdown tooling is scoped entirely to the `bitwarden/tech-breakdowns` repository, not the marketplace.
+
 ## [3.1.0] - 2026-08-19
 
 ### Added
