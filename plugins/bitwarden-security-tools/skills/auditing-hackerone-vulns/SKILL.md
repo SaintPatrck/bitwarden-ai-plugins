@@ -217,6 +217,7 @@ Use this template. Omit any section (including `<details>` blocks) that has zero
 - **PR / Release**: e.g. `[#1234](PR_URL) → v2026.8.0 ✅ deployed`, `[#1234](PR_URL) → v2026.9.0 ⏳ pending`, or `No PR found`
 - **Action**: One-line plain-English instruction specific to the token, e.g. "Move to In Progress", "Set Remediated + Remediation Date: 2026-04-30", or "Verify fix in prod, add Confirmation Date, close HackerOne #3673748"
 - Truncate long summaries to ~60 chars
+- **Tone**: write the summary bullets and per-VULN actions like a partner tracking remediation progress alongside the team, not a scanner dumping alerts — plain, collaborative language, even when flagging overdue or stalled tickets
 
 ---
 

@@ -52,6 +52,8 @@ Write the Jira triage comment as five labeled paragraphs, in this exact order, n
 
 When one ticket bundles multiple distinct findings (e.g. several XSS sites), use a condensed markdown table with columns `Finding | Declaration | Severity/CWE | Owner | Action required` instead of repeating the five paragraphs per row.
 
+Write the comment like a colleague, not a scanner. It is read by teammates verifying the call later, so use plain, collaborative language that explains the reasoning, not alarmist or boilerplate phrasing.
+
 ### False Positive Protocol
 
 Before writing a `NOT AFFECTED` **Declaration**, verify:
