@@ -8,6 +8,12 @@ Every skill here produces a commit or a pull request, whether for a single chang
 
 These skills define process, not platform. A commit message format, a PR body shape, a quality gate, a labeling scheme. The platform specifics — which linter, which test runner, which build command — are discovered from each repository's `CLAUDE.md` at the time the skill runs. That separation is why these skills work across Clients, Server, SDK, Android, and iOS without a variant per repo.
 
+## Agent
+
+| Agent         | What It Does                                                                                                                                                                                                                      |
+| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `implementor` | Implements a Bitwarden engineering change end-to-end — orients in the codebase, builds incrementally, verifies before declaring done, and writes clear commits and PR summaries. See [`implementor.md`](./agents/implementor.md). |
+
 ## Skills
 
 Listed in the order a change moves through them.

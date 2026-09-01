@@ -5,6 +5,14 @@ All notable changes to the `bitwarden-delivery-tools` plugin will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.1.0] - 2026-09-01
+
+### Added
+
+- **`implementor` agent** — moved in from `bitwarden-software-engineer` (renamed from
+  `software-engineer`), stripped of career-ladder framing and the stale cross-plugin integration
+  block.
+
 ## [4.0.0] - 2026-09-01
 
 ### Changed
