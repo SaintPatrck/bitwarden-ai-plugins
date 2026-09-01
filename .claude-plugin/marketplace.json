@@ -49,7 +49,7 @@
       "name": "bitwarden-software-engineer",
       "source": "./plugins/bitwarden-software-engineer",
       "version": "2.0.0",
-      "description": "Software engineer agent for a Bitwarden product team. Implements stories, tasks, and bugs in the team's domain with code quality, performance, and security in mind. Participates in refinement, reviews PRs, collaborates with QA, and follows Git conventions."
+      "description": "Software engineer bundle for a Bitwarden product team. Depends on the contribution and code-review capability plugins — the implementor agent, commit/PR mechanics, and reviewing teammates' PRs."
     },
     {
       "name": "bitwarden-atlassian-tools",
