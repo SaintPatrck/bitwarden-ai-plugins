@@ -1,60 +1,36 @@
 # Bitwarden DevOps Engineer Plugin
 
-Claude Code skills for GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation. Generic AI assistance doesn't know Bitwarden's workflow linter rules, approved actions list, or remediation patterns. These skills keep Claude focused on how we manage CI/CD workflows here.
-
 ## Overview
 
-The skills work in pairs. Each audit skill is strictly read-only and produces a findings report; its remediation counterpart consumes those findings, applies the fixes, verifies, and opens draft PRs. `workflow-audit` → `workflow-fix` covers linter compliance inside a repo, and `action-audit` → `action-remediate` covers action references across the org. All four read `bitwarden-workflow-linter-rules` as the single source of truth for what compliant looks like and how each rule gets fixed. `auditing-workflow-conventions` is a second reference skill covering the naming standards the linter does not check — job IDs, step name casing, and workflow file names — and defers to the linter-rules skill wherever the two overlap. `managing-workflow-secrets` is a third reference skill (also an authoring guide) covering Bitwarden's Azure Key Vault + OIDC secret pattern — the centralized `azure-login` / `get-keyvault-secrets` / `azure-logout` actions, how to retrieve and safely consume a secret within a job, and how a secret reaches a downstream job or reusable workflow (per-job re-retrieval, a short-lived GitHub App token, and `secrets:` hand-off). Advanced patterns such as fork-PR gates, multi-vault jobs, and raw `az` CLI for certs and write-back are out of scope.
+DevOps engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own. Installing it gets a DevOps engineer GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation (`bitwarden-github-action-tools`), plus the commit/PR mechanics shared with the rest of the team (`bitwarden-code-contribution-tools`), in one step, instead of installing each capability plugin separately — both work standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
-## Skills
+## Cross-Plugin Integration
 
-| Skill                             | What It Does                                                                                                         |
-| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `workflow-audit`                  | Runs the Bitwarden workflow linter (`bwwl`) and reports findings categorized as mechanical or judgment. Read-only.   |
-| `workflow-fix`                    | Applies fixes for workflow linter findings, verifies with a re-lint, and creates draft PRs.                          |
-| `action-audit`                    | Searches org-wide for compromised, deprecated, or unpinned GitHub Actions and produces a findings report. Read-only. |
-| `action-remediate`                | Applies hash pins or action replacements across selected repos and creates draft PRs based on audit findings.        |
-| `bitwarden-workflow-linter-rules` | Reference for all 10 `bwwl` linter rules — triggers, fix procedures, and mechanical vs. judgment categorization.     |
-| `auditing-workflow-conventions`   | Reference for naming standards `bwwl` does not enforce — job IDs, step names, and workflow file names.               |
-| `managing-workflow-secrets`       | Reference and authoring guide for Bitwarden's Azure Key Vault + OIDC secret pattern in workflows.                    |
+| Plugin                              | How It's Used                                                                                                                                                                                                                                                                                                |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `bitwarden-github-action-tools`     | `workflow-audit` → `workflow-fix` for linter compliance inside a repo, `action-audit` → `action-remediate` for action security across the org, `bitwarden-workflow-linter-rules` and `auditing-workflow-conventions` as reference, `managing-workflow-secrets` for the Azure Key Vault + OIDC secret pattern |
+| `bitwarden-code-contribution-tools` | `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                                                                                                                                                    |
 
 ## Installation
 
-Available through Bitwarden's internal Claude Code marketplace:
-
 ```bash
-# Add the Bitwarden marketplace (if not already added)
-/plugin marketplace add https://github.com/bitwarden/ai-plugins
-
-# Install the DevOps engineer plugin
 /plugin install bitwarden-devops-engineer@bitwarden-marketplace
-
-# Restart Claude Code
 ```
 
 ## Usage
 
-Skills trigger from natural-language requests. The audit skills are read-only; run them before their remediation counterparts.
-
-```text
-Run the workflow linter on the server repo
+```
+Run the workflow linter on the server repo.
 ```
 
-```text
-Go ahead and fix the linter findings from the audit
+```
+Check if any repos are using tj-actions/changed-files.
 ```
 
-```text
-Check if any repos are using tj-actions/changed-files
 ```
-
-```text
-Pin the unpinned actions from the audit and open draft PRs
+Pin the unpinned actions from the audit and open draft PRs.
 ```
 
 ## References
 
-- [Bitwarden Workflow Linter](https://github.com/bitwarden/workflow-linter) — `bwwl` source, approved actions list, and rule definitions
-- [actionlint](https://github.com/rhysd/actionlint) — Static checker for GitHub Actions workflow files, used internally by `bwwl`
-- [GitHub Actions Documentation](https://docs.github.com/en/actions) — Workflow syntax, permissions model, and contexts reference
-- [GitHub Code Search](https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax) — Syntax reference for `gh search code` used in action auditing
+- [Bitwarden Contributing Guidelines](https://contributing.bitwarden.com/contributing/)
