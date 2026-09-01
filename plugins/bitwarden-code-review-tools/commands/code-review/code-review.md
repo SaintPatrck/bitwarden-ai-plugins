@@ -4,7 +4,7 @@ allowed-tools: Read, Write, Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr c
 description: Review a GitHub pull request and post findings directly to GitHub
 ---
 
-You must invoke the bitwarden-code-review:bitwarden-code-reviewer agent to perform a comprehensive code review of a GitHub pull request or local changes.
+You must invoke the bitwarden-code-review-tools:bitwarden-code-reviewer agent to perform a comprehensive code review of a GitHub pull request or local changes.
 
 **Steps:**
 
@@ -26,7 +26,7 @@ You must invoke the bitwarden-code-review:bitwarden-code-reviewer agent to perfo
    If a sticky comment ID is found, you are in **agent mode** — include the sticky comment context in the agent prompt (see Step 3).
 
 3. **Invoke the Task tool** with the following parameters:
-   - `subagent_type`: "bitwarden-code-review:bitwarden-code-reviewer"
+   - `subagent_type`: "bitwarden-code-review-tools:bitwarden-code-reviewer"
    - `description`: "Perform code review following Bitwarden engineering standards"
    - `prompt`: Build the prompt based on Steps 1 and 2:
 
