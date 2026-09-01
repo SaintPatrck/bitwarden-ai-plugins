@@ -104,6 +104,7 @@ Two additional rules:
 - **Prioritize by impact, not by enumeration.** A short document listing the 3–5 threats that actually shape the design is more useful than a 15-SD document that buries the important ones in noise. Before adding an SD, ask: _"If this threat didn't exist, would the design change?"_ If the answer is no, it is likely code-quality commentary, not a security definition.
 - **Tag each SD with a Criticality level** (Critical / High / Medium / Low) and order the document by Criticality descending, so reviewers see the load-bearing SDs first. See `references/writing-quality-sds.md` for the prioritization heuristic.
 - **Verbosity is a failure mode.** The same anti-pattern that plagued early LLM code review — long lists with low signal — also plagues generated security definitions. Cut SDs that describe implementation-detail concerns (e.g., a future maintainer editing a constant to contain shell metacharacters) unless they are load-bearing to the design.
+- **Write as a partner, not an auditor.** Even an unmet or partially met goal is framing for a conversation with the team, not a verdict — plain, collaborative, non-alarmist language throughout the document.
 
 ## Artifact Generation
 

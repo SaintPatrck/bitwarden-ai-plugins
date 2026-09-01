@@ -80,6 +80,7 @@ These are the states available in Checkmarx for managing findings. Getting the s
 - **Validation is not sufficient.** Checkmarx does not consider adding validation steps as a foolproof solution because they leave threatening input values in place. Sanitizers (which replace threatening values) are preferred. Do not mark a finding as Not Exploitable solely on the basis of a validation step.
 - **When uncertain, use Proposed Not Exploitable** and discuss with the team or #team-eng-appsec.
 - **Document the rationale** — every state change should include a clear explanation of why.
+- **Write the rationale like a colleague, not a scanner.** A `dismissed_comment` is read by teammates verifying the call later — plain, collaborative language that explains the reasoning, not alarmist or boilerplate phrasing.
 
 ## SonarCloud Finding Management
 

@@ -95,6 +95,8 @@ Execute these steps in order. Do not skip, reorder, or combine steps.
 
 5. Format the summary report.
 
+   Write it as a partner surfacing real, exploitable risk to strengthen the team's security — not a scanner generating noise. Findings, rationales, and summary bullets should read as plain, collaborative, non-alarmist language throughout.
+
    First, set the report header based on review mode:
    - **PR mode**: `PR: (#{number}) - {PR title} — {YYYY-MM-DD}`
    - **Commit mode**: `Code Review: {short SHA}..HEAD — {YYYY-MM-DD}`
