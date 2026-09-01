@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- **BREAKING:** the `product-analyst` agent, eliminated. `work-breakdown` retired outright (superseded by `decomposing-into-tasks` in `bitwarden/tech-breakdowns`). The agent's genuinely-unclaimed content (multi-source gathering, 15-section template assembly) became a new skill, `writing-requirements-documents`, in `bitwarden-product-tools`. This bundle now holds no agent of its own.
+- **BREAKING:** the `product-analyst` agent, eliminated. `work-breakdown` retired outright (superseded by `decomposing-into-tasks` in `bitwarden/tech-breakdowns`). The agent's genuinely-unclaimed content (multi-source gathering, template assembly) became a new skill, `writing-requirements-documents`, in `bitwarden-product-tools`. This bundle now holds no agent of its own.
 
 ## [0.2.0] - 2026-09-01
 
