@@ -1,12 +1,12 @@
 {
-  "name": "claude-config-validator",
+  "name": "bitwarden-claude-config-tools",
   "version": "2.0.2",
   "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
   },
-  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/claude-config-validator",
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-claude-config-tools",
   "repository": "https://github.com/bitwarden/ai-plugins",
   "commands": [
     "./commands/validate-ai/validate-ai.md",

@@ -235,10 +235,10 @@ reader; routing between files inside a skill is not.
 
 Based on detected type, invoke the relevant skill:
 
-- **Agents** → `Skill(claude-config-validator:reviewing-agent-definitions)`
-- **Commands** → `Skill(claude-config-validator:reviewing-command-definitions)`
-- **Settings and hooks** → `Skill(claude-config-validator:reviewing-runtime-configuration)`
-- **CLAUDE.md** → `Skill(claude-config-validator:reviewing-project-guidance)`
+- **Agents** → `Skill(bitwarden-claude-config-tools:reviewing-agent-definitions)`
+- **Commands** → `Skill(bitwarden-claude-config-tools:reviewing-command-definitions)`
+- **Settings and hooks** → `Skill(bitwarden-claude-config-tools:reviewing-runtime-configuration)`
+- **CLAUDE.md** → `Skill(bitwarden-claude-config-tools:reviewing-project-guidance)`
 ```
 
 ---

@@ -86,15 +86,15 @@ a check as skipped rather than passed when the tool it needs is unavailable.
 Detect the file types in scope and invoke the matching skill for each. Several types in one
 changeset means several skills.
 
-| Changed path                                                                           | Skill                                                            |
-| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `agents/**/*.md` (`agents/<name>.md` or `agents/<name>/AGENT.md`)                      | `Skill(claude-config-validator:reviewing-agent-definitions)`     |
-| `commands/**/*.md` (any location) and `.claude/prompts/**/*.md`, excluding `README.md` | `Skill(claude-config-validator:reviewing-command-definitions)`   |
-| `settings.json`, `settings.local.json`, `hooks.json` (any location)                    | `Skill(claude-config-validator:reviewing-runtime-configuration)` |
-| `CLAUDE.md` (any location)                                                             | `Skill(claude-config-validator:reviewing-project-guidance)`      |
-| `SKILL.md`                                                                             | Not reviewed here — see below                                    |
-| `.claude-plugin/*.json`                                                                | Not reviewed here — `plugin-dev:plugin-validator` owns manifests |
-| Any other in-scope Claude material                                                     | No targeted skill — read it here                                 |
+| Changed path                                                                           | Skill                                                                  |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `agents/**/*.md` (`agents/<name>.md` or `agents/<name>/AGENT.md`)                      | `Skill(bitwarden-claude-config-tools:reviewing-agent-definitions)`     |
+| `commands/**/*.md` (any location) and `.claude/prompts/**/*.md`, excluding `README.md` | `Skill(bitwarden-claude-config-tools:reviewing-command-definitions)`   |
+| `settings.json`, `settings.local.json`, `hooks.json` (any location)                    | `Skill(bitwarden-claude-config-tools:reviewing-runtime-configuration)` |
+| `CLAUDE.md` (any location)                                                             | `Skill(bitwarden-claude-config-tools:reviewing-project-guidance)`      |
+| `SKILL.md`                                                                             | Not reviewed here — see below                                          |
+| `.claude-plugin/*.json`                                                                | Not reviewed here — `plugin-dev:plugin-validator` owns manifests       |
+| Any other in-scope Claude material                                                     | No targeted skill — read it here                                       |
 
 If a targeted skill cannot be invoked — a partial plugin install, no `Skill` grant, a standalone
 copy with bare skill names — do not let the routing failure pass silently. Review the file here

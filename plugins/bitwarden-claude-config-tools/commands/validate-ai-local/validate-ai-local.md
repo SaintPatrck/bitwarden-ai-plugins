@@ -1,6 +1,6 @@
 ---
 argument-hint: "[base-ref] (defaults to the repository default branch)"
-allowed-tools: Read, Edit(~/.claude/plugins/data/claude-config-validator*/ai-validation/*), Grep, Glob, Task, Skill, Bash(git diff:*), Bash(git fetch origin:*), Bash(git rev-parse:*), Bash(git symbolic-ref:*), Bash(git ls-files:*), Bash(date:*), Bash(ls:*)
+allowed-tools: Read, Edit(~/.claude/plugins/data/bitwarden-claude-config-tools*/ai-validation/*), Grep, Glob, Task, Skill, Bash(git diff:*), Bash(git fetch origin:*), Bash(git rev-parse:*), Bash(git symbolic-ref:*), Bash(git ls-files:*), Bash(date:*), Bash(ls:*)
 description: Validate the Claude Code material you changed locally and write a timestamped report to the plugin's data directory
 ---
 
@@ -143,7 +143,7 @@ same file produces duplicate findings a reader cannot tell from independent conf
 Runs whenever any component changed. This is the primary review for a repository's own
 `.claude/` directory and `CLAUDE.md`, and it also applies to plugin repositories.
 
-Invoke `Skill(claude-config-validator:reviewing-claude-config)` over every changed
+Invoke `Skill(bitwarden-claude-config-tools:reviewing-claude-config)` over every changed
 `CLAUDE.md` and everything under `.claude/` — agents, commands, hooks, settings — plus the
 component files inside changed plugins, plus any skill support files under `reference/`,
 `examples/`, or `scripts/` those plugins changed. It owns secrets and hardcoded credentials, permission
@@ -163,7 +163,7 @@ a `.gitignore` entry in whichever checkout you ran against, and the repo and tim
 the name keep reports from different checkouts apart.
 
 If `${CLAUDE_PLUGIN_DATA}` reaches you unexpanded, which can happen on a local
-`--plugin-dir` load, write to `~/.claude/plugins/data/claude-config-validator/ai-validation/`
+`--plugin-dir` load, write to `~/.claude/plugins/data/bitwarden-claude-config-tools/ai-validation/`
 instead. Never fall back to the working directory: landing the report in whichever
 repository you validated is the outcome this path exists to avoid.
 
