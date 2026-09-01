@@ -2,9 +2,7 @@
 
 ## Overview
 
-Design toolkit for Bitwarden — the non-persona half of the design plugin pair. Eight skills covering content style, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, the Product and Design Jira workflow, and design critique. Composed by the `bitwarden-designer` agent and usable standalone (designers, design-adjacent engineers, PMs running a handoff).
-
-This plugin ships skills only — no agent. The persona half lives in [`bitwarden-designer`](../bitwarden-designer/), which dispatches into these skills by name.
+Design toolkit for Bitwarden. Eight skills covering content style, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, the Product and Design Jira workflow, and design critique — for designers, design-adjacent engineers, and PMs running a handoff. Ships skills only, no agent of its own.
 
 ## Skills
 
@@ -23,10 +21,8 @@ This plugin ships skills only — no agent. The persona half lives in [`bitwarde
 
 | Plugin                      | How It's Used                                                                                                                                                                                                                                              |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-designer`        | Primary consumer. The designer persona dispatches into every skill here by name. Either plugin works standalone, but the pair is the intended shape.                                                                                                       |
+| `bitwarden-designer`        | Optional. Depends on this plugin for its full toolkit; nothing here depends back on it.                                                                                                                                                                    |
 | `bitwarden-atlassian-tools` | Required. The Confluence-grounded skills here (`preparing-design-handoff`, `evolving-design-system-components`, `navigating-design-jira-process`) assume `get_confluence_page` is available to fetch the canonical pages directly when prepping real work. |
-
-All cross-plugin skills are required.
 
 ## External Dependency: Figma Dev Mode MCP Server
 
@@ -40,16 +36,15 @@ If the Figma MCP tools aren't available in the session, the `using-figma` skill 
 /plugin install bitwarden-design-tools@bitwarden-marketplace
 ```
 
-Most users will also want the persona half and the Atlassian access:
+The Confluence-grounded skills (`preparing-design-handoff`, `evolving-design-system-components`, `navigating-design-jira-process`) require `bitwarden-atlassian-tools`:
 
 ```bash
-/plugin install bitwarden-designer@bitwarden-marketplace
 /plugin install bitwarden-atlassian-tools@bitwarden-marketplace
 ```
 
 ## Usage
 
-The skills here activate based on the task at hand — they can be invoked through the `bitwarden-designer` agent or standalone:
+The skills here activate based on the task at hand:
 
 ```
 Review this copy: "Click here to learn more about export."
