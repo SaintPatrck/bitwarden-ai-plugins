@@ -2,13 +2,13 @@
 
 ## Overview
 
-Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-tools` for the full toolkit: requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes.
+Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-management-tools` for the full toolkit: requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes.
 
 ## Cross-Plugin Integration
 
-| Plugin                    | How It's Used                                                                                                                                                                                          |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `bitwarden-product-tools` | Required. `requirements-elicitation` for extracting requirements, `writing-requirements-documents` for producing the requirements document, and `writing-release-notes` for user-facing release notes. |
+| Plugin                               | How It's Used                                                                                                                                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `bitwarden-product-management-tools` | Required. `requirements-elicitation` for extracting requirements, `writing-requirements-documents` for producing the requirements document, and `writing-release-notes` for user-facing release notes. |
 
 ## Installation
 
