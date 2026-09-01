@@ -84,7 +84,7 @@
     {
       "name": "bitwarden-tech-lead",
       "source": "./plugins/bitwarden-tech-lead",
-      "version": "4.0.0",
+      "version": "4.0.1",
       "description": "Tech lead bundle for a Bitwarden product team. Depends on the architecture, initiative, contribution, and code-review capability plugins a tech lead draws on — team-scope architectural judgment, initiative-funnel participation, implementation, and reviewing PRs."
     },
     {
