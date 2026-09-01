@@ -7,6 +7,8 @@ allowed-tools: Skill, mcp__plugin_bitwarden-atlassian-tools_bitwarden-atlassian_
 
 Phase 5 (Implementation) deep-dive playbook for an initiative shepherd. **You are not doing the implementation.** You enable teams, maintain consistency, ensure the initiative completes, and step back when it does. Time budget: 2–6 months wall clock, 10–20 hours/month of shepherd time. Composes `Skill(running-work-transitions)` in `bitwarden-delivery-tools` for the originating-side Support Period, Pulse Check, Retrospective, and Closure phases of the [Work Transition Playbook](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2521038855).
 
+This coordination role is the shepherd's, across the whole initiative — not a participating team's own tech lead's. A tech lead's role is representing their own team within it, not running the cross-team coordination described here.
+
 The funnel doc's mental model:
 
 > **Think of the shepherd as:**
