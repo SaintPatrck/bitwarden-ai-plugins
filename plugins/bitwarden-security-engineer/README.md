@@ -2,7 +2,7 @@
 
 ## Overview
 
-Security engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a security engineer needs day to day: vulnerability triage, threat modeling, and secure code analysis from `bitwarden-security-tools`, and reviewing PRs for security issues from `bitwarden-code-review-tools`.
+Security engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own. Installing it gets a security engineer vulnerability triage, threat modeling, and secure code analysis (`bitwarden-security-tools`), plus reviewing PRs for security issues (`bitwarden-code-review-tools`), in one step, instead of installing each capability plugin separately — both work standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
 ## Cross-Plugin Integration
 

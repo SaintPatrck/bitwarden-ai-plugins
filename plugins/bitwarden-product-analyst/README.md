@@ -2,7 +2,7 @@
 
 ## Overview
 
-Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-management-tools` for the full toolkit: requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes.
+Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own. Installing it gets a product analyst the full toolkit — requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes — under one role-scoped install and a governance handle for managed settings, instead of installing `bitwarden-product-management-tools` by name. That capability plugin works standalone too, so this bundle is a convenience, not a requirement.
 
 ## Cross-Plugin Integration
 
