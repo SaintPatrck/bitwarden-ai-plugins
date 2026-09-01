@@ -2,13 +2,13 @@
 
 ## Overview
 
-Product designer bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-design-tools` for the full toolkit: design critique against the Code of Conduct and 30/60/90 framework, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow.
+Product designer bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-design-tools` for the full toolkit: design critique against the Code of Conduct and 30/60/90 framework, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow.
 
 ## Cross-Plugin Integration
 
-| Plugin                   | How It's Used                                                                                                                                                                                                                                                                                                                 |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-design-tools` | Required. `design-review` for stage-appropriate critique, `facilitating-design-critique` for running or participating in a critique session, plus `content-style-guide`, `using-figma`, `applying-bitwarden-branding`, `preparing-design-handoff`, `evolving-design-system-components`, and `navigating-design-jira-process`. |
+| Plugin                           | How It's Used                                                                                                                                                                                                                                                                                                                 |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-product-design-tools` | Required. `design-review` for stage-appropriate critique, `facilitating-design-critique` for running or participating in a critique session, plus `content-style-guide`, `using-figma`, `applying-bitwarden-branding`, `preparing-design-handoff`, `evolving-design-system-components`, and `navigating-design-jira-process`. |
 
 ## Installation
 
