@@ -17,7 +17,7 @@ actionable, stage-appropriate, and rooted in product goals — not personal pref
 
 > **Cross-plugin dependency.** This skill composes `content-style-guide` (at 60% and 90%
 > stages) and `using-figma` (when the design lives in a Figma file). Both ship in the
-> `bitwarden-design-tools` plugin, which is required alongside `bitwarden-designer` —
+> `bitwarden-product-design-tools` plugin, which is required alongside `bitwarden-designer` —
 > install both for the full composition to work.
 
 ## Step 1: Identify the stage

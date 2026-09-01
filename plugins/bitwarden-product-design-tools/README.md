@@ -33,7 +33,7 @@ If the Figma MCP tools aren't available in the session, the `using-figma` skill 
 ## Installation
 
 ```bash
-/plugin install bitwarden-design-tools@bitwarden-marketplace
+/plugin install bitwarden-product-design-tools@bitwarden-marketplace
 ```
 
 The Confluence-grounded skills (`preparing-design-handoff`, `evolving-design-system-components`, `navigating-design-jira-process`) require `bitwarden-atlassian-tools`:
