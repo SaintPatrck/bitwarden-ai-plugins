@@ -427,7 +427,7 @@ Follow semantic versioning: `MAJOR.MINOR.PATCH`
 
 After enhancing the CLAUDE.md file, run available validation:
 
-### Config Validation (claude-config-validator plugin)
+### Config Validation (bitwarden-claude-config-tools plugin)
 
 - **Validate the generated CLAUDE.md** → activate `Skill(reviewing-claude-config)` to verify the generated file has no hardcoded secrets in code examples, proper structure, valid file references, and follows progressive disclosure patterns
 

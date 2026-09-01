@@ -102,7 +102,7 @@ What the PoC should ship in each home:
 - **Near the example implementation(s), short folder-level notes** that link out to the framework README and the ADR. Even thin folder docs help future engineers find their way to the canonical context.
 - **The ADR itself in `contributing-docs`** as covered above.
 - **Tech-stack-appropriate inline docs.** XML comments or JSDoc for TypeScript/Angular/.NET; `rustdoc` and crate/module-level `README` for Rust. The Documentation Patterns page has the per-stack rubric.
-- **CLAUDE.md updates where the PoC introduces a new pattern.** If the new pattern is one engineers (and Claude tooling) need to follow going forward, add it to the root or folder-area `CLAUDE.md` — link the `README.md` via `@` syntax and the ADR by URL. The `bitwarden-init` and `claude-config-validator` plugins help bootstrap and review these.
+- **CLAUDE.md updates where the PoC introduces a new pattern.** If the new pattern is one engineers (and Claude tooling) need to follow going forward, add it to the root or folder-area `CLAUDE.md` — link the `README.md` via `@` syntax and the ADR by URL. The `bitwarden-init` and `bitwarden-claude-config-tools` plugins help bootstrap and review these.
 
 The shape of the documentation matters because the PoC is what the receiving teams in Phase 4 will react to. A PoC PR + a framework `README` + an ADR is far more legible than a PoC PR alone — and the difference shows up as faster handoff meetings and less "wait, what was the intended pattern here?" during Implementation.
 
