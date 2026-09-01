@@ -10,6 +10,8 @@ Bitwarden runs cross-cutting technical work through the [Software Initiative Fun
 
 Every phase has a single sentence to remember: **the shepherd owns the initiative; the tech lead owns how their team executes its part**. The moment that line blurs, one of two failure modes shows up — either the shepherd starts writing the team's stories (and the team doesn't own the work), or the tech lead starts making cross-team decisions that aren't theirs to make (and the initiative drifts).
 
+The funnel is one of several organizational workflows a tech lead participates in without orchestrating — this one, work transitions between teams, the Technical Strategy Ideas backlog. The workflow orchestrates the tech lead's participation, not the other way around: it brings the context and tells them what's expected at each phase, rather than the tech lead tracking the whole thing from their own side.
+
 ## Phase-by-Phase: Who Does What
 
 ### Phase 1 — Identification
