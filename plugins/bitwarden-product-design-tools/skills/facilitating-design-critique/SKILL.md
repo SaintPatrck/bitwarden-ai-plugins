@@ -15,7 +15,7 @@ tool fetches them. This skill is the practitioner's quick reference, not a repla
 those pages.
 
 > **Cross-plugin dependency.** When the design under discussion lives in a Figma file, this
-> skill composes `using-figma` from the `bitwarden-design-tools` plugin — install it
+> skill composes `using-figma` from the `bitwarden-product-design-tools` plugin — install it
 > alongside `bitwarden-designer` for the full composition to work.
 
 ## Pick the right mode
