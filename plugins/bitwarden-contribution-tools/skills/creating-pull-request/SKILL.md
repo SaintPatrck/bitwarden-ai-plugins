@@ -35,7 +35,7 @@ If preflight cannot be made to pass, stop and report the failure rather than ope
 
 - **Question**: "How deep is this change? (sets review depth)"
 - **Options**:
-  - `Standard` — a typical feature, fix, docs, or config change: run `/bitwarden-code-review:code-review-local` (tell it to review the current branch's changes; there is no PR yet)
+  - `Standard` — a typical feature, fix, docs, or config change: run `/bitwarden-code-review-tools:code-review-local` (tell it to review the current branch's changes; there is no PR yet)
   - `Substantial` — architectural, cross-cutting, or security-touching: run `Skill(performing-multi-agent-code-review)`, telling it to review the full branch diff against `origin/HEAD` (not just uncommitted changes); there is no PR yet
 
 Present only these two options; do not add a skip option. Honor a skip only if the user volunteers one unprompted, then record it in the PR body's Objective section (Step 3) and surface it in the Step 5 preview. Never skip on your own initiative.
