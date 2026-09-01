@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-shepherd",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Shepherd bundle for a Bitwarden technical strategy champion. Depends on the initiative and architecture capability plugins a shepherd draws on — championing a Technical Strategy Idea through Architecture's evaluation and driving an approved initiative across the Software Initiative Funnel.",
   "author": {
     "name": "Bitwarden",
