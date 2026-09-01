@@ -61,7 +61,7 @@ Execute these steps in order. Do not skip, reorder, or combine steps.
    {formatted output, or "None / not available"}
    ```
 
-2. Launch these four (4) `subagent_type: "bitwarden-security-engineer:bitwarden-security-engineer"` agents in parallel. Each agent has a specific domain — you **MUST** instruct it to stay within that domain. The agent **MUST** read `references/security-review-rubric.md` before starting **AND** before evaluating findings.
+2. Launch these four (4) `subagent_type: "bitwarden-security-tools:bitwarden-security-engineer"` agents in parallel. Each agent has a specific domain — you **MUST** instruct it to stay within that domain. The agent **MUST** read `references/security-review-rubric.md` before starting **AND** before evaluating findings.
 
    **Agent 1 — Code Security**: Focus exclusively on injection flaws (SQL, XSS, command), cryptographic weaknesses, insecure coding patterns, and OWASP A01–A05. Invoke `Skill(bitwarden-security-context)` and `Skill(analyzing-code-security)` to guide your analysis. Do not evaluate secrets, dependencies, architecture, or threat modeling.
 
@@ -84,7 +84,7 @@ Execute these steps in order. Do not skip, reorder, or combine steps.
    - **Confidence**: 🟢 HIGH | 🟡 MEDIUM | 🔵 LOW
    - Apply the threshold matrix in the rubric to assign a triage category: 🚨 Blocker, ⚠️ Improvement, 📝 Note, ✅ Strength, or ❌ Dismiss.
 
-4. Launch a **verification agent** `subagent_type: "bitwarden-security-engineer:bitwarden-security-engineer"` with all combined findings, their severity/confidence ratings, the triage matrix, the `DIFF_FILE` path, and the full `SCAN_EVIDENCE` block from step 1.
+4. Launch a **verification agent** `subagent_type: "bitwarden-security-tools:bitwarden-security-engineer"` with all combined findings, their severity/confidence ratings, the triage matrix, the `DIFF_FILE` path, and the full `SCAN_EVIDENCE` block from step 1.
    - **CRITICAL: Every agent prompt MUST include this constraint:** "The diff has been pre-fetched and saved to `{DIFF_FILE}` — read it using the `Read` tool. Do NOT run `gh pr diff`, `git diff`, or any other diff commands. NEVER use WebFetch, WebSearch, or any `gh api` endpoints — scan evidence has been pre-fetched and is provided above."
    - The verification agent **MUST review**, **evaluate**, **verify**, and **confirm** all findings and ratings.
    - Use scan evidence to triangulate: findings corroborated by scanner alerts → increase confidence; findings in areas scanners cleared → apply additional scrutiny.
