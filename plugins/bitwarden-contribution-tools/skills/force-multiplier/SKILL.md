@@ -46,7 +46,7 @@ The **recipe** is the unit of per-target work. Choose the least powerful one tha
 - **deterministic** — a script or direct edit makes the change (remove a file, deep-merge a config patch). Reproducible and reviewable as a plain diff. Prefer this whenever the change is mechanical.
 - **agentic** — a scoped sub-agent makes the change per target, for work that needs judgment. Non-deterministic, so the pilot is mandatory and per-target validation is non-negotiable.
 
-Fan out agentic recipes with the **Agent tool**: send one chunk's per-target calls in a single message so they run concurrently, capped at `max_targets_per_run`. Target general work at the `general-purpose` subagent type; route domain work to the matching named agent (`bitwarden-security-engineer:bitwarden-security-engineer` for security changes). Constrain each sub-agent to the minimum toolset and pass it only its single target.
+Fan out agentic recipes with the **Agent tool**: send one chunk's per-target calls in a single message so they run concurrently, capped at `max_targets_per_run`. Target general work at the `general-purpose` subagent type; route domain work to the matching named agent (`bitwarden-security-tools:bitwarden-security-engineer` for security changes). Constrain each sub-agent to the minimum toolset and pass it only its single target.
 
 ## Teaming — top-to-bottom per target
 
