@@ -1,6 +1,6 @@
 ---
 name: reviewing-dependency-changes
-description: Use this skill when a PR diff contains changes to dependency manifest files (package.json, .csproj, Cargo.toml, go.mod, requirements.txt, etc.) or when reviewing Renovate/Dependabot bot PRs. Evaluates new dependencies for AppSec approval process compliance, major version bump significance, lock file hygiene, and dependency removal completeness. Does NOT perform deep security or license analysis — that is handled by the bitwarden-security-engineer plugin's reviewing-dependencies skill.
+description: Use this skill when a PR diff contains changes to dependency manifest files (package.json, .csproj, Cargo.toml, go.mod, requirements.txt, etc.) or when reviewing Renovate/Dependabot bot PRs. Evaluates new dependencies for AppSec approval process compliance, major version bump significance, lock file hygiene, and dependency removal completeness. Does NOT perform deep security or license analysis — that is handled by `Skill(bitwarden-security-tools:reviewing-dependencies)`.
 ---
 
 # Reviewing Dependency Changes
