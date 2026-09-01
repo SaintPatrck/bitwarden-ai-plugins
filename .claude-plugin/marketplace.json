@@ -10,14 +10,14 @@
   },
   "plugins": [
     {
-      "name": "claude-retrospective",
-      "source": "./plugins/claude-retrospective",
+      "name": "bitwarden-retrospective-tools",
+      "source": "./plugins/bitwarden-retrospective-tools",
       "version": "1.1.1",
       "description": "Comprehensive analysis of Claude Code sessions to identify successful patterns, problematic areas, and opportunities for improvement."
     },
     {
-      "name": "claude-config-validator",
-      "source": "./plugins/claude-config-validator",
+      "name": "bitwarden-claude-config-tools",
+      "source": "./plugins/bitwarden-claude-config-tools",
       "version": "2.0.2",
       "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced."
     },
@@ -37,11 +37,11 @@
       "name": "bitwarden-product-analyst",
       "source": "./plugins/bitwarden-product-analyst",
       "version": "1.0.0",
-      "description": "Product analyst bundle for Bitwarden. Depends on the bitwarden-product-tools capability plugin for requirements elicitation, requirements-document writing, and user-facing release notes. This bundle holds no agent of its own."
+      "description": "Product analyst bundle for Bitwarden. Depends on the bitwarden-product-management-tools capability plugin for requirements elicitation, requirements-document writing, and user-facing release notes. This bundle holds no agent of its own."
     },
     {
-      "name": "bitwarden-product-tools",
-      "source": "./plugins/bitwarden-product-tools",
+      "name": "bitwarden-product-management-tools",
+      "source": "./plugins/bitwarden-product-management-tools",
       "version": "1.0.0",
       "description": "Turning product intent into tracked work at Bitwarden — requirements elicitation, requirements-document writing, and user-facing release notes."
     },
@@ -76,8 +76,8 @@
       "description": "GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation."
     },
     {
-      "name": "bitwarden-actions-tools",
-      "source": "./plugins/bitwarden-actions-tools",
+      "name": "bitwarden-github-action-tools",
+      "source": "./plugins/bitwarden-github-action-tools",
       "version": "1.0.0",
       "description": "Bitwarden's GitHub Actions conventions — workflow linter rules and naming standards, action and workflow auditing, secret handling review, and org-wide remediation with draft PRs."
     },
@@ -94,8 +94,8 @@
       "description": "Shepherd bundle for a Bitwarden technical strategy champion. Depends on the initiative and architecture capability plugins a shepherd draws on — championing a Technical Strategy Idea through Architecture's evaluation and driving an approved initiative across the Software Initiative Funnel."
     },
     {
-      "name": "bitwarden-contribution-tools",
-      "source": "./plugins/bitwarden-contribution-tools",
+      "name": "bitwarden-code-contribution-tools",
+      "source": "./plugins/bitwarden-code-contribution-tools",
       "version": "4.1.1",
       "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
     },
@@ -115,11 +115,11 @@
       "name": "bitwarden-designer",
       "source": "./plugins/bitwarden-designer",
       "version": "1.0.0",
-      "description": "Product designer bundle for Bitwarden. Depends on the bitwarden-design-tools capability plugin for design critique, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow. This bundle holds no agent of its own."
+      "description": "Product designer bundle for Bitwarden. Depends on the bitwarden-product-design-tools capability plugin for design critique, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow. This bundle holds no agent of its own."
     },
     {
-      "name": "bitwarden-design-tools",
-      "source": "./plugins/bitwarden-design-tools",
+      "name": "bitwarden-product-design-tools",
+      "source": "./plugins/bitwarden-product-design-tools",
       "version": "0.3.1",
       "description": "Design toolkit for Bitwarden — non-persona skills for the design lifecycle. Content style guide reference, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, and the Product and Design Jira workflow. Ships skills only, no agent of its own."
     },
