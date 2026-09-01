@@ -9,5 +9,8 @@
   "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-qa-engineer",
   "repository": "https://github.com/bitwarden/ai-plugins",
   "keywords": ["qa", "testing", "quality-assurance"],
-  "dependencies": ["bitwarden-testing-tools", "bitwarden-contribution-tools"]
+  "dependencies": [
+    "bitwarden-testing-tools",
+    "bitwarden-code-contribution-tools"
+  ]
 }

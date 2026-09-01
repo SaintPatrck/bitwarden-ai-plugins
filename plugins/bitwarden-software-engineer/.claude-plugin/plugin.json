@@ -10,7 +10,7 @@
   "repository": "https://github.com/bitwarden/ai-plugins",
   "keywords": ["typescript", "csharp", "sql", "fullstack", "software-engineer"],
   "dependencies": [
-    "bitwarden-contribution-tools",
+    "bitwarden-code-contribution-tools",
     "bitwarden-code-review-tools"
   ]
 }

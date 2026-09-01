@@ -2,14 +2,14 @@
 
 ## Overview
 
-QA engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a QA engineer needs day to day: manual test-case authoring and coverage assessment from `bitwarden-testing-tools`, and the commit/PR mechanics shared with the rest of the team from `bitwarden-contribution-tools`.
+QA engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a QA engineer needs day to day: manual test-case authoring and coverage assessment from `bitwarden-testing-tools`, and the commit/PR mechanics shared with the rest of the team from `bitwarden-code-contribution-tools`.
 
 ## Cross-Plugin Integration
 
-| Plugin                         | How It's Used                                                                                                             |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-testing-tools`      | `writing-manual-test-cases`, `assessing-test-coverage`                                                                    |
-| `bitwarden-contribution-tools` | `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments` |
+| Plugin                              | How It's Used                                                                                                             |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-testing-tools`           | `writing-manual-test-cases`, `assessing-test-coverage`                                                                    |
+| `bitwarden-code-contribution-tools` | `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments` |
 
 ## Related Plugins
 

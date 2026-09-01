@@ -2,16 +2,16 @@
 
 ## Overview
 
-Tech lead bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a tech lead needs day to day: team-scope architectural judgment from `bitwarden-architecture-tools`, initiative-funnel participation and work transitions from `bitwarden-initiative-tools`, implementing and landing changes from `bitwarden-contribution-tools`, and reviewing teammates' PRs from `bitwarden-code-review-tools`.
+Tech lead bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a tech lead needs day to day: team-scope architectural judgment from `bitwarden-architecture-tools`, initiative-funnel participation and work transitions from `bitwarden-initiative-tools`, implementing and landing changes from `bitwarden-code-contribution-tools`, and reviewing teammates' PRs from `bitwarden-code-review-tools`.
 
 ## Cross-Plugin Integration
 
-| Plugin                         | How It's Used                                                                                                                                                                                                    |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-architecture-tools` | `architecting-solutions` for team-level architectural judgment that stays coherent with the holistic architecture                                                                                                |
-| `bitwarden-initiative-tools`   | `navigating-the-initiative-funnel` for funnel phase mechanics, `running-work-transitions` for ownership transitions either side, `contributing-to-technical-strategy` for surfacing team-level patterns upstream |
-| `bitwarden-contribution-tools` | `implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                              |
-| `bitwarden-code-review-tools`  | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                                                                                         |
+| Plugin                              | How It's Used                                                                                                                                                                                                    |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-architecture-tools`      | `architecting-solutions` for team-level architectural judgment that stays coherent with the holistic architecture                                                                                                |
+| `bitwarden-initiative-tools`        | `navigating-the-initiative-funnel` for funnel phase mechanics, `running-work-transitions` for ownership transitions either side, `contributing-to-technical-strategy` for surfacing team-level patterns upstream |
+| `bitwarden-code-contribution-tools` | `implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                              |
+| `bitwarden-code-review-tools`       | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                                                                                         |
 
 ## Related Plugins
 

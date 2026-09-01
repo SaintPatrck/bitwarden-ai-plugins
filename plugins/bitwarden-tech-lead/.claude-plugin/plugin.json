@@ -18,7 +18,7 @@
   "dependencies": [
     "bitwarden-architecture-tools",
     "bitwarden-initiative-tools",
-    "bitwarden-contribution-tools",
+    "bitwarden-code-contribution-tools",
     "bitwarden-code-review-tools"
   ]
 }
