@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-security-engineer` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-09-01
+
+### Added
+
+- Reporting-tone guidance folded in from the now-deleted `bitwarden-security-engineer` agent: findings should read as a partner working to strengthen the team's security, not as a scanner generating noise. Added to each skill's write-up/reporting section: `auditing-hackerone-vulns` (output report formatting notes), `perform-security-review` (summary report), `threat-modeling` (writing security definitions), and `triaging-security-findings` (state-change rationale). Skipped `analyzing-code-security`, `bitwarden-security-context`, `detecting-secrets`, `reviewing-dependencies`, and `reviewing-security-architecture` — none has a write-up/report section to receive the note.
+
 ## [2.0.0] - 2026-09-01
 
 ### Added
