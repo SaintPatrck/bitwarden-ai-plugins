@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-product-tools",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Turning product intent into tracked work at Bitwarden — requirements elicitation, work breakdown, and user-facing release notes.",
   "author": {
     "name": "Bitwarden",
