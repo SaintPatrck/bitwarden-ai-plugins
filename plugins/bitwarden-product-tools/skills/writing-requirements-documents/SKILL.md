@@ -9,7 +9,7 @@ description: Use when analyzing requirements, synthesizing specifications from m
 
 1. **Multi-Source Gathering** — Fetch Confluence, Jira, GitHub issues, web pages, and local files directly rather than asking the user to paste content
 2. **Requirement Extraction** — Dispatch `requirements-elicitation` to turn gathered sources into categorized functional, non-functional, and security requirements
-3. **Document Assembly** — Produce a comprehensive requirements document against Bitwarden's 15-section template, with every TBD attributed to an owner
+3. **Document Assembly** — Produce a comprehensive requirements document against Bitwarden's requirements template, with every TBD attributed to an owner
 
 ## Output Location
 
@@ -75,7 +75,7 @@ Dispatch `Skill(requirements-elicitation)` to extract requirements from the gath
 
 ### 3. Document Assembly
 
-Create a comprehensive requirements document following `${CLAUDE_PLUGIN_ROOT}/references/requirements-template.md`. Read that file at the start of this step and follow it exactly — all 15 sections must be addressed. Use "N/A — [reason]" if a section genuinely does not apply; never silently skip.
+Create a comprehensive requirements document following `${CLAUDE_PLUGIN_ROOT}/references/requirements-template.md`. Read that file at the start of this step and follow it exactly — every section must be addressed. Use "N/A — [reason]" if a section genuinely does not apply; never silently skip.
 
 **Iterative delivery check**: Per Bitwarden planning norms, no individual roadmap item should be larger than a small/medium, and nothing should span more than a quarter. Flag any scope that appears to violate this in the Team Considerations section.
 
