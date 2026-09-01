@@ -1,12 +1,12 @@
 {
-  "name": "bitwarden-contribution-tools",
+  "name": "bitwarden-code-contribution-tools",
   "version": "4.1.1",
   "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
   },
-  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-contribution-tools",
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-code-contribution-tools",
   "repository": "https://github.com/bitwarden/ai-plugins",
   "keywords": [
     "commits",

@@ -29,7 +29,7 @@ Listed in the order a change moves through them.
 
 ## Related Plugins
 
-Several skills in this plugin reference tools or skills provided by sibling plugins. Install these alongside `bitwarden-contribution-tools` for full functionality:
+Several skills in this plugin reference tools or skills provided by sibling plugins. Install these alongside `bitwarden-code-contribution-tools` for full functionality:
 
 - **`bitwarden-code-review-tools`** — provides `/bitwarden-code-review-tools:code-review-local` and `Skill(performing-multi-agent-code-review)`, the code-review gate `creating-pull-request` runs before opening a PR. If it is absent, `creating-pull-request` prompts you to install it rather than skip the review.
 - **`bitwarden-security-tools`** — `force-multiplier` routes per-target work to the matching named agent, using its security agent when the change being fanned out is itself a security change.
@@ -37,7 +37,7 @@ Several skills in this plugin reference tools or skills provided by sibling plug
 ## Installation
 
 ```bash
-/plugin install bitwarden-contribution-tools@bitwarden-marketplace
+/plugin install bitwarden-code-contribution-tools@bitwarden-marketplace
 ```
 
 ## Usage

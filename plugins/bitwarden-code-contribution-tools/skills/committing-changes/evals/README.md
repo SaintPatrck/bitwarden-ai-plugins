@@ -44,6 +44,6 @@ Caveats on the current numbers:
 
 ### Methodology
 
-- **Point at the skill by file path, not by name.** The installed plugin cache lags the working tree, so `Skill(bitwarden-contribution-tools:committing-changes)` gets the last published version, not your edit. Copy SKILL.md to a scratch path and have the subagent read it.
+- **Point at the skill by file path, not by name.** The installed plugin cache lags the working tree, so `Skill(bitwarden-code-contribution-tools:committing-changes)` gets the last published version, not your edit. Copy SKILL.md to a scratch path and have the subagent read it.
 - **Never let a subagent invoke an interactive question tool for real** — it may reach a live human. Tell it: non-interactive, no follow-up coming, state any question as plain text and stop.
 - Keep the grader blind (shuffle response-index-to-arm per case, keep the mapping out of paths the grader is given), and supply every input the skill doesn't claim to decide so a stall is attributable to the thing under test.
