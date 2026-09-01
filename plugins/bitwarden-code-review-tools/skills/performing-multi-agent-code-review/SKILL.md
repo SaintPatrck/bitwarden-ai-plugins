@@ -168,7 +168,7 @@ Execute these steps in order. Do not skip, reorder, or combine steps.
    Skip nitpicks, likely false positives, and anything you'd need to read other files to confirm.
 
    **Agent 3: Security & logic agent**
-   Use the `bitwarden-security-tools:bitwarden-security-engineer` subagent type to locate security flaws and logic errors in the introduced code.
+   Use the `general-purpose` subagent type with the resolved security model (see Model Selection) and instruct it to invoke `Skill(bitwarden-security-tools:analyzing-code-security)` to locate security flaws and logic errors in the introduced code.
 
    Also evaluate the **user-side threat surface** — distinct from secrets reaching the LLM, both must be checked:
    - **Prompt authenticity** — can the user verify which app is requesting sensitive input?
