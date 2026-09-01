@@ -36,13 +36,13 @@
     {
       "name": "bitwarden-product-analyst",
       "source": "./plugins/bitwarden-product-analyst",
-      "version": "0.2.0",
+      "version": "1.0.0",
       "description": "Product analyst agent for creating comprehensive Bitwarden requirements documents from multiple sources, and writing user-facing release notes"
     },
     {
       "name": "bitwarden-product-tools",
       "source": "./plugins/bitwarden-product-tools",
-      "version": "0.3.0",
+      "version": "1.0.0",
       "description": "Turning product intent into tracked work at Bitwarden — requirements elicitation, work breakdown, and user-facing release notes."
     },
     {
