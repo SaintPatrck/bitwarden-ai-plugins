@@ -5,6 +5,12 @@ All notable changes to the bitwarden-devops-engineer plugin will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.3] - 2026-09-01
+
+### Fixed
+
+- Rewrote the README, which still described the `workflow-audit`/`workflow-fix`, `action-audit`/`action-remediate`, `bitwarden-workflow-linter-rules`, `auditing-workflow-conventions`, and `managing-workflow-secrets` skills as living in this plugin after they moved to `bitwarden-github-action-tools`. The Overview now states this bundle holds no skills or agent of its own and reframes it as additive: a one-step install and a governance handle for `bitwarden-github-action-tools` and `bitwarden-code-contribution-tools`, not a placement requirement.
+
 ## [1.0.2] - 2026-09-01
 
 ### Changed
