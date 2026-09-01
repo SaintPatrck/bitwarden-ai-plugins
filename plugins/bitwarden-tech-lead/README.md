@@ -2,34 +2,16 @@
 
 ## Overview
 
-Tech lead agent for a Bitwarden product team. Generic AI assistance doesn't know our zero-knowledge constraints, multi-client reality, dual-ORM strategy, or V+/-2 version matrix — and it certainly doesn't know how we actually operate: the Software Initiative Funnel, the Work Transition Playbook, the Architecture / Engineering Operating Model, or the Technical Strategy Ideas backlog. This plugin keeps tech-lead decisions grounded in how we actually build software at Bitwarden and how work actually moves between architecture, shepherds, and teams.
-
-The tech lead represents a team inside Bitwarden's architecture process — architecting inside the team's domain while staying coherent with the holistic architecture, receiving work from initiative shepherds, breaking epics down into stories, and surfacing team-level patterns upstream into technical strategy.
-
-## Agent
-
-| Agent                 | What It Does                                                                                                                                                                                                                                    |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-tech-lead` | Plans and architects inside a team's scope, works alongside initiative shepherds (or shepherds smaller-scope initiatives directly), runs work transitions in either direction, breaks down initiative epics, and surfaces ideas to architecture |
-
-## Skills
-
-| Skill                                | What It Does                                                                                                                                |
-| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `contributing-to-technical-strategy` | Full vertical from Technical Strategy Ideas through BW Initiatives to team epics and stories — recognizing, framing, tracing, breaking down |
+Tech lead bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a tech lead needs day to day: team-scope architectural judgment from `bitwarden-architecture-tools`, initiative-funnel participation and work transitions from `bitwarden-initiative-tools`, implementing and landing changes from `bitwarden-contribution-tools`, and reviewing teammates' PRs from `bitwarden-code-review-tools`.
 
 ## Cross-Plugin Integration
 
-| Plugin                                                                      | How It's Used                                                                                                                                                                                               |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-delivery-tools`                                                  | `architecting-solutions` for team-level architectural judgment; `navigating-the-initiative-funnel` for funnel phase mechanics; `running-work-transitions` for ownership transitions either side             |
-| `bitwarden-security-engineer`                                               | Security context (P01-P06), architecture pattern review, threat modeling                                                                                                                                    |
-| `bitwarden-product-analyst`                                                 | Consumes requirements documents as upstream input                                                                                                                                                           |
-| `bitwarden-software-engineer`                                               | Implementation conventions for server, client, and database decisions                                                                                                                                       |
-| `bitwarden-atlassian-tools`                                                 | Jira issue research and Confluence page access for the funnel, operating model, and TSI documents this plugin's skills reference                                                                            |
-| [`bitwarden/tech-breakdowns`](https://github.com/bitwarden/tech-breakdowns) | External repository (not a plugin) holding the canonical Tech Breakdown template and per-team folder conventions the team uses to draft the breakdown coming out of the funnel's Scoping & Commitment phase |
-
-The cross-plugin **skills** above are required — if a listed plugin is not installed the agent stops and alerts the human. The `bitwarden/tech-breakdowns` row is an external repository rather than a plugin skill; a missing local checkout is not a stop condition, and the agent asks the human to clone it.
+| Plugin                         | How It's Used                                                                                                                                                                                                    |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-architecture-tools` | `architecting-solutions` for team-level architectural judgment that stays coherent with the holistic architecture                                                                                                |
+| `bitwarden-initiative-tools`   | `navigating-the-initiative-funnel` for funnel phase mechanics, `running-work-transitions` for ownership transitions either side, `contributing-to-technical-strategy` for surfacing team-level patterns upstream |
+| `bitwarden-contribution-tools` | `implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                              |
+| `bitwarden-code-review-tools`  | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                                                                                         |
 
 ## Related Plugins
 
@@ -41,27 +23,10 @@ The cross-plugin **skills** above are required — if a listed plugin is not ins
 /plugin install bitwarden-tech-lead@bitwarden-marketplace
 ```
 
-### Upgrading from `bitwarden-architect`
-
-This plugin was previously named `bitwarden-architect`. The rename reflects Bitwarden's actual role nomenclature — teams are led by tech leads, not team-level architects; the architecture group operates upstream. To upgrade:
-
-```bash
-/plugin uninstall bitwarden-architect@bitwarden-marketplace
-/plugin install bitwarden-tech-lead@bitwarden-marketplace
-```
-
-The `architecting-solutions` skill has moved to `bitwarden-delivery-tools` (as of tech-lead 3.0.0) so any delivery-lifecycle workflow can compose it — install delivery-tools alongside this plugin. A `contributing-to-technical-strategy` skill was added to this plugin. The funnel-mechanics and work-transition skills also live in `bitwarden-delivery-tools`.
-
 ## Usage
 
-The tech lead agent activates when planning work inside a team's scope, receiving an initiative epic, preparing to break it down, running a work transition (in either direction), shepherding a smaller-scope initiative, or evaluating whether a team-level pattern of pain belongs upstream in the funnel:
-
 ```
-Plan the implementation for PM-12345 within our team
-```
-
-```
-Break down the epic BW-123 into stories for our team
+Plan the implementation for PM-12345 within our team.
 ```
 
 ```
@@ -79,6 +44,4 @@ Is this pain we keep hitting something that belongs in Architecture's idea backl
 - [Architecture / Engineering Operating Model](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1286963201)
 - [Technical Strategy Ideas](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2344517656)
 - [Idea-Based Initiatives](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2785181779)
-- [Bitwarden Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions)
-- [Bitwarden Security Principles](https://contributing.bitwarden.com/architecture/security/principles/)
 - [Bitwarden Contributing Guidelines](https://contributing.bitwarden.com/contributing/)
