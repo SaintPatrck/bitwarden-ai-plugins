@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-design-tools` plugin will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2026-09-01
+
+### Fixed
+
+- README rewritten to drop the "non-persona half of the design plugin pair" narrative left over from the now-deleted `bitwarden-designer` agent: this plugin is described standing on its own, and the install-alongside-`bitwarden-designer` instruction is removed.
+
 ## [0.3.0] - 2026-09-01
 
 ### Added
