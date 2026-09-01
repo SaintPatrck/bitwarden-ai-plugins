@@ -91,7 +91,7 @@
       "name": "bitwarden-shepherd",
       "source": "./plugins/bitwarden-shepherd",
       "version": "2.0.0",
-      "description": "Champion-of-a-technical-strategy agent for Bitwarden. Shepherds a Technical Strategy Idea through Architecture's evaluation into the Software Initiative Funnel, then drives the resulting initiative across all five funnel phases to durable adoption."
+      "description": "Shepherd bundle for a Bitwarden technical strategy champion. Depends on the initiative and architecture capability plugins a shepherd draws on — championing a Technical Strategy Idea through Architecture's evaluation and driving an approved initiative across the Software Initiative Funnel."
     },
     {
       "name": "bitwarden-contribution-tools",
