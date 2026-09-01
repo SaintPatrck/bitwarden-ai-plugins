@@ -48,7 +48,7 @@
     {
       "name": "bitwarden-software-engineer",
       "source": "./plugins/bitwarden-software-engineer",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "description": "Software engineer agent for a Bitwarden product team. Implements stories, tasks, and bugs in the team's domain with code quality, performance, and security in mind. Participates in refinement, reviews PRs, collaborates with QA, and follows Git conventions."
     },
     {
@@ -96,7 +96,7 @@
     {
       "name": "bitwarden-contribution-tools",
       "source": "./plugins/bitwarden-contribution-tools",
-      "version": "4.0.0",
+      "version": "4.1.0",
       "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
     },
     {
