@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-contribution-tools",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos.",
   "author": {
     "name": "Bitwarden",
@@ -16,5 +16,6 @@
     "conventional-commits",
     "code-review-response",
     "multi-repo"
-  ]
+  ],
+  "agents": "./agents/implementor.md"
 }
