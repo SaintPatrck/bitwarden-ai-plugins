@@ -1,6 +1,6 @@
 # creating-pull-request trigger evals
 
-Reproducible trigger-rate test for the `bitwarden-delivery-tools:creating-pull-request` skill. Run before merging any change to the skill's `description` or `when_to_use` frontmatter to confirm the change doesn't degrade triggering on the natural-language phrasings the skill is designed to catch (or start firing on near-miss queries that belong to a sibling skill).
+Reproducible trigger-rate test for the `bitwarden-contribution-tools:creating-pull-request` skill. Run before merging any change to the skill's `description` or `when_to_use` frontmatter to confirm the change doesn't degrade triggering on the natural-language phrasings the skill is designed to catch (or start firing on near-miss queries that belong to a sibling skill).
 
 ## Why a custom runner
 
