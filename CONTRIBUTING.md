@@ -6,31 +6,34 @@ For general Bitwarden contribution practices, see our [Contributing Guidelines](
 
 ## Where Does Your Claude Tooling Belong?
 
-Plugins in this marketplace fall into three families. Repo-specific patterns usually belong closer to the code, in that repo's `.claude/` directory. If your work is cross-repo and fits one of the families below, you're in the right place. If you're still unsure after reading them, raise a draft PR and maintainers will help find the right home.
+Plugins in this marketplace are organized in two layers: capability plugins and role bundles. Repo-specific patterns — those unusable outside that repo's own codebase — belong closer to the code, in that repo's `.claude/` directory. If your work is cross-repo, read on to find which layer it belongs to. If you're still unsure after reading, raise a draft PR and maintainers will help find the right home.
 
-### Persona Plugins
+### Capability Plugins
 
-These encode how a specific engineering role works at Bitwarden — the conventions, review standards, and decision frameworks that generic AI doesn't know. They answer the question: _"How does a software engineer, security engineer, or DevOps engineer work **here**?"_
+A capability plugin holds skills and agents. Every skill has exactly one home. It's named for what its skills act on — an artifact, a practice, or an integration surface — never for a job title, a seniority level, or a lifecycle phase.
 
-Personas map to the _work_, not the title — when you're designing a system you're doing architecture work, and the matching persona is for you. Most engineers will reach for more than one persona across a week because engineers wear many hats.
+Placement ranges only over capability plugins: a skill serving three roles still lives once, in a single capability plugin, and simply appears in three bundles.
 
-A persona plugin captures institutional knowledge that would otherwise live in someone's head or scattered across wiki pages. Persona plugins must clear three bars: the knowledge is institutional, domain-specific, and role-defining.
+Examples: `bitwarden-security-tools`, `bitwarden-atlassian-tools`
 
-Example: `bitwarden-security-engineer`
+### Role Bundles
 
-### Tool Integration Plugins
+A role bundle holds nothing but a name, a description, and dependencies — no skills, no agents, no commands. CI enforces this: a bundle directory carrying a skill, an agent, or a command fails the build. A bundle is what a person installs, and it's named for the role.
 
-These connect Claude Code to external services the team already uses, so Claude can read from and act on those tools. They answer the question: _"I want Claude to securely integrate to a service we use."_
+Bundles are additive, not a placement requirement — the capability layer already answers "which plugin does this skill go in" on its own. A bundle buys discoverability (install one entry instead of reading the catalog) and a governance handle (a bundle is the unit pushed org-wide through managed settings).
 
-If you find yourself context-switching between Claude Code and another tool to copy information back and forth, a tool integration plugin can bridge that gap.
+Example: `bitwarden-software-engineer`
 
-Example: `bitwarden-atlassian-tools`
+### Deciding Where a Skill or Agent Belongs
 
-### Utility Plugins
+For any new skill or agent, walk this test in order:
 
-These improve the Claude Code development experience itself — setup, configuration, workflow analysis. They help every engineer regardless of role or domain. They answer the question: _"How can working with Claude Code be better for everyone?"_
+1. Is it unusable outside one repo's own codebase? It stays in that repo's local `.claude/` configuration, not the marketplace.
+2. If not, is it dispatched only by one sibling skill or agent? It stays with its consumer.
+3. If not, would it transfer unchanged to another company using the same vendor product? It belongs in that vendor's integration plugin.
+4. Otherwise, it's named for the artifact or practice it acts on.
 
-Examples: `bitwarden-init`
+A plugin's description enumerates its skills, which keeps this boundary self-enforcing at review time. A skill that no longer fits its plugin's description either forces a deliberate description change or a move to a different plugin.
 
 ## Plugin Structure
 
@@ -67,7 +70,7 @@ For detailed guidance on building each component, see the [Plugin Reference](htt
 
 3. Create your `.claude-plugin/plugin.json` manifest
 4. Add a `README.md` and `CHANGELOG.md`
-5. Add any domain-specific terms to `.cspell.json`
+5. Add any subject-matter terms to `.cspell.json`
 6. [Validate your plugin](#validating-changes) before submitting
 
 ## Plugin Requirements
@@ -133,7 +136,7 @@ REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-marketplace.sh
 ## Code Quality
 
 - Use `.editorconfig` settings for consistent formatting
-- Validate spelling against `.cspell.json` and add domain-specific terms as needed
+- Validate spelling against `.cspell.json` and add subject-matter terms as needed
 - Ensure all pre-commit hooks pass before submitting
 - Follow existing patterns in the repository
 
