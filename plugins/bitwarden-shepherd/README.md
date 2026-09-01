@@ -2,7 +2,7 @@
 
 ## Overview
 
-Shepherd bundle for a Bitwarden technical strategy champion. This plugin holds no skills or agent of its own — it composes the capability plugins a shepherd needs to carry a thesis from a Technical Strategy Idea through Architecture's evaluation and across the Software Initiative Funnel: `championing-a-strategy-idea`, `shepherding-an-initiative`, `running-an-architectural-assessment`, `running-a-proof-of-concept`, `scoping-and-handing-off-to-teams`, `coordinating-implementation-across-teams`, and `curating-the-strategy-ideas-backlog` from `bitwarden-initiative-tools`, plus team-scope architectural judgment from `bitwarden-architecture-tools`.
+Shepherd bundle for a Bitwarden technical strategy champion. This plugin holds no skills or agent of its own. Installing it gets a shepherd the full toolkit for carrying a thesis from a Technical Strategy Idea through Architecture's evaluation and across the Software Initiative Funnel — `championing-a-strategy-idea`, `shepherding-an-initiative`, `running-an-architectural-assessment`, `running-a-proof-of-concept`, `scoping-and-handing-off-to-teams`, `coordinating-implementation-across-teams`, and `curating-the-strategy-ideas-backlog` from `bitwarden-initiative-tools`, plus team-scope architectural judgment from `bitwarden-architecture-tools` — in one step, instead of installing both capability plugins separately. Each works standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
 This plugin is the symmetric counterpart to `bitwarden-tech-lead`. Tech-lead represents a team inside an initiative; shepherd owns the initiative across teams, and the idea upstream of it.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Product designer bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-design-tools` for the full toolkit: design critique against the Code of Conduct and 30/60/90 framework, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow.
+Product designer bundle for Bitwarden. This plugin holds no agent or skills of its own. Installing it gets a product designer the full toolkit — design critique against the Code of Conduct and 30/60/90 framework, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow — under one role-scoped install and a governance handle for managed settings, instead of installing `bitwarden-product-design-tools` by name. That capability plugin works standalone too, so this bundle is a convenience, not a requirement.
 
 ## Cross-Plugin Integration
 

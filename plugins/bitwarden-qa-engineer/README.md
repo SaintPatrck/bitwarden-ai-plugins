@@ -2,7 +2,7 @@
 
 ## Overview
 
-QA engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a QA engineer needs day to day: manual test-case authoring and coverage assessment from `bitwarden-testing-tools`, and the commit/PR mechanics shared with the rest of the team from `bitwarden-code-contribution-tools`.
+QA engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own. Installing it gets a QA engineer manual test-case authoring and coverage assessment (`bitwarden-testing-tools`), plus the commit/PR mechanics shared with the rest of the team (`bitwarden-code-contribution-tools`), in one step, instead of installing each capability plugin separately — both work standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
 ## Cross-Plugin Integration
 

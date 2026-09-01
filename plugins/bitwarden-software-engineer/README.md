@@ -2,7 +2,7 @@
 
 ## Overview
 
-Software engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a software engineer needs day to day: implementing stories, tasks, and bugs from `bitwarden-code-contribution-tools`, and code review from `bitwarden-code-review-tools`.
+Software engineer bundle for a Bitwarden product team. This plugin holds no skills or agent of its own. Installing it gets a software engineer implementing stories, tasks, and bugs (`bitwarden-code-contribution-tools`) and code review (`bitwarden-code-review-tools`) in one step, instead of installing each capability plugin separately — both work standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
 ## Cross-Plugin Integration
 

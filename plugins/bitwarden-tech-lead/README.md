@@ -2,7 +2,7 @@
 
 ## Overview
 
-Tech lead bundle for a Bitwarden product team. This plugin holds no skills or agent of its own — it composes the capability plugins a tech lead needs day to day: team-scope architectural judgment from `bitwarden-architecture-tools`, initiative-funnel participation and work transitions from `bitwarden-initiative-tools`, implementing and landing changes from `bitwarden-code-contribution-tools`, and reviewing teammates' PRs from `bitwarden-code-review-tools`.
+Tech lead bundle for a Bitwarden product team. This plugin holds no skills or agent of its own. Installing it gets a tech lead team-scope architectural judgment (`bitwarden-architecture-tools`), initiative-funnel participation and work transitions (`bitwarden-initiative-tools`), implementing and landing changes (`bitwarden-code-contribution-tools`), and reviewing teammates' PRs (`bitwarden-code-review-tools`) in one step, instead of installing four capability plugins separately — each works standalone too, so this bundle is a convenience and a governance handle, not a requirement.
 
 ## Cross-Plugin Integration
 
