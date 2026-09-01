@@ -5,6 +5,13 @@ All notable changes to the Bitwarden Code Review Plugin will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-09-01
+
+### Fixed
+
+- `performing-multi-agent-code-review`'s Agent 3 dispatched to `bitwarden-security-tools:bitwarden-security-engineer`, a subagent type that no longer exists; it now uses `general-purpose` with `Skill(bitwarden-security-tools:analyzing-code-security)`, matching the pattern used for Agent 4.
+- Stale `bitwarden-security-engineer` mentions in the README and in `reviewing-dependency-changes` updated to reference `bitwarden-security-tools`.
+
 ## [2.0.0] - 2026-09-01
 
 ### Changed
