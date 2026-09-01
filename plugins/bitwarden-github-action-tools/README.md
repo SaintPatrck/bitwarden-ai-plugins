@@ -27,7 +27,7 @@ Available through Bitwarden's internal Claude Code marketplace:
 /plugin marketplace add https://github.com/bitwarden/ai-plugins
 
 # Install the actions-tools plugin
-/plugin install bitwarden-actions-tools@bitwarden-marketplace
+/plugin install bitwarden-github-action-tools@bitwarden-marketplace
 
 # Restart Claude Code
 ```

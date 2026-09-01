@@ -20,7 +20,7 @@ treat any other retrieval mechanism in a Bitwarden workflow as a finding.
 
 **Defer to the linter skill.** For anything the workflow linter enforces (e.g.
 `permissions_exist`, `step_pinned`, `step_approved`), invoke
-`Skill(bitwarden-actions-tools:bitwarden-workflow-linter-rules)` — that skill is the source of
+`Skill(bitwarden-github-action-tools:bitwarden-workflow-linter-rules)` — that skill is the source of
 truth; do not re-report a linter finding here.
 
 **Out of scope** — handle these case-by-case, not from this skill: fork-PR access gates, multiple
@@ -120,7 +120,7 @@ Treat a deviation as a finding.
    file (`actions/checkout`, `docker/login-action`) are pinned to a full-length commit SHA with a
    version comment. Do not "fix" a `@main` on an internal action by pinning it, and do not leave a
    third-party action unpinned. (`step_pinned` / `step_approved` are the linter's job — invoke
-   `Skill(bitwarden-actions-tools:bitwarden-workflow-linter-rules)`.)
+   `Skill(bitwarden-github-action-tools:bitwarden-workflow-linter-rules)`.)
 
 2. **Any job that logs in declares `id-token: write`.** OIDC federated login fails without it. Keep
    the rest of the `permissions:` block minimal (usually `contents: read` plus whatever the real
@@ -298,6 +298,6 @@ here; ask.
 - `references/actions.md` — input/output contracts for `azure-login` (including its built-in
   retry/backoff), `azure-logout`, and `get-keyvault-secrets`; plus how vault and secret names are
   supplied and the OIDC client-identity conventions.
-- `Skill(bitwarden-actions-tools:bitwarden-workflow-linter-rules)` — source of truth for all
+- `Skill(bitwarden-github-action-tools:bitwarden-workflow-linter-rules)` — source of truth for all
   linted rules; invoke it for
   `permissions_exist`, `step_pinned`, `step_approved`, and anything `bwwl` checks.
