@@ -18,7 +18,7 @@ Examples: `bitwarden-security-tools`, `bitwarden-atlassian-tools`
 
 ### Role Bundles
 
-A role bundle holds nothing but a name, a description, and dependencies — no skills, no agents, no commands. CI enforces this: a bundle directory carrying a skill, an agent, or a command fails the build. A bundle is what a person installs, and it's named for the role.
+A role bundle holds nothing but a name, a description, and dependencies — no skills, no agents, no commands. A bundle directory contains only its manifest, README, and CHANGELOG. CI enforces this: a bundle directory carrying a skill, an agent, or a command fails the build. A bundle is what a person installs, and it's named for the role.
 
 Bundles are additive, not a placement requirement — the capability layer already answers "which plugin does this skill go in" on its own. A bundle buys discoverability (install one entry instead of reading the catalog) and a governance handle (a bundle is the unit pushed org-wide through managed settings).
 
