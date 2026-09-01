@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-designer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Product designer agent for Bitwarden. Holds the design team's Code of Conduct and the 30/60/90 critique framework, and dispatches into the bitwarden-design-tools toolkit for content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow.",
   "author": {
     "name": "Bitwarden",
