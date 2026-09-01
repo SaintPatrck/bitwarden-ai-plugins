@@ -7,7 +7,7 @@ allowed-tools: Skill, mcp__plugin_bitwarden-atlassian-tools_bitwarden-atlassian_
 
 Primary-Owner playbook for shepherding a [Technical Strategy Idea](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/2344517656) (TSI) through Architecture's pre-funnel evaluation. Spans filing the ARCH idea, pairing with a peer reviewer, completing the Stakeholder & Engagement Map (with Known Friction Points), presenting at Architecture Council, navigating quarterly prioritization, and running the Adoption Retrospective at Implementation handoff. Time horizon: driven by the quarterly review cadence, not a fixed clock.
 
-For the Peer Reviewer / portfolio-curator side use `Skill(curating-the-strategy-ideas-backlog)`; for the team-tech-lead-as-contributor framing (filing well, driving passes to a Staff+ owner) use `Skill(contributing-to-technical-strategy)` in `bitwarden-tech-lead`.
+For the Peer Reviewer / portfolio-curator side use `Skill(curating-the-strategy-ideas-backlog)`; for the team-tech-lead-as-contributor framing (filing well, driving passes to a Staff+ owner) use `Skill(contributing-to-technical-strategy)`.
 
 ## The Shepherding Model
 
@@ -44,7 +44,7 @@ The TSI template lives in JPD under the `ARCH` project. The most-load-bearing se
 - **Rough Sizing.** T-shirt, expected duration, complexity factors.
 - **RICE.** Honest. Confidence is what it is — inflating it produces a backlog that lies. The TSI page's RICE scoring page documents the rubric.
 
-You can file with `Skill(contributing-to-technical-strategy)` in `bitwarden-tech-lead` as a reference for template mechanics. That skill is the contributor-side framing; everything past filing — pairing, mapping, sharpening, presenting, prioritizing — is this skill's territory.
+You can file with `Skill(contributing-to-technical-strategy)` as a reference for template mechanics. That skill is the contributor-side framing; everything past filing — pairing, mapping, sharpening, presenting, prioritizing — is this skill's territory.
 
 ## The Stakeholder & Engagement Map (the Research Gate)
 
@@ -153,4 +153,4 @@ This is distinct from the funnel's end-of-Implementation retrospective in `Skill
 - [Architecture / Engineering Operating Model](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/1286963201) — the quarterly prioritization review and Now/Next/Later portfolio that decides which ideas enter the funnel.
 - [Software Initiative Funnel](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/584515614) — where approved ideas go (Identification onward).
 - [Architecture Council](https://bitwarden.atlassian.net/wiki/spaces/EN/pages/751698031) — the venue you present to during championing and again during funnel Research/PoC.
-- Related: `Skill(curating-the-strategy-ideas-backlog)` for the Peer-Reviewer / portfolio-curator side of the same Shepherding Model; `Skill(shepherding-an-initiative)` for what happens once your idea earns funnel intake; `Skill(contributing-to-technical-strategy)` (in `bitwarden-tech-lead`) for the team-tech-lead-as-contributor side of filing.
+- Related: `Skill(curating-the-strategy-ideas-backlog)` for the Peer-Reviewer / portfolio-curator side of the same Shepherding Model; `Skill(shepherding-an-initiative)` for what happens once your idea earns funnel intake; `Skill(contributing-to-technical-strategy)` for the team-tech-lead-as-contributor side of filing.
