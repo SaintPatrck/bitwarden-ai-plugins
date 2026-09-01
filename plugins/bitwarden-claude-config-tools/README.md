@@ -78,7 +78,7 @@ headless workflow run means no report and a failed check.
 ### Install the Plugin
 
 ```bash
-/plugin install claude-config-validator@bitwarden-marketplace
+/plugin install bitwarden-claude-config-tools@bitwarden-marketplace
 ```
 
 ## Usage
@@ -103,7 +103,7 @@ so the two commands and the action cannot drift apart.
 ### Basic Invocation
 
 ```bash
-/claude-config-validator:reviewing-claude-config
+/bitwarden-claude-config-tools:reviewing-claude-config
 ```
 
 Or describe the review in your own words, which is how the skill's triggers are written to be reached.
@@ -340,10 +340,10 @@ reviewer judges it.
 
 ```bash
 # Scans the .claude directory of the current working directory
-~/.claude/plugins/cache/*/claude-config-validator/*/skills/reviewing-claude-config/scripts/security-scan.sh
+~/.claude/plugins/cache/*/bitwarden-claude-config-tools/*/skills/reviewing-claude-config/scripts/security-scan.sh
 
 # Or a specific directory
-~/.claude/plugins/cache/*/claude-config-validator/*/skills/reviewing-claude-config/scripts/security-scan.sh /path/to/.claude
+~/.claude/plugins/cache/*/bitwarden-claude-config-tools/*/skills/reviewing-claude-config/scripts/security-scan.sh /path/to/.claude
 ```
 
 The permission checks and the inventory report themselves as skipped rather than passed when
@@ -371,7 +371,7 @@ clean one, which still passes but exercises less.
 ## Plugin Structure
 
 ```
-plugins/claude-config-validator/
+plugins/bitwarden-claude-config-tools/
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin manifest
 ├── CHANGELOG.md             # Version history

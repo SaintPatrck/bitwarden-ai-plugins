@@ -79,7 +79,7 @@ in `bitwarden/gh-actions` is their sole source of truth, and they are invoked wi
 
 The command pre-approves read-only inspection only — `git diff`, `git fetch origin`,
 `git rev-parse`, `git symbolic-ref`, `git ls-files`, `date`, `ls` — plus an `Edit` rule
-scoped to `~/.claude/plugins/data/claude-config-validator*/ai-validation/*`, the only
+scoped to `~/.claude/plugins/data/bitwarden-claude-config-tools*/ai-validation/*`, the only
 directory it writes to. Cloning
 `gh-actions` and running its scripts are left out on purpose and will be asked for: that
 step executes shell code from outside this repository, and a blanket `Bash(bash:*)` grant
@@ -96,8 +96,8 @@ because that substitution is skipped for a local `--plugin-dir` load, where it i
 the plugin having a marketplace source, so the variable can survive into the rule unexpanded
 and match nothing. A literal path covers both install kinds. And the trailing `*` is loose
 on purpose: the data directory is named from the
-plugin's install id, which is `claude-config-validator-bitwarden-marketplace` for a
-marketplace install but bare `claude-config-validator` for a local `--plugin-dir` load, so a
+plugin's install id, which is `bitwarden-claude-config-tools-bitwarden-marketplace` for a
+marketplace install but bare `bitwarden-claude-config-tools` for a local `--plugin-dir` load, so a
 required hyphen would fail to match the second case.
 
 Because the pattern is written against `~/.claude`, relocating that tree with

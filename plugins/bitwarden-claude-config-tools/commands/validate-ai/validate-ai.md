@@ -146,7 +146,7 @@ produces duplicate findings a reader cannot tell from independent confirmation.
 
 ### 4c. Configuration and security review (reviewing-claude-config)
 
-Invoke `Skill(claude-config-validator:reviewing-claude-config)` over every changed
+Invoke `Skill(bitwarden-claude-config-tools:reviewing-claude-config)` over every changed
 `CLAUDE.md` and everything under `.claude/` — agents, commands, hooks, settings — plus the
 component files inside changed plugins, plus any skill support files under `reference/`,
 `examples/`, or `scripts/` those plugins changed. These are exactly the paths step 3 covers, so read
