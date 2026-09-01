@@ -8,7 +8,7 @@ allowed-tools: Skill, Read, Glob, Grep, WebFetch(domain:contributing.bitwarden.c
 
 Bitwarden is a password manager, so maintaining security is an essential consideration in every solution.
 
-- **Establish security baselines.** At the start of your solution design, invoke `Skill(bitwarden-security-engineer:bitwarden-security-context)`. Use its principles and requirements as invariants in any proposed solution.
+- **Establish security baselines.** At the start of your solution design, invoke `Skill(bitwarden-security-tools:bitwarden-security-context)`. Use its principles and requirements as invariants in any proposed solution.
 - **Classify data touch points.** Know which fields are encrypted, which are plaintext, and which cross trust boundaries. Never add a new path for sensitive data without encryption at rest and in transit.
 - **Audit trail by default.** Sensitive operations must be observable after the fact. If it can't be audited, it shouldn't ship.
 - **Fail closed.** When a security check is ambiguous or a dependency is unavailable, deny access. Never default to permissive.
