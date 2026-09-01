@@ -75,7 +75,7 @@ Dispatch `Skill(requirements-elicitation)` to extract requirements from the gath
 
 ### 3. Document Assembly
 
-Create a comprehensive requirements document following `references/requirements-template.md`. Read that file at the start of this step and follow it exactly — all 15 sections must be addressed. Use "N/A — [reason]" if a section genuinely does not apply; never silently skip.
+Create a comprehensive requirements document following `${CLAUDE_PLUGIN_ROOT}/references/requirements-template.md`. Read that file at the start of this step and follow it exactly — all 15 sections must be addressed. Use "N/A — [reason]" if a section genuinely does not apply; never silently skip.
 
 **Iterative delivery check**: Per Bitwarden planning norms, no individual roadmap item should be larger than a small/medium, and nothing should span more than a quarter. Flag any scope that appears to violate this in the Team Considerations section.
 
