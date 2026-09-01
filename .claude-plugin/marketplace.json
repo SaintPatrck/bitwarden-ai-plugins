@@ -36,7 +36,7 @@
     {
       "name": "bitwarden-product-analyst",
       "source": "./plugins/bitwarden-product-analyst",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Product analyst bundle for Bitwarden. Depends on the bitwarden-product-management-tools capability plugin for requirements elicitation, requirements-document writing, and user-facing release notes. This bundle holds no agent of its own."
     },
     {
