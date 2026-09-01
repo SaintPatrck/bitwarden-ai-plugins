@@ -36,7 +36,7 @@
     {
       "name": "bitwarden-product-analyst",
       "source": "./plugins/bitwarden-product-analyst",
-      "version": "0.1.6",
+      "version": "0.2.0",
       "description": "Product analyst agent for creating comprehensive Bitwarden requirements documents from multiple sources, and writing user-facing release notes"
     },
     {
@@ -48,7 +48,7 @@
     {
       "name": "bitwarden-software-engineer",
       "source": "./plugins/bitwarden-software-engineer",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Software engineer agent for a Bitwarden product team. Implements stories, tasks, and bugs in the team's domain with code quality, performance, and security in mind. Participates in refinement, reviews PRs, collaborates with QA, and follows Git conventions."
     },
     {
@@ -60,7 +60,7 @@
     {
       "name": "bitwarden-security-engineer",
       "source": "./plugins/bitwarden-security-engineer",
-      "version": "1.3.0",
+      "version": "1.4.0",
       "description": "Application security engineering assistant for vulnerability triage, threat modeling, and secure code analysis."
     },
     {
@@ -72,7 +72,7 @@
     {
       "name": "bitwarden-devops-engineer",
       "source": "./plugins/bitwarden-devops-engineer",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation."
     },
     {
@@ -84,13 +84,13 @@
     {
       "name": "bitwarden-tech-lead",
       "source": "./plugins/bitwarden-tech-lead",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "description": "Tech lead agent for a Bitwarden product team. The team's primary technical resource — architects solutions in the team's domain, partners with the EM on scoping and backlog, partners with peer tech leads on cross-team architecture, and serves as the team's conduit for cross-team technical decisions."
     },
     {
       "name": "bitwarden-shepherd",
       "source": "./plugins/bitwarden-shepherd",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "Champion-of-a-technical-strategy agent for Bitwarden. Shepherds a Technical Strategy Idea through Architecture's evaluation into the Software Initiative Funnel, then drives the resulting initiative across all five funnel phases to durable adoption."
     },
     {
@@ -114,7 +114,7 @@
     {
       "name": "bitwarden-designer",
       "source": "./plugins/bitwarden-designer",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "description": "Product designer agent for Bitwarden. Holds the design team's Code of Conduct and the 30/60/90 critique framework, and dispatches into the bitwarden-design-tools toolkit for content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow."
     },
     {
@@ -134,6 +134,12 @@
       "source": "./plugins/bitwarden-testing-tools",
       "version": "1.1.0",
       "description": "Testing tools for Bitwarden — analyzing and improving test quality across its repositories."
+    },
+    {
+      "name": "bitwarden-qa-engineer",
+      "source": "./plugins/bitwarden-qa-engineer",
+      "version": "1.0.0",
+      "description": "QA engineer bundle for a Bitwarden product team. Depends on the testing and contribution capability plugins — manual test-case authoring, coverage assessment, and the commit/PR mechanics shared with engineering."
     }
   ]
 }
