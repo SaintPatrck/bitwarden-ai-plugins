@@ -1,12 +1,12 @@
 {
-  "name": "bitwarden-code-review",
-  "version": "1.14.1",
+  "name": "bitwarden-code-review-tools",
+  "version": "2.0.0",
   "description": "Comprehensive code review system with organization-wide standards.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
   },
-  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-code-review",
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-code-review-tools",
   "repository": "https://github.com/bitwarden/ai-plugins",
   "keywords": [
     "code-review",
@@ -22,5 +22,6 @@
   "commands": [
     "./commands/code-review/code-review.md",
     "./commands/code-review-local/code-review-local.md"
-  ]
+  ],
+  "dependencies": ["bitwarden-security-tools"]
 }
