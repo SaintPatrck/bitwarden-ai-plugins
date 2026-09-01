@@ -2,7 +2,7 @@
 
 ## Overview
 
-Design toolkit for Bitwarden — the non-persona half of the design plugin pair. Six skills covering content style, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, and the Product and Design Jira workflow. Composed by the `bitwarden-designer` agent and usable standalone (designers, design-adjacent engineers, PMs running a handoff).
+Design toolkit for Bitwarden — the non-persona half of the design plugin pair. Eight skills covering content style, Figma Dev Mode MCP usage, Bitwarden brand application, design-to-engineering handoff prep, Design System governance, the Product and Design Jira workflow, and design critique. Composed by the `bitwarden-designer` agent and usable standalone (designers, design-adjacent engineers, PMs running a handoff).
 
 This plugin ships skills only — no agent. The persona half lives in [`bitwarden-designer`](../bitwarden-designer/), which dispatches into these skills by name.
 
@@ -16,6 +16,8 @@ This plugin ships skills only — no agent. The persona half lives in [`bitwarde
 | `preparing-design-handoff`          | The end-of-In-Design gate / checklist. Confirm the Figma file is Ready-for-Dev (sections aligned to stories, tokens library-bound, strings annotated, edge states covered) and that the Jira state is aligned (Figma linked to the Epic's Design field, sections marked Ready for Dev, EM transitions the Epic).                                         |
 | `evolving-design-system-components` | Propose a new UI pattern or modify an existing Component Library component per Bitwarden's published governance process — design-team alignment, Core vs. Recipe/Snowflake with UI Foundation, Figma branching and property conventions, review gates, merge timing. Figma conventions in `references/figma-conventions.md`.                             |
 | `navigating-design-jira-process`    | Move design work through Bitwarden's Product and Design Jira workflow — final designs attached to tickets, the 30/60/90 critique cadence tracked in Figma, status transitions, and the one-off engineering story flow.                                                                                                                                   |
+| `design-review`                     | Bitwarden design team's Code of Conduct combined with the 30/60/90 critique framework — stage-appropriate critique, product-not-designer focus, content evaluated alongside visual design at 60% and 90%.                                                                                                                                                |
+| `facilitating-design-critique`      | Run or participate in a Bitwarden design critique session — the weekly team critique and one-off product design reviews — grounded in the team's published etiquette guide and the Product Design Review Guidelines.                                                                                                                                     |
 
 ## Cross-Plugin Integration
 
