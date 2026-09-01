@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-designer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Product designer bundle for Bitwarden. Depends on the bitwarden-product-design-tools capability plugin for design critique, critique facilitation, content style, Figma reads, brand application, handoff prep, Design System governance, and the Product and Design Jira workflow. This bundle holds no agent of its own.",
   "author": {
     "name": "Bitwarden",
