@@ -40,7 +40,7 @@ managed settings.
 | [bitwarden-product-analyst](plugins/bitwarden-product-analyst/)     | 1.0.2   | Product analyst bundle for Bitwarden. Depends on the bitwarden-product-management-tools capability plugin for requirements elicitation, requirements-document writing, and user-facing release notes. This bundle holds no agent of its own. |
 | [bitwarden-security-engineer](plugins/bitwarden-security-engineer/) | 2.0.0   | Security engineer bundle for a Bitwarden product team. Depends on the security-tools and code-review-tools capability plugins — vulnerability triage, threat modeling, secure code analysis, and reviewing PRs for security issues.          |
 | [bitwarden-software-engineer](plugins/bitwarden-software-engineer/) | 2.0.1   | Software engineer bundle for a Bitwarden product team. Depends on the contribution and code-review capability plugins — the implementor agent, commit/PR mechanics, and reviewing teammates' PRs.                                            |
-| [bitwarden-qa-engineer](plugins/bitwarden-qa-engineer/)             | 1.0.1   | QA engineer bundle for a Bitwarden product team. Manual test-case authoring, coverage assessment, and the commit/PR mechanics shared with engineering.                                                                                       |
+| [bitwarden-qa-engineer](plugins/bitwarden-qa-engineer/)             | 1.0.2   | QA engineer bundle for a Bitwarden product team. Manual test-case authoring, coverage assessment, and the commit/PR mechanics shared with engineering.                                                                                       |
 
 ## Usage
 
