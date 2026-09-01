@@ -1,6 +1,6 @@
 ---
 name: requirements-elicitation
-description: Extract complete, unambiguous requirements from specifications. Use when analyzing feature requests, processing enhancement specifications, or identifying missing information. Trigger phrases: "extract requirements", "analyze specification", "identify requirements", "clarify ambiguities".  After extracting requirements, use the `work-breakdown` skill.
+description: Extract complete, unambiguous requirements from specifications. Use when analyzing feature requests, processing enhancement specifications, or identifying missing information. Trigger phrases: "extract requirements", "analyze specification", "identify requirements", "clarify ambiguities".
 ---
 
 # Requirements Elicitation
