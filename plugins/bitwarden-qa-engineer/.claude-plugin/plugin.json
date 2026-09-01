@@ -1,0 +1,13 @@
+{
+  "name": "bitwarden-qa-engineer",
+  "version": "1.0.0",
+  "description": "QA engineer bundle for a Bitwarden product team. Depends on the testing and contribution capability plugins — manual test-case authoring, coverage assessment, and the commit/PR mechanics shared with engineering.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-qa-engineer",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": ["qa", "testing", "quality-assurance"],
+  "dependencies": ["bitwarden-testing-tools", "bitwarden-contribution-tools"]
+}
