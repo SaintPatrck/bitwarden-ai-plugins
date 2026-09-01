@@ -16,5 +16,8 @@
     "linter",
     "audit"
   ],
-  "dependencies": ["bitwarden-actions-tools", "bitwarden-contribution-tools"]
+  "dependencies": [
+    "bitwarden-actions-tools",
+    "bitwarden-code-contribution-tools"
+  ]
 }
