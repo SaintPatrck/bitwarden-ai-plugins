@@ -4,7 +4,7 @@ allowed-tools: Read(//tmp/pr-threads.json), Task
 description: Review a GitHub pull request and post findings directly to GitHub
 ---
 
-You must invoke the bitwarden-code-review:bitwarden-code-reviewer agent to perform a comprehensive code review of the pull request resolved in step 2. For local changes, use `/bitwarden-code-review:code-review-local` instead.
+You must invoke the bitwarden-code-review-tools:bitwarden-code-reviewer agent to perform a comprehensive code review of the pull request resolved in step 2. For local changes, use `/bitwarden-code-review-tools:code-review-local` instead.
 
 **Steps:**
 
@@ -34,7 +34,7 @@ You must invoke the bitwarden-code-review:bitwarden-code-reviewer agent to perfo
    If a sticky comment ID is found, you are in **agent mode** — include the sticky comment context in the agent prompt (see Step 4).
 
 4. **Invoke the Task tool** with the following parameters:
-   - `subagent_type`: "bitwarden-code-review:bitwarden-code-reviewer"
+   - `subagent_type`: "bitwarden-code-review-tools:bitwarden-code-reviewer"
    - `description`: "Perform code review following Bitwarden engineering standards"
    - `prompt`: Build the prompt from Steps 1 through 3. **When step 2 produced a number, the first line is always `TARGET: PR #<number>`**, followed by the variant below. The reviewer agent reads that line in its Step 1 and passes the number to `gh pr view` and `gh pr diff`.
 

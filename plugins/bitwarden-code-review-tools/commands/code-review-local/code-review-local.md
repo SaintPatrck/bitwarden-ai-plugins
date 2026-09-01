@@ -11,7 +11,7 @@ description: Review a GitHub pull request or local changes and write the review 
 
 **If the target is a pull request, the number must match `^[0-9]+$` before it goes into the `TARGET:` line.** (A local-changes target has no number; this check does not apply to it.) It is written verbatim into `gh pr view`, `gh pr diff`, and the GraphQL variable below, and `Bash(gh pr view:*)` is a prefix rule — `gh pr view 1 --repo attacker/repo` would match it and redirect the review. If the value does not match, **do not invoke the Task tool at all**: report what you were given and ask again. Never delegate without a resolved target.
 
-**Then invoke the Task tool** with `subagent_type: "bitwarden-code-review:bitwarden-code-reviewer"`. Begin the prompt with the resolved target on its own line, in exactly one of these forms, followed by everything from **CRITICAL INSTRUCTIONS FOR THE AGENT** onward — not this paragraph, which is addressed to the command turn and would tell the agent not to do its own job:
+**Then invoke the Task tool** with `subagent_type: "bitwarden-code-review-tools:bitwarden-code-reviewer"`. Begin the prompt with the resolved target on its own line, in exactly one of these forms, followed by everything from **CRITICAL INSTRUCTIONS FOR THE AGENT** onward — not this paragraph, which is addressed to the command turn and would tell the agent not to do its own job:
 
 ```
 TARGET: PR #<number>
@@ -20,7 +20,7 @@ TARGET: local changes
 
 On the line after it, always add `OUTPUT: local files` — both targets. This command writes to local files and never posts, so that declaration, not the target, is what `Skill(posting-review-summary)` routes on.
 
-That line is the only carrier — `$ARGUMENTS` is empty on the interactive path, so an agent left to re-derive the target from it would find nothing. This command's own turn holds only `AskUserQuestion` and `Task`: it settles the target and delegates. Thread pre-fetching belongs to the workflow-driven `/bitwarden-code-review:code-review`, not here. Do not run the `gh`, `git`, `Skill`, or `Write` operations described below yourself — they are the agent's, and it carries its own grants for them.
+That line is the only carrier — `$ARGUMENTS` is empty on the interactive path, so an agent left to re-derive the target from it would find nothing. This command's own turn holds only `AskUserQuestion` and `Task`: it settles the target and delegates. Thread pre-fetching belongs to the workflow-driven `/bitwarden-code-review-tools:code-review`, not here. Do not run the `gh`, `git`, `Skill`, or `Write` operations described below yourself — they are the agent's, and it carries its own grants for them.
 
 Invoke the bitwarden-code-reviewer agent now with the instructions below.
 
