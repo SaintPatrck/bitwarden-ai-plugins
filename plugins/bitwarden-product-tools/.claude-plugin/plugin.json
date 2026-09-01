@@ -8,5 +8,5 @@
   },
   "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-product-tools",
   "repository": "https://github.com/bitwarden/ai-plugins",
-  "keywords": ["requirements", "work-breakdown", "release-notes", "product"]
+  "keywords": ["requirements", "specifications", "release-notes", "product"]
 }
