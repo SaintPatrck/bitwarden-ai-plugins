@@ -13,7 +13,7 @@ Execute a structured, multi-agent code review on a set of code changes. Follow t
 
 This skill depends on the following sibling plugins.
 
-- **`bitwarden-security-engineer`**
+- **`bitwarden-security-tools`**
 
 `claude-config-validator` and `plugin-dev` are **optional** enhancers, not prerequisites — when present they power the conditional Claude-configuration agent (Agent 4) and skill-review agent (Agent 5) in Step 3; when absent, those agents do not run and the rest of the pipeline runs unchanged apart from the Step 7 coverage line. Detect them by the same resolvability signal described below, but never abort on one. Do not add either to the abort check.
 
@@ -70,7 +70,7 @@ Agent 5 is a full exception to this section: it never classifies severity or rea
 
 **Required — Bitwarden security context.** Include this directive verbatim:
 
-> At the start of your analysis, invoke `Skill(bitwarden-security-engineer:bitwarden-security-context)`. Use its principles, vocabulary, and requirement categories verbatim when classifying findings — do not paraphrase.
+> At the start of your analysis, invoke `Skill(bitwarden-security-tools:bitwarden-security-context)`. Use its principles, vocabulary, and requirement categories verbatim when classifying findings — do not paraphrase.
 
 **Required — zero-knowledge and threat-model preamble.** Include this block verbatim in the subagent prompt:
 
@@ -168,7 +168,7 @@ Execute these steps in order. Do not skip, reorder, or combine steps.
    Skip nitpicks, likely false positives, and anything you'd need to read other files to confirm.
 
    **Agent 3: Security & logic agent**
-   Use the `bitwarden-security-engineer:bitwarden-security-engineer` subagent type to locate security flaws and logic errors in the introduced code.
+   Use the `bitwarden-security-tools:bitwarden-security-engineer` subagent type to locate security flaws and logic errors in the introduced code.
 
    Also evaluate the **user-side threat surface** — distinct from secrets reaching the LLM, both must be checked:
    - **Prompt authenticity** — can the user verify which app is requesting sensitive input?
