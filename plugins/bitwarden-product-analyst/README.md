@@ -2,7 +2,7 @@
 
 ## Overview
 
-Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-tools` for the full toolkit: requirements elicitation, requirements-document writing following Bitwarden's 15-section template, and user-facing release notes.
+Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own — it depends on `bitwarden-product-tools` for the full toolkit: requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes.
 
 ## Cross-Plugin Integration
 
