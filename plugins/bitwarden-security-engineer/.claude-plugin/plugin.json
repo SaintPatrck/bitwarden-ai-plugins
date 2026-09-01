@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-security-engineer",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Security engineer bundle for a Bitwarden product team. Depends on the security-tools and code-review-tools capability plugins a security engineer draws on — vulnerability triage, threat modeling, secure code analysis, and reviewing PRs for security issues.",
   "author": {
     "name": "Bitwarden",
