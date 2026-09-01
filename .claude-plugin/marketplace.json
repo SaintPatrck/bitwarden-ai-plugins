@@ -108,7 +108,7 @@
     {
       "name": "bitwarden-initiative-tools",
       "source": "./plugins/bitwarden-initiative-tools",
-      "version": "2.2.0",
+      "version": "2.2.1",
       "description": "Bitwarden's Software Initiative Funnel — championing and curating Technical Strategy Ideas, architectural assessments, proofs of concept, scoping and team handoffs, cross-team implementation, and work transitions."
     },
     {
