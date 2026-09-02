@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-initiative-tools` plugin will be documente
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.4] - 2026-09-02
+
+### Fixed
+
+- `shepherding-an-initiative`'s small-scope carve-out told a tech lead to shepherd directly via `bitwarden-tech-lead` "rather than this plugin" — a leftover from when this skill lived in `bitwarden-shepherd`. Since `bitwarden-tech-lead` itself depends on `bitwarden-initiative-tools`, the contrast no longer made sense. Reworded to contrast roles (tech lead handling a small-scope initiative directly vs. the full shepherd-role treatment) instead of plugins.
+
 ## [2.2.3] - 2026-09-01
 
 ### Fixed
