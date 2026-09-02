@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-claude-config-tools` plugin will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.5] - 2026-09-02
+
+### Fixed
+
+- `reviewing-claude-config`'s "Enhanced Secret Detection" enrichment section named the retired `bitwarden-security-engineer` bundle (which holds no skills) as the gating plugin, guarding an already-correctly-qualified `Skill(bitwarden-security-tools:detecting-secrets)` invocation. The heading and condition now name `bitwarden-security-tools`, the capability plugin that actually holds the skill.
+
 ## [2.0.4] - 2026-09-02
 
 ### Changed
