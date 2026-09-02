@@ -15,10 +15,9 @@ of `bitwarden/clients` (authored by the design team) and have no separate Conflu
 designer. Feedback must be
 actionable, stage-appropriate, and rooted in product goals — not personal preference.
 
-> **Cross-plugin dependency.** This skill composes `content-style-guide` (at 60% and 90%
-> stages) and `using-figma` (when the design lives in a Figma file). Both ship in the
-> `bitwarden-product-design-tools` plugin, which is required alongside `bitwarden-designer` —
-> install both for the full composition to work.
+> **Composition.** This skill composes `content-style-guide` (at 60% and 90% stages) and
+> `using-figma` (when the design lives in a Figma file). Both ship alongside this skill in
+> `bitwarden-product-design-tools`.
 
 ## Step 1: Identify the stage
 

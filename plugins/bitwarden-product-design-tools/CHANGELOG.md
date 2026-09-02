@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-design-tools` plugin will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2026-09-02
+
+### Fixed
+
+- `design-review` and `facilitating-design-critique` each described their own home plugin as an external dependency required "alongside `bitwarden-designer`". Both skills already ship inside `bitwarden-product-design-tools`; there is no cross-plugin dependency to state.
+
 ## [0.3.1] - 2026-09-01
 
 ### Fixed
