@@ -269,9 +269,9 @@ Load only when a specific question calls for it:
 
 ## Cross-Plugin Enrichment
 
-### Enhanced Secret Detection (bitwarden-security-engineer plugin)
+### Enhanced Secret Detection (bitwarden-security-tools plugin)
 
-When the `bitwarden-security-engineer` plugin is installed, supplement the security scan in
+When the `bitwarden-security-tools` plugin is installed, supplement the security scan in
 Step 2 with:
 
 - **Comprehensive secret patterns** → activate `Skill(bitwarden-security-tools:detecting-secrets)` for context-aware
