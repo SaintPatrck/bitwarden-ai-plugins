@@ -96,7 +96,7 @@
     {
       "name": "bitwarden-code-contribution-tools",
       "source": "./plugins/bitwarden-code-contribution-tools",
-      "version": "4.1.2",
+      "version": "4.1.3",
       "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
     },
     {

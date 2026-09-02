@@ -1,4 +1,4 @@
-# Bitwarden Contribution Tools
+# Bitwarden Code Contribution Tools
 
 Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos.
 
