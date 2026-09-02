@@ -293,7 +293,7 @@ if (crossPluginViolations.length === 0) {
 section("Check 4: role bundles carry no skills/agents/commands");
 
 const readme = fs.readFileSync(README_PATH, "utf8");
-const bundleSectionMatch = readme.match(/## Role bundles\n([\s\S]*?)\n## /);
+const bundleSectionMatch = readme.match(/## Role bundles\n([\s\S]*?)\n#{2,} /);
 if (!bundleSectionMatch) {
   fail(`could not find a "## Role bundles" section in ${relPath(README_PATH)}`);
 } else {

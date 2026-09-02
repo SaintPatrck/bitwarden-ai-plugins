@@ -115,10 +115,9 @@ rather than by its turn count.
 ## Requirements
 
 - **GitHub CLI (`gh`)**, authenticated, with access to the repository
-- **`plugin-dev` plugin** for the plugin and skill sections. Install it with
-  `/plugin install plugin-dev@claude-code-plugins`, from the `claude-code-plugins`
-  marketplace at `anthropics/claude-code`. Without it those sections are reported as
-  skipped, not silently dropped.
+- **`plugin-dev` plugin** for the plugin and skill sections. Declared as a dependency of this
+  plugin, so installing this one pulls it in from this marketplace at its pinned commit. If it is
+  ever missing or disabled, those sections are reported as skipped, not silently dropped.
 
 ## Permissions
 
