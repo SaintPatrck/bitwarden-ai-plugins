@@ -102,7 +102,7 @@
     {
       "name": "bitwarden-architecture-tools",
       "source": "./plugins/bitwarden-architecture-tools",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Architectural judgment for Bitwarden changes — team-level solution design that stays coherent with the holistic architecture, security posture, and multi-client constraints."
     },
     {
