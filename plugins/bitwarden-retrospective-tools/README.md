@@ -1,4 +1,4 @@
-# Claude Retrospective Plugin
+# Bitwarden Retrospective Tools Plugin
 
 Comprehensive analysis of Claude Code sessions to identify successful patterns, problematic areas, and opportunities for improvement through multi-source data collection and evidence-based insights.
 
