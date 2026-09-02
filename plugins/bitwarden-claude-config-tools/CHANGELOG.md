@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-claude-config-tools` plugin will be docume
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-09-02
+
+### Added
+
+- `plugin-dev` declared as a plugin dependency. Its `plugin-validator` and `skill-reviewer` agents back the plugin and skill sections of both validation commands, and that requirement previously lived only in prose telling users to add a second marketplace. Declaring it means the sections work on a fresh install instead of reporting themselves skipped. The graceful-degradation path stays as a safety net for a disabled dependency.
+
 ## [2.0.5] - 2026-09-02
 
 ### Fixed
