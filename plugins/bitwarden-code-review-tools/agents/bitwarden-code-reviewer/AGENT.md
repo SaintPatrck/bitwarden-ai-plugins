@@ -68,9 +68,9 @@ When sibling Bitwarden plugins are installed, activate specialist skills during 
 
 **Security-sensitive changes** (auth, crypto, access control, user input handling):
 
-- **Potential vulnerabilities** → invoke `Skill(analyzing-code-security)` to validate findings against OWASP/CWE checklists with Bitwarden-specific vulnerability patterns
-- **Auth/encryption/trust-boundary changes** → invoke `Skill(reviewing-security-architecture)` to verify patterns match approved approaches
-- **Dependency updates** → invoke `Skill(reviewing-dependencies)` to assess supply chain risk (complements `reviewing-dependency-changes` with deep security analysis)
+- **Potential vulnerabilities** → invoke `Skill(bitwarden-security-tools:analyzing-code-security)` to validate findings against OWASP/CWE checklists with Bitwarden-specific vulnerability patterns
+- **Auth/encryption/trust-boundary changes** → invoke `Skill(bitwarden-security-tools:reviewing-security-architecture)` to verify patterns match approved approaches
+- **Dependency updates** → invoke `Skill(bitwarden-security-tools:reviewing-dependencies)` to assess supply chain risk (complements `reviewing-dependency-changes` with deep security analysis)
 
 **Implementation pattern review:**
 
@@ -80,7 +80,7 @@ When sibling Bitwarden plugins are installed, activate specialist skills during 
 
 **Claude configuration changes** (`CLAUDE.md`, agent `AGENT.md`, hook definitions, slash commands, `.claude/` settings, skill support files, or MCP config) **or changed `SKILL.md` files still present at the head of the change**:
 
-- invoke `Skill(reviewing-claude-config)` to validate YAML frontmatter, prompt-engineering quality, and config-specific security issues (committed `settings.local.json`, hardcoded secrets, broken file references, overly broad agent tool access). Include any changed `SKILL.md` files in the scope you hand it: its credential scan covers every file whatever the type, and it declines `SKILL.md` only for the quality review. Fold its findings into your own classification and validation in Steps 3–4.
+- invoke `Skill(bitwarden-claude-config-tools:reviewing-claude-config)` to validate YAML frontmatter, prompt-engineering quality, and config-specific security issues (committed `settings.local.json`, hardcoded secrets, broken file references, overly broad agent tool access). Include any changed `SKILL.md` files in the scope you hand it: its credential scan covers every file whatever the type, and it declines `SKILL.md` only for the quality review. Fold its findings into your own classification and validation in Steps 3–4.
 
 These skills are optional. If unavailable, apply existing review knowledge.
 
