@@ -14,7 +14,7 @@ This plugin is the home for deciding **how** a change should be built so it stay
 
 ## Related Plugins
 
-- **`bitwarden-security-tools`** — provides `Skill(bitwarden-security-context)`, referenced from `architecting-solutions` for the security principles and data classification that architectural choices are graded against.
+- **`bitwarden-security-tools`** — provides `Skill(bitwarden-security-tools:bitwarden-security-context)`, referenced from `architecting-solutions` for the security principles and data classification that architectural choices are graded against.
 
 ## Installation
 
