@@ -274,7 +274,7 @@ Load only when a specific question calls for it:
 When the `bitwarden-security-engineer` plugin is installed, supplement the security scan in
 Step 2 with:
 
-- **Comprehensive secret patterns** → activate `Skill(bitwarden-security-engineer:detecting-secrets)` for context-aware
+- **Comprehensive secret patterns** → activate `Skill(bitwarden-security-tools:detecting-secrets)` for context-aware
   detection that distinguishes test fixtures from production secrets, and covers patterns
   beyond the manual checks above (connection strings, private keys, cloud provider tokens)
 
