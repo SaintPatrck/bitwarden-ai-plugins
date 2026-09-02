@@ -4,7 +4,7 @@ This document contains manual test scenarios for validating the Bitwarden Code R
 
 ## Prerequisites
 
-- Ensure your working directory is `ai-plugins/plugins/bitwarden-code-review` prior to running these tests
+- Ensure your working directory is `ai-plugins/plugins/bitwarden-code-review-tools` prior to running these tests
 - Have Claude Code CLI installed and configured
 - Have `gh` CLI installed and authenticated for PR-related tests
 
