@@ -4,11 +4,13 @@
 // every plugin.json `dependencies` entry, and the rule-2 bundle-purity invariant.
 //
 // Checks:
-//   1. Every Skill() reference and every dependencies[] entry resolves to something
+//   1. No two plugins own a skill of the same name — a duplicate makes every bare
+//      Skill(name) reference to it ambiguous.
+//   2. Every Skill() reference and every dependencies[] entry resolves to something
 //      real in the marketplace.
-//   2. Every reference that crosses a plugin boundary is fully qualified
+//   3. Every reference that crosses a plugin boundary is fully qualified
 //      (Skill(plugin:skill), never a bare Skill(skill) for another plugin's skill).
-//   3. Every role bundle listed in the root README's "## Role bundles" table holds
+//   4. Every role bundle listed in the root README's "## Role bundles" table holds
 //      no skills/, agents/, or commands/ directory, the table itself parses cleanly,
 //      and it lists exactly the plugins that look like bundles by plugin.json metadata.
 //
@@ -112,10 +114,12 @@ function pluginOfPath(filePath) {
 
 // --- Build the skill ownership map --------------------------------------------------
 
-// skillName -> pluginName (unique; a duplicate skill name across plugins would be
-// its own bug, checked for separately below).
+// skillName -> pluginName. skillOwner always holds the *first* plugin seen with a
+// given skill name; a second (or third...) plugin with the same name is recorded in
+// duplicateSkillNames instead and reported by Check 1 below, rather than silently
+// overwriting the first owner.
 const skillOwner = new Map();
-const duplicateSkillNames = new Map(); // skillName -> [pluginName, ...]
+const duplicateSkillNames = new Map(); // skillName -> [pluginName, ...] (all owners)
 
 for (const pluginDir of fs.readdirSync(PLUGINS_DIR, { withFileTypes: true })) {
   if (!pluginDir.isDirectory()) continue;
@@ -136,6 +140,20 @@ for (const pluginDir of fs.readdirSync(PLUGINS_DIR, { withFileTypes: true })) {
     } else {
       skillOwner.set(skillName, pluginName);
     }
+  }
+}
+
+// === Check 1: no duplicate skill names across plugins ================================
+
+section("Check 1: no duplicate skill names across plugins");
+
+if (duplicateSkillNames.size === 0) {
+  ok("no skill name is owned by more than one plugin");
+} else {
+  for (const [skillName, owners] of duplicateSkillNames) {
+    fail(
+      `skill "${skillName}" exists in more than one plugin (${owners.join(", ")}) — every bare Skill(${skillName}) reference to it is ambiguous`,
+    );
   }
 }
 
@@ -163,9 +181,9 @@ for (const file of walkMarkdownFiles(PLUGINS_DIR)) {
   });
 }
 
-// === Check 1: every reference and dependency resolves ===============================
+// === Check 2: every reference and dependency resolves ===============================
 
-section("Check 1: reference resolution");
+section("Check 2: reference resolution");
 
 const unresolved = [];
 
@@ -183,10 +201,7 @@ for (const ref of references) {
       unresolved.push(ref);
     }
   } else {
-    if (
-      !skillOwner.has(ref.skillName) &&
-      !duplicateSkillNames.has(ref.skillName)
-    ) {
+    if (!skillOwner.has(ref.skillName)) {
       unresolved.push(ref);
     }
   }
@@ -234,9 +249,9 @@ if (unresolved.length === 0 && dependencyIssues.length === 0) {
   );
 }
 
-// === Check 2: cross-plugin references are fully qualified ===========================
+// === Check 3: cross-plugin references are fully qualified ===========================
 
-section("Check 2: cross-plugin references are qualified");
+section("Check 3: cross-plugin references are qualified");
 
 const crossPluginViolations = [];
 
@@ -273,9 +288,9 @@ if (crossPluginViolations.length === 0) {
   );
 }
 
-// === Check 3: role-bundle purity (rule 2) ============================================
+// === Check 4: role-bundle purity (rule 2) ============================================
 
-section("Check 3: role bundles carry no skills/agents/commands");
+section("Check 4: role bundles carry no skills/agents/commands");
 
 const readme = fs.readFileSync(README_PATH, "utf8");
 const bundleSectionMatch = readme.match(/## Role bundles\n([\s\S]*?)\n## /);
