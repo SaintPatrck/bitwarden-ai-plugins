@@ -1,4 +1,4 @@
-# Bitwarden Actions Tools
+# Bitwarden GitHub Action Tools
 
 Claude Code skills for GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation. Generic AI assistance doesn't know Bitwarden's workflow linter rules, approved actions list, or remediation patterns. These skills keep Claude focused on how we manage CI/CD workflows here.
 

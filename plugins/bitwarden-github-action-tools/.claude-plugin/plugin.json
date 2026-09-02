@@ -1,6 +1,6 @@
 {
   "name": "bitwarden-github-action-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bitwarden's GitHub Actions conventions — workflow linter rules and naming standards, action and workflow auditing, secret handling review, and org-wide remediation with draft PRs.",
   "author": {
     "name": "Bitwarden",
