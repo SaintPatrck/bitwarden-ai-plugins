@@ -20,7 +20,7 @@ A curated collection of plugins for AI-assisted development at Bitwarden. Enable
 | [bitwarden-product-management-tools](plugins/bitwarden-product-management-tools/) | 1.0.2   | Turning product intent into tracked work at Bitwarden: requirements elicitation, requirements-document writing, and user-facing release notes                                     |
 | [bitwarden-security-tools](plugins/bitwarden-security-tools/)                     | 2.1.1   | Application security practice at Bitwarden: principles and data classification, threat modeling, code and architecture security analysis, secrets, dependencies, HackerOne triage |
 | [bitwarden-testing-tools](plugins/bitwarden-testing-tools/)                       | 1.1.0   | Testing tools for analyzing and improving test quality across Bitwarden's repositories.                                                                                           |
-| [bitwarden-claude-config-tools](plugins/bitwarden-claude-config-tools/)           | 2.0.5   | Validates Claude Code configuration files for security, structure, and quality                                                                                                    |
+| [bitwarden-claude-config-tools](plugins/bitwarden-claude-config-tools/)           | 2.1.0   | Validates Claude Code configuration files for security, structure, and quality                                                                                                    |
 | [bitwarden-retrospective-tools](plugins/bitwarden-retrospective-tools/)           | 1.1.2   | Analyze Claude Code sessions to identify successful patterns and improvement opportunities                                                                                        |
 
 ### Role bundles
