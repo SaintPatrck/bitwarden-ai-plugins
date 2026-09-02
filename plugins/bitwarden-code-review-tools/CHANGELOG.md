@@ -5,6 +5,13 @@ All notable changes to the Bitwarden Code Review Plugin will be documented in th
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.3] - 2026-09-01
+
+### Fixed
+
+- Bare `Skill(analyzing-code-security)`, `Skill(reviewing-security-architecture)`, `Skill(reviewing-dependencies)`, and `Skill(reviewing-claude-config)` references in `bitwarden-code-reviewer`'s Cross-Plugin Enrichment, pointing at skills owned by `bitwarden-security-tools` and `bitwarden-claude-config-tools` respectively. Cross-plugin references must be qualified with the owning plugin's name.
+- Removed the Implementation pattern review subsection, which invoked `Skill(writing-server-code)`, `Skill(writing-client-code)`, and `Skill(writing-database-queries)` — three skills removed from `bitwarden-software-engineer` in #92 and never replaced elsewhere. The dispatches never resolved.
+
 ## [2.0.2] - 2026-09-01
 
 ### Changed
