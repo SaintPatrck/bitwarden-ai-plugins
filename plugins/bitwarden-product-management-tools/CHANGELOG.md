@@ -5,6 +5,12 @@ All notable changes to the `bitwarden-product-management-tools` plugin will be d
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-09-02
+
+### Fixed
+
+- `writing-requirements-documents` stated both a hard-abort framing ("immediately use", "do not ask the user to paste content") and a soft "when installed" framing for the same two plugins (`bitwarden-atlassian-tools`, `bitwarden-security-tools`) in the same file. Neither plugin is a declared dependency and both already degrade gracefully per the Cross-Plugin Integration section, so the hard-sounding instructions are now consistently conditional on the plugin being installed.
+
 ## [1.0.1] - 2026-09-02
 
 ### Changed

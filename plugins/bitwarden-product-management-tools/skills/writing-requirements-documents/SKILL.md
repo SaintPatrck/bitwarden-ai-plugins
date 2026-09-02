@@ -27,7 +27,7 @@ Do not save output inside the plugin directory.
 
 **Identify and fetch all available sources before writing anything.**
 
-If the user provides a Jira ticket, immediately use `Skill(bitwarden-atlassian-tools:researching-jira-issues)` to fetch the issue with all linked context. If the user provides a standalone Confluence URL, use the `get_confluence_page` MCP tool directly. Do not ask the user to paste content — fetch it directly.
+If `bitwarden-atlassian-tools` is installed and the user provides a Jira ticket, use `Skill(bitwarden-atlassian-tools:researching-jira-issues)` to fetch the issue with all linked context. If the user provides a standalone Confluence URL, use that plugin's `get_confluence_page` MCP tool directly. If `bitwarden-atlassian-tools` isn't installed, ask the user to paste the content instead (see Cross-Plugin Integration).
 
 Primary source types (in priority order):
 
@@ -92,7 +92,7 @@ Create a comprehensive requirements document following `${CLAUDE_PLUGIN_ROOT}/re
 
 ## Bitwarden Terminology
 
-For security vocabulary and P01–P06 principles, invoke `Skill(bitwarden-security-tools:bitwarden-security-context)`.
+For security vocabulary and P01–P06 principles, invoke `Skill(bitwarden-security-tools:bitwarden-security-context)` when `bitwarden-security-tools` is installed (see Cross-Plugin Integration for the fallback).
 
 **Bitwarden plan names** (use these exact names):
 
@@ -129,7 +129,7 @@ When multiple sources are provided:
 
 ## Critical Rules
 
-- ✅ **Fetch before asking** — If a Jira ticket is provided, use `Skill(bitwarden-atlassian-tools:researching-jira-issues)` immediately; if a Confluence URL is provided, use the `get_confluence_page` MCP tool directly
+- ✅ **Fetch before asking** — When `bitwarden-atlassian-tools` is installed and a Jira ticket or Confluence URL is provided, fetch it directly through that plugin rather than asking the user to paste content
 - ✅ **Be thorough** — Cover all requirements comprehensively
 - ✅ **Be specific** — Use concrete, testable criteria
 - ✅ **Be clear** — Avoid ambiguity, define terms
