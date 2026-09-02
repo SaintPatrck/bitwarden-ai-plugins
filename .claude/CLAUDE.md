@@ -70,7 +70,7 @@ scripts, agents):
    ```
 
    `<plugin-name>` is the directory name under `plugins/` (e.g.,
-   `bitwarden-code-review`). If no gh-actions checkout is available, edit the four
+   `bitwarden-code-review-tools`). If no gh-actions checkout is available, edit the four
    files by hand instead.
 
 3. **Add changelog entry**:
@@ -119,6 +119,14 @@ REPO_ROOT=/path/to/ai-plugins /path/to/gh-actions/validate-ai/scripts/validate-p
 REPO_ROOT=/path/to/ai-plugins /path/to/gh-actions/validate-ai/scripts/validate-marketplace.sh
 ```
 
+Cross-plugin reference integrity — `Skill()`/`subagent_type` qualifiers pointing at skills and
+agents that actually exist, `dependencies[]` entries resolving to real plugins, and role-bundle
+purity — is covered by this repo's own `scripts/validate-references.js`:
+
+```bash
+node scripts/validate-references.js
+```
+
 #### 3. Run the plugin-dev validator agent
 
 Use the **plugin-validator** agent from `plugin-dev` for deeper structural and component checks:
@@ -145,7 +153,7 @@ Simply mention "review my skill" or "check skill quality" to trigger it.
 
 #### 5. Run security validation
 
-Use the **reviewing-claude-config** skill from `claude-config-validator` to scan for:
+Use the **reviewing-claude-config** skill from `bitwarden-claude-config-tools` to scan for:
 
 - Committed secrets (API keys, tokens, passwords)
 - Hardcoded credentials in code

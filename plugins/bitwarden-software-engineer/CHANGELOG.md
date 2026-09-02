@@ -5,6 +5,34 @@ All notable changes to the `bitwarden-software-engineer` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.2] - 2026-09-01
+
+### Changed
+
+- Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-code-contribution-tools` and `bitwarden-code-review-tools`, not a placement requirement.
+
+## [2.0.1] - 2026-09-01
+
+### Changed
+
+- Updated the `bitwarden-contribution-tools` dependency reference to its new name,
+  `bitwarden-code-contribution-tools`.
+
+## [2.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `software-engineer` agent, renamed `implementor` and moved to
+  `bitwarden-contribution-tools`. This bundle now holds no agent of its own — it declares
+  `bitwarden-contribution-tools` (where the agent now lives) and `bitwarden-code-review-tools` as
+  dependencies.
+
+## [1.1.0] - 2026-09-01
+
+### Added
+
+- Declares `bitwarden-contribution-tools` and `bitwarden-code-review-tools` as dependencies, now that this bundle's agent (and formerly its skills) live there.
+
 ## [1.0.0] - 2026-05-19
 
 ### Changed

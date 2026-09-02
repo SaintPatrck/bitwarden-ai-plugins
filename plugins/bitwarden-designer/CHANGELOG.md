@@ -5,6 +5,37 @@ All notable changes to the `bitwarden-designer` plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2026-09-01
+
+### Changed
+
+- Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-product-design-tools`, not a placement requirement.
+
+## [1.0.1] - 2026-09-01
+
+### Changed
+
+- Updated the `bitwarden-design-tools` dependency reference to its new name,
+  `bitwarden-product-design-tools`.
+
+## [1.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `designer` agent, deleted entirely. Every substantive claim duplicated a skill in `bitwarden-design-tools` — two of them word-for-word (`design-review`'s critique framing, `content-style-guide`'s voice framing). The one non-duplicate claim (the PM/tech-lead/researcher boundary) folded into `facilitating-design-critique`'s existing parking-lot mechanism. This bundle now holds no agent of its own.
+
+## [0.2.1] - 2026-09-01
+
+### Added
+
+- Declares `bitwarden-design-tools` as a dependency, now that this bundle's skills live there.
+
+## [0.2.0] - 2026-09-01
+
+### Removed
+
+- `design-review` and `facilitating-design-critique` skills moved to `bitwarden-design-tools`. This bundle now holds no skills of its own.
+
 ## [0.1.0] - 2026-05-22
 
 ### Added

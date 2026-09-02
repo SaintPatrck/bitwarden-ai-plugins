@@ -1,7 +1,7 @@
 {
   "name": "bitwarden-product-analyst",
-  "version": "0.1.6",
-  "description": "Product analyst agent for creating comprehensive Bitwarden requirements documents from multiple sources, and writing user-facing release notes",
+  "version": "1.0.2",
+  "description": "Product analyst bundle for Bitwarden. Depends on the bitwarden-product-management-tools capability plugin for requirements elicitation, requirements-document writing, and user-facing release notes. This bundle holds no agent of its own.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
@@ -15,5 +15,5 @@
     "research",
     "release-notes"
   ],
-  "agents": "./agents/product-analyst.md"
+  "dependencies": ["bitwarden-product-management-tools"]
 }

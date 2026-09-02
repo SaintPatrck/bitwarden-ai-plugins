@@ -5,6 +5,24 @@ All notable changes to the `bitwarden-security-engineer` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-09-01
+
+### Changed
+
+- Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-security-tools` and `bitwarden-code-review-tools`, not a placement requirement.
+
+## [2.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `security-engineer` agent, deleted entirely. Its Working Approach duplicated `analyzing-code-security` and `triaging-security-findings` (both in `bitwarden-security-tools`) near-verbatim. The one non-duplicate concern (reporting tone) folded into each relevant skill's own write-up section. This bundle now holds no agent of its own.
+
+## [1.4.0] - 2026-09-01
+
+### Added
+
+- Declares `bitwarden-security-tools` and `bitwarden-code-review-tools` as dependencies, now that this bundle's skills live there.
+
 ## [1.3.0] - 2026-07-21
 
 ### Added

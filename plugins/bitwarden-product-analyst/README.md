@@ -1,33 +1,19 @@
 # Bitwarden Product Analyst Plugin
 
-Claude Code skills for product analysis at Bitwarden. Generic AI assistance doesn't know our requirements format, security principles, Confluence initiative structure, or how we think about plan tiers and client surfaces. These skills keep Claude focused on how we specify software here.
+## Overview
 
-## Agent
+Product analyst bundle for Bitwarden. This plugin holds no agent or skills of its own. Installing it gets a product analyst the full toolkit — requirements elicitation, requirements-document writing following Bitwarden's requirements template, and user-facing release notes — under one role-scoped install and a governance handle for managed settings, instead of installing `bitwarden-product-management-tools` by name. That capability plugin works standalone too, so this bundle is a convenience, not a requirement.
 
-| Agent             | What It Does                                                                                                                                                                                                                                                                                                                       |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `product-analyst` | Reads Confluence initiative pages, Jira tickets, and other sources to produce structured requirements documents following Bitwarden's template. Applies security principles (P01–P06), distinguishes all four web surfaces and all plan tiers, attributes TBDs by owner (PM/Design/Engineering), and surfaces post-MVP candidates. |
+## Cross-Plugin Integration
 
-## Skills
-
-| Skill                      | What It Does                                                                                                                                                                                                                                       |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requirements-elicitation` | Extracts functional, non-functional, and security requirements from specifications. Flags ambiguities, identifies constraints, and creates testable acceptance criteria using Bitwarden security vocabulary.                                       |
-| `work-breakdown`           | Decomposes features into implementable tasks organized by phase. Identifies cross-repo dependencies (`bitwarden/server` vs. `bitwarden/clients`), task ordering, and team assignments.                                                             |
-| `writing-release-notes`    | Produces user-facing release notes from a Jira release tag and the weekly #release Slack thread. Filters to user-visible changes, respects feature flag enablement, and for server releases always surfaces flag removals in user-facing language. |
+| Plugin                               | How It's Used                                                                                                                                                                                          |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `bitwarden-product-management-tools` | Required. `requirements-elicitation` for extracting requirements, `writing-requirements-documents` for producing the requirements document, and `writing-release-notes` for user-facing release notes. |
 
 ## Installation
 
-Available through Bitwarden's internal Claude Code marketplace:
-
 ```bash
-# Add the Bitwarden marketplace (if not already added)
-/plugin marketplace add https://github.com/bitwarden/ai-plugins
-
-# Install the product analyst plugin
 /plugin install bitwarden-product-analyst@bitwarden-marketplace
-
-# Restart Claude Code
 ```
 
 ## Usage
@@ -48,20 +34,8 @@ Write a spec for adding passkey support to the browser extension
 Write release notes for https://bitwarden.atlassian.net/projects/CL/versions/12345
 ```
 
-```
-Draft release notes for the 2025.7.0 server release
-```
-
 ## References
 
-### requirements-elicitation / product-analyst
-
-- [Bitwarden Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions) — Vault Data, Protected Data, Secure Channel, Trusted Channel vocabulary
-- [Bitwarden Security Principles](https://contributing.bitwarden.com/architecture/security/principles/) — P01–P06 foundation principles
-- [Product Initiative Template](https://bitwarden.atlassian.net/wiki/spaces/PROD/pages/171507714/Product+initiative+template) — Canonical PM template; maps to `references/requirements-template.md`
-- [Requirements Template](references/requirements-template.md) — Full requirements document structure
-
-### writing-release-notes
-
-- [Bitwarden Atlassian Tools](../bitwarden-atlassian-tools/) — Provides the `search_issues`, `get_issue`, and `get_issue_comments` MCP tools used for automated Jira lookups
-- Jira release report pages (`https://bitwarden.atlassian.net/projects/<PROJECT>/versions/<ID>/tab/release-report-all-issues`) and the weekly `#release` Slack thread are the two data sources this skill synthesizes
+- [Bitwarden Security Definitions](https://contributing.bitwarden.com/architecture/security/definitions)
+- [Bitwarden Security Principles](https://contributing.bitwarden.com/architecture/security/principles/)
+- [Product Initiative Template](https://bitwarden.atlassian.net/wiki/spaces/PROD/pages/171507714/Product+initiative+template)

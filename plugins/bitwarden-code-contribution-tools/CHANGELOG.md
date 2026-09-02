@@ -1,0 +1,191 @@
+# Changelog
+
+All notable changes to the `bitwarden-code-contribution-tools` plugin will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [4.2.0] - 2026-09-02
+
+### Changed
+
+- Declares `bitwarden-code-review-tools` as a dependency. `creating-pull-request` hard-aborts the PR-creation flow when neither of that plugin's review paths is available, and the README's Related Plugins section already documented the edge — nothing previously enforced it.
+
+## [4.1.4] - 2026-09-02
+
+### Fixed
+
+- `creating-pull-request`'s abort-path install instruction still named the pre-rename plugin `bitwarden-code-review`. Now names `bitwarden-code-review-tools`.
+
+## [4.1.3] - 2026-09-02
+
+### Changed
+
+- Renamed from `bitwarden-delivery-tools`. The README H1 and this changelog's header still named the old plugin.
+
+## [4.1.2] - 2026-09-01
+
+### Fixed
+
+- Bare `Skill(performing-multi-agent-code-review)` references in the README and `creating-pull-request`, pointing at a skill owned by `bitwarden-code-review-tools`. Cross-plugin references must be qualified with the owning plugin's name.
+
+## [4.1.1] - 2026-09-01
+
+### Fixed
+
+- Stale `bitwarden-delivery-tools` qualifiers in the `committing-changes` and `creating-pull-request` eval fixtures, pointing them at this plugin instead.
+
+## [4.1.0] - 2026-09-01
+
+### Added
+
+- **`implementor` agent** — moved in from `bitwarden-software-engineer` (renamed from
+  `software-engineer`), stripped of career-ladder framing and the stale cross-plugin integration
+  block.
+
+## [4.0.0] - 2026-09-01
+
+### Changed
+
+- Renamed from `bitwarden-delivery-tools`. The plugin now covers a single subject: getting a change into a Bitwarden repository.
+- Gained `addressing-code-review-comments` from `bitwarden-code-review`, since responding to review feedback is author-side work.
+
+### Removed
+
+- `architecting-solutions` moved to `bitwarden-architecture-tools`.
+- `navigating-the-initiative-funnel` and `running-work-transitions` moved to `bitwarden-initiative-tools`.
+- `filing-breakdown-tasks` removed — Tech Breakdown tooling is scoped entirely to the `bitwarden/tech-breakdowns` repository, not the marketplace.
+
+## [3.1.0] - 2026-08-19
+
+### Added
+
+- **`filing-breakdown-tasks` skill** — turns a breakdown's `tasks.md` into Jira ticket drafts: an epic parent plus one child story/task per entry, with acceptance criteria and mapped dependency links, then hands off to `filing-jira-tickets` to file them. Requires `bitwarden-atlassian-tools`.
+- **`filing-breakdown-tasks` trigger eval** (`skills/filing-breakdown-tasks/evals/`) — a 20-query trigger eval (10 should-trigger, 10 near-miss) with a recorded baseline.
+
+### Changed
+
+- `plugin.json`: description and `jira` keyword added for the new skill. Marketplace description and README catalog entry follow suit.
+
+## [3.0.0] - 2026-08-08
+
+### Removed
+
+- **BREAKING:** `starting-breakdown`, `developing-breakdown-spec`, `developing-breakdown-plan`, and `decomposing-into-tasks` skills. Tech Breakdown drafting now lives in the [`bitwarden/tech-breakdowns`](https://github.com/bitwarden/tech-breakdowns) repository, where the templates and per-team folder conventions are canonical.
+
+### Changed
+
+- `navigating-the-initiative-funnel`: Phase-4 Tech Breakdown paragraph and Related links rewritten to point at the `bitwarden/tech-breakdowns` repository instead of the removed skills.
+- `README.md`: breakdown skills removed from the Technical design table; usage examples for the removed skills dropped; a pointer to `bitwarden/tech-breakdowns` added for discoverability.
+- `plugin.json`: description and keywords stripped of `tech-breakdown` / `task-decomposition`. Marketplace description and README catalog entry follow suit.
+
+## [2.4.0] - 2026-07-31
+
+### Added
+
+- **`committing-changes` skill** — added a branch check step. If the current branch is the repository's default branch, the user is asked for a branch before staging or committing. If the default branch cannot be resolved, the current branch is confirmed instead of assumed.
+- **`committing-changes` eval set** (`skills/committing-changes/evals/`) — a 13-query trigger eval and a six-case behavior eval in the `skill-creator` schema, each with a recorded baseline.
+
+## [2.3.0] - 2026-07-30
+
+### Added
+
+- `creating-pull-request`: a code-review gate in Step 1 that runs before a PR is opened, routing by change blast radius — Standard runs `code-review-local`, Substantial runs `performing-multi-agent-code-review` against the full branch diff. Deferred CRITICAL/IMPORTANT findings are recorded in the PR body and surfaced in the Step 5 preview, an optional second-model re-run (via the multi-agent skill) is available for the highest-risk changes, review output is cleaned up before pushing, and invocations from another delivery skill's workflow are exempt (wiring review into those callers is a tracked follow-up).
+- `README`: documented the `bitwarden-code-review` dependency in the **Related Plugins** section.
+
+### Changed
+
+- `creating-pull-request`: narrowed Step 1's preflight options so the quality gate can no longer be silently skipped.
+
+### Security
+
+- `creating-pull-request`: submit the PR body via `--body-file` instead of `--body` so review- and model-generated text (derived from untrusted repo content) cannot be interpreted as shell during `gh pr create`.
+
+## [2.2.0] - 2026-07-10
+
+### Added
+
+- **`architecting-solutions` skill** — moved in from `bitwarden-tech-lead` (last at 2.3.2) and reworked to increase security focus and remove explicit Initiative Shepherd references.
+
+## [2.1.0] - 2026-07-01
+
+### Added
+
+- **`force-multiplier` skill** — fans one intent across a repo fleet or monorepo into N consistent, idempotent draft PRs, gated by a mandatory pilot and per-target isolation. Repo content is untrusted data (CWE-1427); destructive recipes require a reference-check with a `held-back` reconciliation disposition; the secrets-scan has a no-scanner fallback.
+- **`force-multiplier` behavior eval set** (`skills/force-multiplier/evals/`) — seven `skill-creator`-schema cases guarding its load-bearing decisions.
+
+## [2.0.0] - 2026-06-19
+
+### Added
+
+- **`decomposing-into-tasks` skill** — decomposes a breakdown Plan into a `tasks.md` document with one entry per future Jira work item. Supports resumption against a partly-drafted task list.
+
+### Removed
+
+- **BREAKING:** `writing-tech-breakdowns` skill removed. Superseded by `starting-breakdown`, `developing-breakdown-spec`, `developing-breakdown-plan`, and `decomposing-into-tasks`. The skill was deprecated in 1.4.0.
+- **BREAKING:** `coordinating-cross-team-breakdown` skill removed.
+
+### Changed
+
+- `navigating-the-initiative-funnel`: cross-references to the removed skills replaced with pointers to `starting-breakdown`, `developing-breakdown-spec`, `developing-breakdown-plan`, and `decomposing-into-tasks`.
+
+## [1.5.0] - 2026-06-17
+
+### Added
+
+- **`developing-breakdown-plan` skill** — develops the Plan section of a Tech Breakdown after the Specification is filled, with an optional follow-on step to open a draft prototype PR across affected repos for the team to evaluate alongside the design.
+
+## [1.4.0] - 2026-06-09
+
+### Added
+
+- **`starting-breakdown` skill** — sets up a new Tech Breakdown file in `bitwarden/tech-breakdowns`.
+- **`developing-breakdown-spec` skill** — defines the scope and boundaries of a breakdown effort, then captures the change into the Specification section.
+
+### Changed
+
+- `writing-tech-breakdowns` marked **obsolete** in the README and via a deprecation banner at the top of its `SKILL.md` so the deprecation surfaces at activation time. Superseded by `starting-breakdown` and `developing-breakdown-spec`; the skill remains available but future work will fold remaining pieces into successor skills referencing the `bitwarden/tech-breakdowns` document.
+
+## [1.3.0] - 2026-05-20
+
+### Changed
+
+- `creating-pull-request`: hardened workflow into six ordered steps with `AskUserQuestion`-driven preflight, label selection, and a mandatory pre-submission preview (title, type prefix, label, body) so the PR template and `ai-review` label are no longer silently dropped. Rewrote the description to trigger on natural-language PR phrasings and split it into `description` and `when_to_use` per the Claude Code skills frontmatter reference.
+
+### Added
+
+- `creating-pull-request/evals/` — trigger eval set, custom runner, and baseline for diff-based regression checks on future description changes.
+
+## [1.2.0] - 2026-05-13
+
+### Added
+
+- `writing-tech-breakdowns` skill — drafting Parts 1, 2, 4, 5, 6 of Bitwarden's Tech Breakdown Template (problem overview, breakdown scope checklist, specification artifacts, open questions, AI context) plus the full status lifecycle (IN PLANNING → IN PROGRESS → PROPOSED → ACCEPTED → COMPLETE, with REJECTED as the terminal alternative).
+- `coordinating-cross-team-breakdown` skill — Part 3 signoff table, cross-team checklist (mobile changes, components outside the team's domain, dependencies on other teams' services, APIs built for other teams), and the completion-communication checklist that closes a breakdown.
+
+### Changed
+
+- `navigating-the-initiative-funnel` — added pointers to the new tech-breakdown skills at the Scoping & Commitment phase and in the related-skills block so the funnel ↔ breakdown linkage is bidirectional.
+- Plugin description, README, and keywords extended to cover tech breakdowns and cross-team signoffs alongside the existing lifecycle and mechanics concerns.
+
+## [1.1.0] - 2026-05-07
+
+### Added
+
+- `navigating-the-initiative-funnel` skill — phase-by-phase tech-lead participation across Bitwarden's Software Initiative Funnel
+- `running-work-transitions` skill — both-sides playbook for receiving or originating ownership transitions
+
+### Changed
+
+- Plugin description and README reframed to "delivery lifecycle" to encompass initiative routing and team handoffs alongside the existing commit/PR mechanics
+- Added `lifecycle`, `initiative-funnel`, and `work-transition` to plugin keywords
+
+## [1.0.0] - 2026-04-08
+
+### Added
+
+- Generic `committing-changes` skill for commit message format and staging workflow
+- Generic `creating-pull-request` skill for PR creation and draft workflow
+- Generic `labeling-changes` skill for conventional commit type keywords and label mapping
+- Generic `perform-preflight` skill for pre-commit quality gate checklist
+- All skills are platform-agnostic and reference the repo's CLAUDE.md for platform-specific details

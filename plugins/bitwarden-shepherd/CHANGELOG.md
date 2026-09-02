@@ -5,6 +5,24 @@ All notable changes to the `bitwarden-shepherd` plugin will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 2026-09-01
+
+### Changed
+
+- Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-initiative-tools` and `bitwarden-architecture-tools`, not a placement requirement.
+
+## [2.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** the `shepherd` agent, deleted entirely. Three of its four surviving claims were already stated, word-for-word or near-verbatim, in `championing-a-strategy-idea` and `shepherding-an-initiative` (both in `bitwarden-initiative-tools`) — no fold needed. The fourth (the tech-lead authority boundary) folded into `shepherding-an-initiative`'s existing small-scope-initiative section. This bundle now holds no agent of its own.
+
+## [1.1.0] - 2026-09-01
+
+### Added
+
+- Declares `bitwarden-initiative-tools` and `bitwarden-architecture-tools` as dependencies, now that this bundle's skills live there.
+
 ## [1.0.1] - 2026-07-10
 
 ### Changed
