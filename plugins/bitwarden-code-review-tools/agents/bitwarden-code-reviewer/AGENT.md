@@ -72,12 +72,6 @@ When sibling Bitwarden plugins are installed, activate specialist skills during 
 - **Auth/encryption/trust-boundary changes** → invoke `Skill(bitwarden-security-tools:reviewing-security-architecture)` to verify patterns match approved approaches
 - **Dependency updates** → invoke `Skill(bitwarden-security-tools:reviewing-dependencies)` to assess supply chain risk (complements `reviewing-dependency-changes` with deep security analysis)
 
-**Implementation pattern review:**
-
-- **C#/.NET server changes** → invoke `Skill(writing-server-code)` to verify CQS patterns, `TryAdd*` DI, nullable reference types, `Async` suffix conventions
-- **Angular/TypeScript client changes** → invoke `Skill(writing-client-code)` to verify `tw-` prefix, `inject()` usage, standalone components, signal vs RxJS patterns
-- **Database changes** → invoke `Skill(writing-database-queries)` to verify dual-ORM parity, migration naming, and EDD phasing
-
 **Claude configuration changes** (`CLAUDE.md`, agent `AGENT.md`, hook definitions, slash commands, `.claude/` settings, skill support files, or MCP config) **or changed `SKILL.md` files still present at the head of the change**:
 
 - invoke `Skill(bitwarden-claude-config-tools:reviewing-claude-config)` to validate YAML frontmatter, prompt-engineering quality, and config-specific security issues (committed `settings.local.json`, hardcoded secrets, broken file references, overly broad agent tool access). Include any changed `SKILL.md` files in the scope you hand it: its credential scan covers every file whatever the type, and it declines `SKILL.md` only for the quality review. Fold its findings into your own classification and validation in Steps 3–4.
