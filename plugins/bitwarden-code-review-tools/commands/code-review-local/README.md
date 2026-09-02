@@ -201,7 +201,7 @@ Use the output to understand code review best practices:
 
 - GitHub CLI (`gh`) installed and authenticated
 - Access to the target repository
-- `bitwarden-code-review` plugin installed
+- `bitwarden-code-review-tools` plugin installed
 
 ## Related Documentation
 
