@@ -5,6 +5,12 @@ All notable changes to the bitwarden-devops-engineer plugin will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-09-02
+
+### Fixed
+
+- `plugin.json`'s description, its `marketplace.json` mirror, and the root README catalog row still described GitHub Actions workflow skills directly, unchanged since before those skills moved to `bitwarden-github-action-tools` in the 1.0.3 README rewrite. All three now state this plugin's actual role: a dependency bundle on `bitwarden-github-action-tools` and `bitwarden-code-contribution-tools`.
+
 ## [1.0.3] - 2026-09-01
 
 ### Fixed
