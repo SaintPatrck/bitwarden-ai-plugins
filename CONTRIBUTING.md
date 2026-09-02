@@ -129,8 +129,14 @@ Plugin structure, marketplace consistency, and version-bump checks are covered b
 To run them locally before pushing, invoke them from a checkout of that repository with `REPO_ROOT` pointed at this one. Each script defaults `REPO_ROOT` to the parent of its own `scripts/` directory — `validate-ai/` inside a gh-actions checkout — so without the override it inspects gh-actions instead of this repository and fails on a path that isn't there (`validate-plugin-structure.sh` reports "Plugins directory not found", `validate-marketplace.sh` reports "marketplace.json not found at"). Each script accepts a plugin name or `plugins/<name>` path, and validates all plugins when given no arguments:
 
 ```bash
-REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-plugin-structure.sh bitwarden-code-review
+REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-plugin-structure.sh bitwarden-code-review-tools
 REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-marketplace.sh
+```
+
+Cross-plugin reference integrity — bundle purity, dependency declarations, and `Skill()`/`subagent_type` qualifiers pointing at skills and agents that actually exist — is covered by `node scripts/validate-references.js`, run from this repository's root:
+
+```bash
+node scripts/validate-references.js
 ```
 
 ## Code Quality
