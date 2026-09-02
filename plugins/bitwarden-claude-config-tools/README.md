@@ -1,4 +1,4 @@
-# Claude Config Validator Plugin
+# Bitwarden Claude Config Tools Plugin
 
 Comprehensive validation for Claude Code configuration files, ensuring security, structure, and quality standards across all configuration types.
 
