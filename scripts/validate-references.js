@@ -9,7 +9,8 @@
 //   2. Every reference that crosses a plugin boundary is fully qualified
 //      (Skill(plugin:skill), never a bare Skill(skill) for another plugin's skill).
 //   3. Every role bundle listed in the root README's "## Role bundles" table holds
-//      no skills/, agents/, or commands/ directory.
+//      no skills/, agents/, or commands/ directory, the table itself parses cleanly,
+//      and it lists exactly the plugins that look like bundles by plugin.json metadata.
 //
 // Usage:
 //   node scripts/validate-references.js
@@ -283,10 +284,31 @@ if (!bundleSectionMatch) {
 } else {
   const bundleSection = bundleSectionMatch[1];
   const bundleNames = [];
-  const rowRe = /^\|\s*\[([a-z0-9-]+)\]\(plugins\/([a-z0-9-]+)\/\)/gm;
-  let rowMatch;
-  while ((rowMatch = rowRe.exec(bundleSection)) !== null) {
-    bundleNames.push(rowMatch[2]);
+  const rowRe = /^\|\s*\[([a-z0-9-]+)\]\(plugins\/([a-z0-9-]+)\/\)/;
+  const separatorRe = /^\|[\s|:-]+\|$/;
+
+  // Walk the section line by line rather than a single global regex exec, so a
+  // row that fails to match the expected link format is a hard error instead of
+  // silently vanishing from bundleNames. Everything before the header separator
+  // row (the table header itself, and any prose) is skipped; every non-blank line
+  // starting with "|" after the separator must be a parseable bundle row.
+  let sawSeparator = false;
+  for (const line of bundleSection.split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed) continue;
+    if (!sawSeparator) {
+      if (separatorRe.test(trimmed)) sawSeparator = true;
+      continue;
+    }
+    if (!trimmed.startsWith("|")) continue; // prose after the table, if any
+    const rowMatch = rowRe.exec(trimmed);
+    if (rowMatch) {
+      bundleNames.push(rowMatch[2]);
+    } else {
+      fail(
+        `${relPath(README_PATH)}: unparseable row in "## Role bundles" table: ${trimmed}`,
+      );
+    }
   }
 
   if (bundleNames.length === 0) {
@@ -295,7 +317,56 @@ if (!bundleSectionMatch) {
     );
   }
 
+  // Independent cross-check: derive candidate bundle directories from plugin.json
+  // metadata, without going anywhere near the README table *or* the skills/agents/
+  // commands purity signal this check exists to police (a plugin that's grown an
+  // illegal skills/agents/commands directory is exactly the case this check must
+  // still catch, so "no skills/agents/commands" can't double as the definition of
+  // "is a bundle"). Every role bundle in this marketplace declares dependencies and
+  // says so in its own description ("<Role> bundle for ..."), so that's the signal
+  // used here instead. This catches a bundle row that's missing from the table
+  // entirely, or reformatted away from the parseable link format (dropping the "|"
+  // prefix too) — not just a malformed row that's still recognizably a table row.
+  const candidateBundleDirs = [];
+  for (const pluginDir of fs.readdirSync(PLUGINS_DIR, {
+    withFileTypes: true,
+  })) {
+    if (!pluginDir.isDirectory()) continue;
+    const name = pluginDir.name;
+    const manifestPath = path.join(
+      PLUGINS_DIR,
+      name,
+      ".claude-plugin",
+      "plugin.json",
+    );
+    if (!fs.existsSync(manifestPath)) continue;
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    const hasDeps = (manifest.dependencies || []).length > 0;
+    const describesItselfAsBundle = /\bbundle\b/i.test(
+      manifest.description || "",
+    );
+    if (hasDeps && describesItselfAsBundle) candidateBundleDirs.push(name);
+  }
+
   const forbidden = ["skills", "agents", "commands"];
+  const bundleNameSet = new Set(bundleNames);
+  const candidateSet = new Set(candidateBundleDirs);
+  const missingFromTable = candidateBundleDirs.filter(
+    (name) => !bundleNameSet.has(name),
+  );
+  const extraInTable = bundleNames.filter((name) => !candidateSet.has(name));
+
+  for (const name of missingFromTable) {
+    fail(
+      `${name} declares dependencies and describes itself as a bundle in plugin.json, but is missing from the "## Role bundles" table in ${relPath(README_PATH)}`,
+    );
+  }
+  for (const name of extraInTable) {
+    fail(
+      `${name} is listed in the "## Role bundles" table but its plugin.json neither declares dependencies nor describes it as a bundle`,
+    );
+  }
+
   let bundleFailures = 0;
   for (const bundleName of bundleNames) {
     const bundleDir = path.join(PLUGINS_DIR, bundleName);
@@ -307,7 +378,12 @@ if (!bundleSectionMatch) {
       }
     }
   }
-  if (bundleFailures === 0 && bundleNames.length > 0) {
+  if (
+    bundleFailures === 0 &&
+    bundleNames.length > 0 &&
+    missingFromTable.length === 0 &&
+    extraInTable.length === 0
+  ) {
     ok(
       `all ${bundleNames.length} role bundles (${bundleNames.join(", ")}) are pure`,
     );
