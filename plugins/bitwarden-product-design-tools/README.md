@@ -1,4 +1,4 @@
-# Bitwarden Design Tools Plugin
+# Bitwarden Product Design Tools Plugin
 
 ## Overview
 
