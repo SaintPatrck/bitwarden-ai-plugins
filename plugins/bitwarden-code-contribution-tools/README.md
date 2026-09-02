@@ -31,7 +31,7 @@ Listed in the order a change moves through them.
 
 Several skills in this plugin reference tools or skills provided by sibling plugins. Install these alongside `bitwarden-code-contribution-tools` for full functionality:
 
-- **`bitwarden-code-review-tools`** — provides `/bitwarden-code-review-tools:code-review-local` and `Skill(performing-multi-agent-code-review)`, the code-review gate `creating-pull-request` runs before opening a PR. If it is absent, `creating-pull-request` prompts you to install it rather than skip the review.
+- **`bitwarden-code-review-tools`** — provides `/bitwarden-code-review-tools:code-review-local` and `Skill(bitwarden-code-review-tools:performing-multi-agent-code-review)`, the code-review gate `creating-pull-request` runs before opening a PR. If it is absent, `creating-pull-request` prompts you to install it rather than skip the review.
 - **`bitwarden-security-tools`** — `force-multiplier` routes per-target work to the matching named agent, using its security agent when the change being fanned out is itself a security change.
 
 ## Installation
