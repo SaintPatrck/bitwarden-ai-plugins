@@ -144,7 +144,7 @@ Available through Bitwarden's internal Claude Code marketplace:
 /plugin marketplace add https://github.com/bitwarden/ai-plugins
 
 # Install the code review plugin
-/plugin install bitwarden-code-review@bitwarden-marketplace
+/plugin install bitwarden-code-review-tools@bitwarden-marketplace
 
 # Restart Claude Code
 ```
