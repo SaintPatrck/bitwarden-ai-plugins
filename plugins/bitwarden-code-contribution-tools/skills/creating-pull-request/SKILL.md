@@ -36,14 +36,14 @@ If preflight cannot be made to pass, stop and report the failure rather than ope
 - **Question**: "How deep is this change? (sets review depth)"
 - **Options**:
   - `Standard` — a typical feature, fix, docs, or config change: run `/bitwarden-code-review-tools:code-review-local` (tell it to review the current branch's changes; there is no PR yet)
-  - `Substantial` — architectural, cross-cutting, or security-touching: run `Skill(performing-multi-agent-code-review)`, telling it to review the full branch diff against `origin/HEAD` (not just uncommitted changes); there is no PR yet
+  - `Substantial` — architectural, cross-cutting, or security-touching: run `Skill(bitwarden-code-review-tools:performing-multi-agent-code-review)`, telling it to review the full branch diff against `origin/HEAD` (not just uncommitted changes); there is no PR yet
 
 Present only these two options; do not add a skip option. Honor a skip only if the user volunteers one unprompted, then record it in the PR body's Objective section (Step 3) and surface it in the Step 5 preview. Never skip on your own initiative.
 
 After the review:
 
 - Address every CRITICAL and IMPORTANT finding, or record why each is deferred in the PR body's Objective section (Step 3).
-- On the `Substantial` path only, you may re-run `Skill(performing-multi-agent-code-review)` with a different `--model-*` value for the highest-risk changes (auth, crypto, data handling, migrations); findings vary by model, so a second pass can catch what the first missed. Optional, never required.
+- On the `Substantial` path only, you may re-run `Skill(bitwarden-code-review-tools:performing-multi-agent-code-review)` with a different `--model-*` value for the highest-risk changes (auth, crypto, data handling, migrations); findings vary by model, so a second pass can catch what the first missed. Optional, never required.
 - If a review path wrote output into the repo, remove it before pushing so it never lands in a commit — but only files this run created (a `??` in `git status --porcelain`). For example, `code-review-local` writes `review-summary.md` and `review-inline-comments.md` to the working-directory root; the multi-agent path writes outside the repo and needs no cleanup. Never delete a tracked file of the same name.
 
 Each review path checks its own prerequisites and reports what to install if something is missing. If a path can't run, install what it reports or fall back to the other path and note the limitation in the PR body. If neither path is available, stop and prompt the user to install `bitwarden-code-review` (`/plugin install bitwarden-code-review@bitwarden-marketplace`) before continuing. Never silently skip the review.
