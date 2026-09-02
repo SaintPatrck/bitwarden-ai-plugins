@@ -1,9 +1,15 @@
 # Changelog
 
-All notable changes to the Bitwarden Code Review Plugin will be documented in this file.
+All notable changes to the `bitwarden-code-review-tools` plugin will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.4] - 2026-09-02
+
+### Changed
+
+- Renamed from `bitwarden-code-review`. The README H1 and this changelog's header still named the old plugin.
 
 ## [2.0.3] - 2026-09-01
 

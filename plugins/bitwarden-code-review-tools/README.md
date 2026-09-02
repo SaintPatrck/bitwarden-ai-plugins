@@ -1,4 +1,4 @@
-# Bitwarden Code Review Plugin
+# Bitwarden Code Review Tools Plugin
 
 AI-powered code review for Bitwarden — an autonomous review agent for everyday PRs, plus a rigorous multi-agent pipeline for the changes that warrant a deeper look.
 
