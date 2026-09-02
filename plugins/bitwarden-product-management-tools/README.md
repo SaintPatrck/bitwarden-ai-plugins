@@ -1,4 +1,4 @@
-# Bitwarden Product Tools
+# Bitwarden Product Management Tools
 
 Claude Code skills for product analysis at Bitwarden. Generic AI assistance doesn't know our requirements format, security principles, Confluence initiative structure, or how we think about plan tiers and client surfaces. These skills keep Claude focused on how we specify software here.
 

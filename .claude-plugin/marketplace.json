@@ -42,7 +42,7 @@
     {
       "name": "bitwarden-product-management-tools",
       "source": "./plugins/bitwarden-product-management-tools",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Turning product intent into tracked work at Bitwarden — requirements elicitation, requirements-document writing, and user-facing release notes."
     },
     {
