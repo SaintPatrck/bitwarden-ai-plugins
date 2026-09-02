@@ -1,0 +1,10 @@
+# Pre-existing Check-2 (cross-plugin qualifier) violations in plugins this taxonomy
+# migration did not touch. Tracked as phase-2 cleanup debt per ADR 0035 decision 2 —
+# do not add new entries here for plugins the migration did touch; fix those instead.
+#
+# Format: <file>:<line>:Skill(<bare-skill-name>)
+plugins/bitwarden-init/commands/enhance/enhance.md:432:Skill(reviewing-claude-config)
+plugins/bitwarden-init/commands/enhance/enhance.md:436:Skill(detecting-secrets)
+plugins/bitwarden-retrospective-tools/skills/retrospecting/SKILL.md:402:Skill(detecting-secrets)
+plugins/bitwarden-retrospective-tools/skills/retrospecting/SKILL.md:403:Skill(analyzing-code-security)
+plugins/bitwarden-retrospective-tools/skills/retrospecting/SKILL.md:407:Skill(classifying-review-findings)
