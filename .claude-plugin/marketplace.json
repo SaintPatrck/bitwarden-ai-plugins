@@ -24,7 +24,7 @@
     {
       "name": "bitwarden-code-review-tools",
       "source": "./plugins/bitwarden-code-review-tools",
-      "version": "2.0.5",
+      "version": "3.1.0",
       "description": "Comprehensive code review system with organization-wide standards."
     },
     {
@@ -48,7 +48,7 @@
     {
       "name": "bitwarden-software-engineer",
       "source": "./plugins/bitwarden-software-engineer",
-      "version": "2.0.2",
+      "version": "2.0.3",
       "description": "Software engineer bundle for a Bitwarden product team. Depends on the contribution and code-review capability plugins — the bitwarden-implementor agent, commit/PR mechanics, and reviewing teammates' PRs."
     },
     {
@@ -60,14 +60,14 @@
     {
       "name": "bitwarden-security-engineer",
       "source": "./plugins/bitwarden-security-engineer",
-      "version": "2.0.1",
+      "version": "4.0.2",
       "description": "Security engineer bundle for a Bitwarden product team. Depends on the security-tools and code-review-tools capability plugins a security engineer draws on — vulnerability triage, threat modeling, secure code analysis, and reviewing PRs for security issues."
     },
     {
       "name": "bitwarden-security-tools",
       "source": "./plugins/bitwarden-security-tools",
-      "version": "2.1.1",
-      "description": "Application security practice at Bitwarden — security principles and data classification, threat modeling, code and architecture security analysis, secret detection, dependency and HackerOne triage."
+      "version": "2.2.0",
+      "description": "Application security practice at Bitwarden — security principles and data classification, threat modeling, code and architecture security analysis, secret detection, dependency and HackerOne triage, external Claude plugin audits, and the bitwarden-security-assessor agent dispatched for multi-agent security review."
     },
     {
       "name": "bitwarden-devops-engineer",
@@ -84,7 +84,7 @@
     {
       "name": "bitwarden-tech-lead",
       "source": "./plugins/bitwarden-tech-lead",
-      "version": "4.0.2",
+      "version": "4.0.3",
       "description": "Tech lead bundle for a Bitwarden product team. Depends on the architecture, initiative, contribution, and code-review capability plugins a tech lead draws on — team-scope architectural judgment, initiative-funnel participation, implementation, and reviewing PRs."
     },
     {
@@ -96,7 +96,7 @@
     {
       "name": "bitwarden-code-contribution-tools",
       "source": "./plugins/bitwarden-code-contribution-tools",
-      "version": "4.2.0",
+      "version": "4.3.0",
       "description": "Getting a change into a Bitwarden repository — commits, pull requests, change labeling, preflight quality gates, addressing review feedback, and applying one intent across a fleet of repos."
     },
     {

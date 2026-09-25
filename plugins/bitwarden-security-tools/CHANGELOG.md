@@ -5,6 +5,19 @@ All notable changes to the `bitwarden-security-tools` plugin will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-09-25
+
+### Added
+
+- `bitwarden-security-assessor` agent: the security specialist that `perform-security-review`, `auditing-external-claude-plugins` (through its `agent:` frontmatter), `bitwarden-code-review-tools`' `performing-multi-agent-code-review` (Agent 3), and `bitwarden-code-contribution-tools`' `force-multiplier` dispatch by qualified name, carrying its own tool grants and preloaded security skills.
+- `auditing-external-claude-plugins` skill, moved in from `bitwarden-security-engineer`: audits a third-party Claude Code plugin before it's vendored, covering MCP config, dependency supply chain, tool permission scope, and prompt-injection surface. Runs as an isolated subagent and writes a report file.
+- `perform-security-review/references/base-ref-resolution.md` and `references/tool-grants.md`, moved in from `bitwarden-security-engineer`: base-ref resolution guidance and the tool-grant rationale behind the review agents.
+
+### Changed
+
+- `triaging-security-findings`, `reviewing-dependencies`, and `perform-security-review` query Aikido's feed via `Skill(aikido:issues)` and treat Aikido SAST/IaC/SCA/container evidence as a data source, replacing the Checkmarx/SonarCloud/Code Scanning/Grype integrations this plugin inherited when its skills moved in from `bitwarden-security-engineer`.
+- Plugin description enumerates the assessor agent and the external-plugin-audit skill.
+
 ## [2.1.1] - 2026-09-02
 
 ### Fixed

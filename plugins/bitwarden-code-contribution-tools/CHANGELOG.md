@@ -5,6 +5,13 @@ All notable changes to the `bitwarden-code-contribution-tools` plugin will be do
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2026-09-25
+
+### Changed
+
+- Renamed the `implementor` agent to `bitwarden-implementor`, so a qualified reference from another plugin identifies which plugin owns it. `agents/implementor.md` moved to `agents/bitwarden-implementor.md`; the README Agent table and the `name:` frontmatter were updated to match.
+- `force-multiplier` routes security-domain fan-out to the `bitwarden-security-tools:bitwarden-security-assessor` agent.
+
 ## [4.2.0] - 2026-09-02
 
 ### Changed

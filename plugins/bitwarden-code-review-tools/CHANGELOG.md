@@ -5,40 +5,46 @@ All notable changes to the `bitwarden-code-review-tools` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.5] - 2026-09-02
+## [3.1.0] - 2026-09-25
+
+### Changed
+
+- `performing-multi-agent-code-review`'s Agent 3 dispatches the `bitwarden-security-tools:bitwarden-security-assessor` subagent type with the resolved security model, so the security and logic pass runs with that agent's Aikido tool grant and preloaded security skills while it invokes `analyzing-code-security`.
+
+## [3.0.5] - 2026-09-02
 
 ### Fixed
 
 - Runtime-unresolvable install instructions in the README, `tests/TESTING.md`, and `commands/code-review-local/README.md` still named the pre-rename plugin `bitwarden-code-review`. Now name `bitwarden-code-review-tools`.
 
-## [2.0.4] - 2026-09-02
+## [3.0.4] - 2026-09-02
 
 ### Changed
 
 - Renamed from `bitwarden-code-review`. The README H1 and this changelog's header still named the old plugin.
 
-## [2.0.3] - 2026-09-01
+## [3.0.3] - 2026-09-01
 
 ### Fixed
 
 - Bare `Skill(analyzing-code-security)`, `Skill(reviewing-security-architecture)`, `Skill(reviewing-dependencies)`, and `Skill(reviewing-claude-config)` references in `bitwarden-code-reviewer`'s Cross-Plugin Enrichment, pointing at skills owned by `bitwarden-security-tools` and `bitwarden-claude-config-tools` respectively. Cross-plugin references must be qualified with the owning plugin's name.
 - Removed the Implementation pattern review subsection, which invoked `Skill(writing-server-code)`, `Skill(writing-client-code)`, and `Skill(writing-database-queries)` — three skills removed from `bitwarden-software-engineer` in #92 and never replaced elsewhere. The dispatches never resolved.
 
-## [2.0.2] - 2026-09-01
+## [3.0.2] - 2026-09-01
 
 ### Changed
 
 - Updated the `claude-config-validator` qualifier in `performing-multi-agent-code-review`'s Agent
   4 dispatch to its new name, `bitwarden-claude-config-tools`.
 
-## [2.0.1] - 2026-09-01
+## [3.0.1] - 2026-09-01
 
 ### Fixed
 
 - `performing-multi-agent-code-review`'s Agent 3 dispatched to `bitwarden-security-tools:bitwarden-security-engineer`, a subagent type that no longer exists; it now uses `general-purpose` with `Skill(bitwarden-security-tools:analyzing-code-security)`, matching the pattern used for Agent 4.
 - Stale `bitwarden-security-engineer` mentions in the README and in `reviewing-dependency-changes` updated to reference `bitwarden-security-tools`.
 
-## [2.0.0] - 2026-09-01
+## [3.0.0] - 2026-09-01
 
 ### Changed
 

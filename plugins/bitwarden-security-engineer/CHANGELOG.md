@@ -5,23 +5,33 @@ All notable changes to the `bitwarden-security-engineer` plugin will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2026-09-01
+## [4.0.2] - 2026-09-25
+
+### Changed
+
+- Cross-Plugin Integration table and usage examples name the `bitwarden-security-assessor` agent in `bitwarden-security-tools`, which preloads `triaging-security-findings`, `threat-modeling`, and `analyzing-code-security` among its six preloaded security skills.
+
+## [4.0.1] - 2026-09-01
 
 ### Changed
 
 - Reframed the README's Overview as additive: this bundle is a one-step install and a governance handle for `bitwarden-security-tools` and `bitwarden-code-review-tools`, not a placement requirement.
 
-## [2.0.0] - 2026-09-01
+## [4.0.0] - 2026-09-01
 
 ### Removed
 
-- **BREAKING:** the `security-engineer` agent, deleted entirely. Its Working Approach duplicated `analyzing-code-security` and `triaging-security-findings` (both in `bitwarden-security-tools`) near-verbatim. The one non-duplicate concern (reporting tone) folded into each relevant skill's own write-up section. This bundle now holds no agent of its own.
+- **BREAKING:** the `security-engineer` agent, deleted entirely. Its Working Approach duplicated `analyzing-code-security` and `triaging-security-findings` (both in `bitwarden-security-tools`) near-verbatim. The one non-duplicate concern (reporting tone) folded into each relevant skill's own write-up section. This bundle holds no agent of its own.
 
-## [1.4.0] - 2026-09-01
+## [3.0.0] - 2026-09-01
 
 ### Added
 
-- Declares `bitwarden-security-tools` and `bitwarden-code-review-tools` as dependencies, now that this bundle's skills live there.
+- Declares `bitwarden-security-tools` and `bitwarden-code-review-tools` as dependencies, the capability plugins that hold this bundle's skills.
+
+### Removed
+
+- **BREAKING:** every skill and shared reference, moved to `bitwarden-security-tools`. Invoke them as `bitwarden-security-tools:<skill>`; a `bitwarden-security-engineer:<skill>` reference does not resolve.
 
 ## [2.1.0] - 2026-09-08
 
