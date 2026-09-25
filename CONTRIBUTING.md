@@ -8,11 +8,13 @@ For general Bitwarden contribution practices, see our [Contributing Guidelines](
 
 Plugins in this marketplace are organized in two layers: capability plugins and role bundles. Repo-specific patterns — those unusable outside that repo's own codebase — belong closer to the code, in that repo's `.claude/` directory. If your work is cross-repo, read on to find which layer it belongs to. If you're still unsure after reading, raise a draft PR and maintainers will help find the right home.
 
+Every dependency one plugin in this marketplace declares on another, whether from a bundle or a capability plugin, is unversioned, tracking `@main` the same way Bitwarden's own GitHub Actions do.
+
 ### Capability Plugins
 
-A capability plugin holds skills and agents. Every skill has exactly one home. It's named for what its skills act on — an artifact, a practice, or an integration surface — never for a job title, a seniority level, or a lifecycle phase.
+A capability plugin carries components of whatever kinds the platform supports (skills, agents, commands, hooks), and every component has exactly one home. It's named for what its components act on: an artifact, a practice, or an integration surface, never a job title, a seniority level, or a lifecycle phase. The name points to something a reviewer can find, such as a file, a Jira issue, or a vendor surface, or to a discipline with a Bitwarden standard behind it. A name that only says when work happens is a phase.
 
-Placement ranges only over capability plugins: a skill serving three roles still lives once, in a single capability plugin, and simply appears in three bundles.
+Placement ranges only over capability plugins: a component serving three roles still lives once, in a single capability plugin, and simply appears in three bundles.
 
 Examples: `bitwarden-security-tools`, `bitwarden-atlassian-tools`
 
@@ -33,7 +35,9 @@ For any new skill or agent, walk this test in order:
 3. If not, would it transfer unchanged to another company using the same vendor product? It belongs in that vendor's integration plugin.
 4. Otherwise, it's named for the artifact or practice it acts on.
 
-A plugin's description enumerates its skills, which keeps this boundary self-enforcing at review time. A skill that no longer fits its plugin's description either forces a deliberate description change or a move to a different plugin.
+An agent follows the same test, with one addition: an agent that another component dispatches stays, because its tools, model, and preloaded skills are what a skill can't carry, and its prose covers only what those dispatchers need. A persona agent that only restates skills is deleted, and whatever it says that no skill covers moves into the skill that owns that topic. An agent doing distinct work is renamed for that work and lives in a capability plugin.
+
+A plugin's description enumerates what it provides, which makes this boundary checkable at review time. A component that no longer fits its plugin's description either forces a deliberate description change or a move to a different plugin.
 
 ## Plugin Structure
 
