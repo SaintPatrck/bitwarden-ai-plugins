@@ -18,7 +18,7 @@
     {
       "name": "bitwarden-claude-config-tools",
       "source": "./plugins/bitwarden-claude-config-tools",
-      "version": "2.0.5",
+      "version": "2.1.0",
       "description": "Validates Claude Code configuration files for security, structure, and quality. Routes CLAUDE.md, agents, commands, hooks, and settings to targeted review skills, reporting only what a changeset introduced."
     },
     {
@@ -140,6 +140,40 @@
       "source": "./plugins/bitwarden-qa-engineer",
       "version": "1.0.2",
       "description": "QA engineer bundle for a Bitwarden product team. Depends on the testing and contribution capability plugins — manual test-case authoring, coverage assessment, and the commit/PR mechanics shared with engineering."
+    },
+    {
+      "name": "plugin-dev",
+      "description": "Comprehensive toolkit for developing Claude Code plugins. Includes expert skills covering hooks, MCP integration, commands, agents, and plugin structure guidance.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "category": "external",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/plugin-dev",
+        "ref": "main",
+        "sha": "340e33aef211d95769d252324854497af871dafe"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/plugin-dev"
+    },
+    {
+      "name": "skill-creator",
+      "description": "Create new skills, improve existing skills, and measure skill performance. Use when creating a skill from scratch, optimizing an existing skill, running evals to test a skill, or benchmarking skill performance with variance analysis.",
+      "author": {
+        "name": "Anthropic",
+        "email": "support@anthropic.com"
+      },
+      "category": "external",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/skill-creator",
+        "ref": "main",
+        "sha": "340e33aef211d95769d252324854497af871dafe"
+      },
+      "homepage": "https://github.com/anthropics/claude-plugins-official/tree/main/plugins/skill-creator"
     }
   ]
 }
