@@ -5,6 +5,37 @@ All notable changes to the bitwarden-devops-engineer plugin will be documented i
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.4] - 2026-09-02
+
+### Fixed
+
+- `plugin.json`'s description, its `marketplace.json` mirror, and the root README catalog row still described GitHub Actions workflow skills directly, unchanged since before those skills moved to `bitwarden-github-action-tools` in the 1.0.3 README rewrite. All three now state this plugin's actual role: a dependency bundle on `bitwarden-github-action-tools` and `bitwarden-code-contribution-tools`.
+
+## [1.0.3] - 2026-09-01
+
+### Fixed
+
+- Rewrote the README, which still described the `workflow-audit`/`workflow-fix`, `action-audit`/`action-remediate`, `bitwarden-workflow-linter-rules`, `auditing-workflow-conventions`, and `managing-workflow-secrets` skills as living in this plugin after they moved to `bitwarden-github-action-tools`. The Overview now states this bundle holds no skills or agent of its own and reframes it as additive: a one-step install and a governance handle for `bitwarden-github-action-tools` and `bitwarden-code-contribution-tools`, not a placement requirement.
+
+## [1.0.2] - 2026-09-01
+
+### Changed
+
+- Updated the `bitwarden-contribution-tools` and `bitwarden-actions-tools` dependency references
+  to their new names, `bitwarden-code-contribution-tools` and `bitwarden-github-action-tools`.
+
+## [1.0.1] - 2026-09-01
+
+### Added
+
+- Declares `bitwarden-actions-tools` and `bitwarden-contribution-tools` as dependencies, now that this bundle's skills live there.
+
+## [1.0.0] - 2026-09-01
+
+### Removed
+
+- **BREAKING:** all 7 skills moved to the new `bitwarden-actions-tools` capability plugin. This bundle now holds no skills of its own.
+
 ## [0.3.0] - 2026-08-17
 
 ### Added

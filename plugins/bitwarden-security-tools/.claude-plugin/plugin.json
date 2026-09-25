@@ -1,0 +1,21 @@
+{
+  "name": "bitwarden-security-tools",
+  "version": "2.2.0",
+  "description": "Application security practice at Bitwarden — security principles and data classification, threat modeling, code and architecture security analysis, secret detection, dependency and HackerOne triage, external Claude plugin audits, and the bitwarden-security-assessor agent dispatched for multi-agent security review.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-security-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": [
+    "security",
+    "appsec",
+    "threat-modeling",
+    "owasp",
+    "secrets",
+    "dependencies",
+    "vulnerability-triage"
+  ],
+  "agents": ["./agents/bitwarden-security-assessor.md"]
+}

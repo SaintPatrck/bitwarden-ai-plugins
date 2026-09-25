@@ -1,7 +1,7 @@
 {
   "name": "bitwarden-devops-engineer",
-  "version": "0.3.0",
-  "description": "GitHub Actions workflow compliance, action security auditing, and org-wide CI/CD remediation.",
+  "version": "1.0.4",
+  "description": "DevOps engineer bundle for a Bitwarden product team. Depends on the github-action-tools and contribution capability plugins a DevOps engineer draws on — GitHub Actions workflow compliance linting, action security auditing, org-wide CI/CD remediation, and commit/PR mechanics.",
   "author": {
     "name": "Bitwarden",
     "url": "https://github.com/bitwarden"
@@ -15,5 +15,9 @@
     "security",
     "linter",
     "audit"
+  ],
+  "dependencies": [
+    "bitwarden-github-action-tools",
+    "bitwarden-code-contribution-tools"
   ]
 }

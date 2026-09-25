@@ -1,0 +1,393 @@
+# Changelog
+
+All notable changes to the `bitwarden-code-review-tools` plugin will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [3.1.0] - 2026-09-25
+
+### Changed
+
+- `performing-multi-agent-code-review`'s Agent 3 dispatches the `bitwarden-security-tools:bitwarden-security-assessor` subagent type with the resolved security model, so the security and logic pass runs with that agent's Aikido tool grant and preloaded security skills while it invokes `analyzing-code-security`.
+
+## [3.0.5] - 2026-09-02
+
+### Fixed
+
+- Runtime-unresolvable install instructions in the README, `tests/TESTING.md`, and `commands/code-review-local/README.md` still named the pre-rename plugin `bitwarden-code-review`. Now name `bitwarden-code-review-tools`.
+
+## [3.0.4] - 2026-09-02
+
+### Changed
+
+- Renamed from `bitwarden-code-review`. The README H1 and this changelog's header still named the old plugin.
+
+## [3.0.3] - 2026-09-01
+
+### Fixed
+
+- Bare `Skill(analyzing-code-security)`, `Skill(reviewing-security-architecture)`, `Skill(reviewing-dependencies)`, and `Skill(reviewing-claude-config)` references in `bitwarden-code-reviewer`'s Cross-Plugin Enrichment, pointing at skills owned by `bitwarden-security-tools` and `bitwarden-claude-config-tools` respectively. Cross-plugin references must be qualified with the owning plugin's name.
+- Removed the Implementation pattern review subsection, which invoked `Skill(writing-server-code)`, `Skill(writing-client-code)`, and `Skill(writing-database-queries)` — three skills removed from `bitwarden-software-engineer` in #92 and never replaced elsewhere. The dispatches never resolved.
+
+## [3.0.2] - 2026-09-01
+
+### Changed
+
+- Updated the `claude-config-validator` qualifier in `performing-multi-agent-code-review`'s Agent
+  4 dispatch to its new name, `bitwarden-claude-config-tools`.
+
+## [3.0.1] - 2026-09-01
+
+### Fixed
+
+- `performing-multi-agent-code-review`'s Agent 3 dispatched to `bitwarden-security-tools:bitwarden-security-engineer`, a subagent type that no longer exists; it now uses `general-purpose` with `Skill(bitwarden-security-tools:analyzing-code-security)`, matching the pattern used for Agent 4.
+- Stale `bitwarden-security-engineer` mentions in the README and in `reviewing-dependency-changes` updated to reference `bitwarden-security-tools`.
+
+## [3.0.0] - 2026-09-01
+
+### Changed
+
+- Renamed from `bitwarden-code-review` for consistency with the capability-plugin naming convention.
+- Declares `bitwarden-security-tools` as a dependency, replacing README prose that nothing enforced.
+
+### Removed
+
+- `addressing-code-review-comments` moved to `bitwarden-contribution-tools`.
+
+## [2.1.0] - 2026-09-04
+
+### Added
+
+- `avoiding-false-positives`: do-not-flag pattern for a confirmed layer of a stacked PR, gated on a four-condition check. Both the PR under review and the PR confirming it must be same-repository, so no one without push access can suppress a finding; draft status is not tested, since upper layers are normally drafts; the relaxation is scoped to the symbols the upper diff references
+- The gate resolves once per review in the agent's Step 1 rather than per finding
+- `references/stacked-pull-requests.md`, holding the rationale behind each condition and what the gate does not defend against
+- `Bash(gh pr list --base:*)` grant, used by the layer check
+
+## [2.0.0] - 2026-09-04
+
+### Added
+
+- `agents/bitwarden-code-reviewer/references/local-mode-diff.md`, holding the rationale behind each local-mode gate
+- A `## No Verdict` output form in `posting-review-summary`, used when nothing was reviewed. It replaces the standard template rather than adding a third assessment value
+
+### Changed
+
+- **`/code-review` no longer resolves a pull request from the checkout.** It takes the number from the pre-fetched threads file, the workflow-authored `PR NUMBER:` line, or `$ARGUMENTS`, in that order, and reports No Verdict when none yields one. Previously a blank invocation fell through to a bare `gh pr view`, which resolved whatever pull request the checkout belonged to — and which fails outright under the detached HEAD `actions/checkout` leaves on a `pull_request` event
+- Both commands pass the resolved target to the agent as a `TARGET: PR #<number>` or `TARGET: local changes` line, and the `^[0-9]+$` check on that number is stated on both sides of the delegation
+- `/code-review-local` additionally passes `OUTPUT: local files` on both targets, and the agent carries it into Steps 5 and 6 whether or not the prompt supplied it. `posting-review-summary` and `posting-bitwarden-review-comments` each gained routing rows ahead of their GitHub rows that key on that declaration rather than on which tools are available, so neither destination depends on the target resolving to local changes
+
+### Fixed
+
+- Local mode diffs against `origin/HEAD` instead of a hardcoded `main`, passing the symbolic ref to git rather than interpolating a resolved name
+- Local mode gates on content as well as exit status: a three-dot diff ignores the working tree, so it succeeds with no output when the branch is level with `origin/HEAD`, and that now falls through rather than producing a verdict over nothing
+- Where no reviewable diff can be produced at all, local mode aborts to the mode's summary destination with no verdict
+- `argument-hint` quoted in both commands; the unquoted `|` stopped their frontmatter parsing, so neither `allowed-tools` list was in effect
+- `code-review` cut to `Read(//tmp/pr-threads.json)` and `Task`, and `code-review-local` to `AskUserQuestion` and `Task`, since each only settles its target and delegates. This removes their `Bash(gh api graphql -f query=:*)` grant, which the frontmatter fix had just made live on the command turn. The reviewer agent keeps that grant, because thread detection needs GraphQL and a prefix rule cannot separate a query from a mutation
+- Two `Write(<path>)` rules dropped from `code-review-local`; Claude Code consults path rules for `Edit` and `Read` only
+- Agent `Write` left unscoped, since Claude Code consults path rules for `Edit` and `Read` only, so a `Write(<path>)` specifier confines nothing
+- Tool grants alphabetized in the agent and both commands, and `tools:` stays a comma-separated string in all three, matching the repo's other six agents; the block-sequence form loads correctly but `plugin-dev`'s `validate-agent.sh` reads it with `sed` and reports the agent as unscoped
+
+## [1.14.1] - 2026-08-26
+
+### Fixed
+
+- `Bash(git status:*)` granted to `code-review-local` and to the reviewer agent, which were both told to run `git status` for a local review without being allowed to
+
+## [1.14.0] - 2026-08-21
+
+### Added
+
+- Agent 5 in `performing-multi-agent-code-review` Step 3, routing changed `SKILL.md` to `plugin-dev:skill-reviewer`
+- Review Rules carve-out for Agent 5, with the orchestrator translating its prose report into Finding Shape objects
+- `references/agent-5-skill-review.md`, holding Agent 5's two verbatim prompt blocks and the translation procedure
+- `source_agent: "skill"` and `id` prefix `skl` in `finding-shape.md`, rendered as "Skill review agent"
+- `**Not covered:**` line in both report formats, rendered whenever a lens the diff called for returns nothing reviewable, and owned by the orchestrator so one gap is reported once
+- CWE-1427 observations survive Agent 5's scope fence, so an injection on a line the diff did not touch still reaches the report
+- `plugin-dev` as a second optional enhancer, detected by resolvability and excluded from the abort check
+
+### Changed
+
+- `SKILL.md` leaves the Claude-configuration bucket for content review, but stays in scope for its credential scan
+- The single-agent reviewer reports that skill content review did not run, rather than delegating to it
+
+### Fixed
+
+- Neither path describes `reviewing-claude-config` as covering `SKILL.md` or progressive-disclosure structure
+
+## [1.13.1] - 2026-07-01
+
+### Changed
+
+- `reviewing-dependency-changes`: findings that reference the Dependency Review and Approval process now link the process name to the canonical Confluence page (`https://bitwarden.atlassian.net/wiki/spaces/APPSEC/pages/2774466657/Dependency+Review+and+Approval`), so posted review comments point reviewers to the documentation.
+
+## [1.13.0] - 2026-06-23
+
+### Added
+
+- Claude-configuration review enrichment in both review paths. When the diff touches Claude config files (`CLAUDE.md`, agent `AGENT.md`, skill `SKILL.md`, hook definitions, slash commands, `.claude/` settings, or MCP config), the single-agent reviewer (`bitwarden-code-reviewer`) now invokes `Skill(reviewing-claude-config)` during Cross-Plugin Enrichment, and the `performing-multi-agent-code-review` pipeline launches a conditional Claude-configuration agent (`source_agent: "config"`) in Step 3 whose findings flow through validation, severity audit, and the report. The dependency on the `claude-config-validator` plugin is optional in both paths — if it is not installed, the review falls back to existing review knowledge.
+
+## [1.12.0] - 2026-06-18
+
+### Changed
+
+- `performing-multi-agent-code-review`: per-stage model flags (`--model-analysis`, `--model-security`, `--model-validation`, `--model-audit`) with a security floor rule; subagents inherit the session model instead of forcing Opus; severity audit defaults to Sonnet.
+- `performing-multi-agent-code-review`: updated the architecture subagent to be a general agent type with a stronger prompt. Reduce complexity by not requiring engineers to install plugins they don't need. Also found minimal to zero actual benefit to using the tech-lead agent.
+- `performing-multi-agent-code-review`: `{model}` in file names and report headers is the resolved model nickname; `-mixed` suffix when stage flags differ
+- `performing-multi-agent-code-review`: enhanced the reference documents to provide example shapes of the DTOs that pass data between the subagents and the orchestration agent.
+- `performing-multi-agent-code-review`: removed duplicate and unnecessarily verbose instructions
+- Improved the README.md to better describe the purpose and usage of the multi-agent review.
+
+## [1.11.0] - 2026-05-12
+
+### Added
+
+- New `performing-multi-agent-code-review` skill: orchestrates a multi-agent code review pipeline.
+
+## [1.10.1] - 2026-05-12
+
+### Changed
+
+- `addressing-code-review-comments` skill now explicitly instructs fetching PR feedback from all three GitHub endpoints (`/pulls/{n}/comments` for inline, `/pulls/{n}/reviews` for review summaries, `/issues/{n}/comments` for top-level conversation comments). Previously the skill said "read the full set of comments" without naming the endpoints, which let the model silently miss conversation comments that live only at `/issues/`
+
+## [1.10.0] - 2026-04-28
+
+### Added
+
+- New `addressing-code-review-comments` skill that guides Claude when a developer is working through PR review comments locally — emphasizes verifying each suggestion against the codebase, surfacing ambiguity before touching code, and presenting fixes or pushback drafts to the user without performative agreement
+
+## [1.9.1] - 2026-04-27
+
+### Changed
+
+- `code-review-local` command now declares `allowed-tools` in its frontmatter, mirroring `code-review`, so the read-only `gh` and `git` patterns it relies on are pre-authorized for the duration of the command and don't prompt on every invocation
+- `Write` access in `code-review-local` is scoped to the two output files (`review-summary.md`, `review-inline-comments.md`) rather than granted broadly
+
+## [1.9.0] - 2026-04-06
+
+### Added
+
+- New `reviewing-dependency-changes` skill for dependency-aware code review: flags new dependencies missing AppSec approval, major version bumps without migration notes, lock file hygiene issues, and incomplete dependency removals
+- Dependency Changes summary table in review output for at-a-glance visibility of package additions, removals, and version changes
+- Dependency context gathering in Step 1: identifies manifest files, bot authors, and approval signals in PR descriptions
+- `Skill(reviewing-dependency-changes)` invocation in Step 2 for all PRs with dependency manifest changes
+
+### Changed
+
+- Updated `avoiding-false-positives` skill with dependency-specific patterns: automated bot updates and lock file regeneration
+- Updated `classifying-review-findings` skill to reject routine Renovate/Dependabot minor/patch updates as non-findings
+- Agent now skips line-by-line lock file analysis for dependency-only bot PRs, focusing on hygiene and version significance
+
+## [1.8.3] - 2026-03-27
+
+### Changed
+
+- Consolidated Steps 1 and 2 into a single "Gather Context" step that handles both PR and local review modes
+- Moved inline commenting constraints to Step 5 where comments are posted
+- Added a summary comment header
+
+## [1.8.2] - 2026-03-17
+
+### Fixed
+
+- Agent mode reviews failed silently because the plugin lacked `Write` tool access and had no awareness of the `<!-- bitwarden-code-review -->` sticky comment workflow — both the command and skill now detect and route summary output correctly
+- Removed the "REVIEW COMPLETE" stop signal that caused the Claude Code Action to terminate before the summary file was written
+
+### Changed
+
+- Restructured AGENT.md from disconnected sections into a linear 7-step process (context → understand → analyze → classify → validate → post comments → post summary) so the agent follows a clear top-to-bottom execution path
+- Added confidence scoring (0-100, ≥75 threshold) as a pre-filter before validation to cut low-confidence findings early, inspired by patterns from Anthropic's and internal code review pipelines
+- Separated finding and validation into distinct steps — the agent now switches from "critic" to "defender" mode before posting, reducing false positives that came from simultaneous find-and-validate
+- Rewrote `avoiding-false-positives` skill from a pre-flight gate into a post-classification validation checklist with concrete rejection criteria
+
+## [1.8.1] - 2026-03-12
+
+### Fixed
+
+- Remove invalid `skills` field from `plugin.json` that listed individual `SKILL.md` file paths instead of directories; skills are auto-discovered from the `skills/` directory
+
+## [1.8.0] - 2026-02-23
+
+### Added
+
+- Cross-plugin skill awareness: agent now invokes security engineer skills (`analyzing-code-security`, `reviewing-security-architecture`, `reviewing-dependencies`) for security-sensitive PRs and software engineer skills (`writing-server-code`, `writing-client-code`, `writing-database-queries`) for convention validation when sibling plugins are installed
+
+## [1.7.1] - 2026-01-19
+
+### Changed
+
+- Improved the skill frontmatter using the Anthropic `skill-development` skill.
+- Updated tool invocation of the code review agent to include the name of the plugin.
+
+## [1.7.0] - 2026-01-16
+
+### Removed
+
+- Deleted `detecting-existing-threads` skill entirely - thread detection instructions are now embedded directly in commands
+
+### Changed
+
+- Simplified architecture for thread detection all instructions now come from command files, not skills
+- Moved thread detection instructions directly into `code-review-local.md` as step 2 (after PR metadata extraction)
+- Removed all `detecting-existing-threads` skill invocation references from `AGENT.md` and `plugin.json`
+- Command file (`code-review.md`) now reads `/tmp/pr-threads.json` and injects thread data directly into the agent's prompt for guaranteed context delivery
+
+## [1.6.0] - 2026-01-15
+
+### Changed
+
+- Added code-review command to properly invoke the bitwarden-code-reviewer agent via Task tool
+- Updated agent frontmatter listing all skills available
+- Updated agent model to opus; aligns with our changes to the GitHub reusable action
+
+## [1.5.2] - 2026-01-09
+
+### Changed
+
+- Refactored the fetching of resolved comments back into the SKILL.md because the script will not execute in the Claude Code Action because of security concerns.
+
+## [1.5.1] - 2025-12-24
+
+### Changed
+
+- Added a brief ending instruction to avoid a follow-up update of the summary comment by the GitHub action.
+
+## [1.5.0] - 2025-12-23
+
+### Added
+
+- Skill `posting-review-summary` for context-aware summary output (sticky comment vs local file)
+- Skill `avoiding-false-positives` to reduce hallucinations
+- Skill `detecting-existing-threads` for duplicate comment prevention
+- Skill `reviewing-incremental-changes` for re-review scoping
+- Collapsed `<details>` section in summaries listing findings by severity
+
+### Changed
+
+- Extracted PR metadata assessment from AGENT.md into `posting-review-summary` skill
+- `posting-bitwarden-review-comments` delegates summary formatting to dedicated skill
+- Summary comments include 1-2 neutral sentences describing what was reviewed
+- Reduced AGENT.md complexity (~180 lines → ~120 lines)
+
+### Fixed
+
+- Tool permission patterns for `get-review-threads.sh`
+
+## [1.4.0] - 2025-12-21
+
+### Added
+
+- Two new skills: `classifying-review-findings` and `posting-bitwarden-review-comments`
+- Comprehensive test plan in `tests/TESTING.md`
+
+### Changed
+
+- Refactored AGENT.md to use skill-based architecture for classification and formatting
+- Updated permission patterns in settings.json to use `:*` suffix format
+- Simplified README.md by moving detailed procedures to skill documentation
+
+### Fixed
+
+- Permission deny patterns now correctly use `:*` format for Claude Code compatibility
+
+## [1.3.3] - 2025-12-18
+
+- Remove all repo specific guidance from our code review agent.
+
+## [1.3.2] - 2025-12-17
+
+### Security
+
+- Implemented a custom bash script to retrieve the resolved comments on a pull request. The implementation was chosen to grant Claude Code the least privilege possible to complete the task.
+
+## [1.3.1] - 2025-12-15
+
+### Security
+
+- Restrict agent tool declaration from `Bash(gh pr review:*)` to `Bash(gh pr review:--comment*)` to explicitly prevent PR approval and rejection operations
+- Closes permission gap where `--approve` and `--request-changes` flags were technically allowed by wildcard pattern but not intended
+- Agent retains ability to post inline review comments (`gh pr review --comment`) and summary comments (`gh pr comment`)
+
+## [1.3.0] - 2025-12-09
+
+### Security
+
+- Restricted agent tools from wildcards (`gh pr:*`, `gh api:*`) to specific safe commands only
+- Added `.claude/settings.json` with comprehensive deny list blocking:
+  - PR modifications (merge, close, edit, lock, reopen, ready, checkout)
+  - Issue modifications (create, close, edit, delete, lock, transfer, pin) - **allows read-only `gh issue view/list`**
+  - Repository operations (edit, archive, delete, rename, sync, create, fork)
+  - Release operations (all `gh release` commands)
+  - Organization operations (all `gh org` commands)
+  - Secrets access (all `gh secret` commands - **critical security boundary**)
+  - Workflow operations (all `gh workflow` commands)
+  - CI/CD operations (rerun, cancel, delete, watch - **allows read-only `gh run view/list`**)
+  - API write operations (DELETE, PATCH, PUT methods)
+- Agent now follows principle of least privilege with read + comment permissions only
+- GraphQL access restricted to query operations.
+  - Primary enforcement done through GitHub token permissions in the reusable review code workflow in the gh-actions repo.
+  - Secondary defense is mutations blocked via pattern matching in the agent.md
+
+## [1.2.0] - 2025-11-20
+
+### Added
+
+- **Thread Detection (REQUIRED)**: Universal duplicate comment prevention system
+  - Detects existing comment threads (including resolved ones) before creating new ones
+  - Matches by location (exact/nearby), content similarity (>70%), and issue type
+  - Agent autonomously constructs `gh pr` and `gh api` GraphQL queries to fetch threads
+  - Strict JSON output schema ensures consistent thread parsing across invocations
+  - Supports multiple invocation contexts: GitHub Actions (environment variables), slash commands, manual invocation
+  - Works universally across all repository installations
+  - Prevents duplicate comments and maintains conversation continuity
+- **Output Format Decision Tree**: Structured guidance for determining clean PR vs. issues format
+  - Prevents verbose clean reviews (2-3 lines maximum for PRs with no issues)
+  - Ensures consistent formatting across all reviews
+  - Improves developer experience by reducing review noise
+
+### Fixed
+
+- **Severity-Based Respect Decisions**: Clarified when agents may respond to resolved threads
+  - CRITICAL/IMPORTANT: May respond ONCE if issue genuinely persists after developer claims resolution
+  - SUGGESTED/QUESTION: Never reopen after human provides answer/decision
+- **Complete First Review Requirement**: Ensures comprehensive initial reviews find all critical issues
+  - Agent performs full analysis across all changed code before posting
+  - Prevents incremental feedback cycles that frustrate developers
+- **Praise Prohibition Consolidation**: Eliminated duplication across sections
+  - Single authoritative definition with references elsewhere
+  - Reduced maintenance burden and improved clarity
+
+### Changed
+
+- **Agent Version Tracking**: Added `version: 1.2.0` to AGENT.md frontmatter for improved change management
+- **Improved Section Organization**: Relocated "Determining Output Format" section for better logical flow (analysis → format decision → finding creation → posting)
+
+## [1.1.0] - 2025-11-18
+
+### Added
+
+- **`/code-review-local` slash command**: Invokes bitwarden-code-reviewer agent to review GitHub PRs and write findings to local files (`review-summary.md` and `review-inline-comments.md`) instead of posting to GitHub. Enables offline review workflows and review preview before posting.
+
+## [1.0.0] - 2025-11-17
+
+### Added
+
+- Initial release of `bitwarden-code-review` plugin
+- Base organizational guidelines defining:
+  - Process rules (structured thinking, check existing comments, avoid duplicates, respect resolved threads)
+  - Finding terminology ("Finding" not "Issue", no # symbol for GitHub autolinking)
+  - Emoji classification system (❌ ⚠️ ♻️ 🎨 💭)
+  - Comment format requirements (brevity, inline vs summary, clean PR format)
+  - Professional tone guidelines
+- Plugin manifest with metadata and skill registration
+- Comprehensive README documentation
+
+---
+
+## Version Format
+
+Plugin version tracks base guidelines changes:
+
+- **Major version**: Breaking changes to base guidelines or emoji system
+- **Minor version**: New organizational patterns added to base guidelines, or new tool additions.
+- **Patch version**: Bug fixes, clarifications, documentation improvements

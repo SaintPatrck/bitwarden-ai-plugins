@@ -1,0 +1,21 @@
+{
+  "name": "bitwarden-initiative-tools",
+  "version": "2.2.4",
+  "description": "Bitwarden's Software Initiative Funnel — championing and curating Technical Strategy Ideas, architectural assessments, proofs of concept, scoping and team handoffs, cross-team implementation, and work transitions.",
+  "author": {
+    "name": "Bitwarden",
+    "url": "https://github.com/bitwarden"
+  },
+  "homepage": "https://github.com/bitwarden/ai-plugins/tree/main/plugins/bitwarden-initiative-tools",
+  "repository": "https://github.com/bitwarden/ai-plugins",
+  "keywords": [
+    "initiative-funnel",
+    "technical-strategy",
+    "adr",
+    "proof-of-concept",
+    "scoping",
+    "handoff",
+    "work-transitions"
+  ],
+  "dependencies": ["bitwarden-architecture-tools"]
+}
