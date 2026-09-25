@@ -119,9 +119,10 @@ REPO_ROOT=/path/to/ai-plugins /path/to/gh-actions/validate-ai/scripts/validate-p
 REPO_ROOT=/path/to/ai-plugins /path/to/gh-actions/validate-ai/scripts/validate-marketplace.sh
 ```
 
-Cross-plugin reference integrity — `Skill()`/`subagent_type` qualifiers pointing at skills and
-agents that actually exist, `dependencies[]` entries resolving to real plugins, and role-bundle
-purity — is covered by this repo's own `scripts/validate-references.js`:
+Cross-plugin reference integrity (no duplicate skill names, `Skill()`/`subagent_type`/`agent:`
+qualifiers pointing at skills and agents that actually exist, `dependencies[]` entries resolving
+to real plugins, and role-bundle purity) is covered by this repo's own
+`scripts/validate-references.js`:
 
 ```bash
 node scripts/validate-references.js

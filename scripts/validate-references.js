@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 //
 // Validate cross-references inside the marketplace: every Skill(...) invocation,
-// every plugin.json `dependencies` entry, and the rule-2 bundle-purity invariant.
+// every plugin.json `dependencies` entry, every plugin-qualified agent dispatch, and
+// the rule-2 bundle-purity invariant.
 //
 // Checks:
 //   1. No two plugins own a skill of the same name — a duplicate makes every bare
@@ -13,6 +14,8 @@
 //   4. Every role bundle listed in the root README's "## Role bundles" table holds
 //      no skills/, agents/, or commands/ directory, the table itself parses cleanly,
 //      and it lists exactly the plugins that look like bundles by plugin.json metadata.
+//   5. Every `subagent_type: "<plugin>:<agent>"` dispatch and every `agent:`
+//      frontmatter value names an agent that plugin's plugin.json actually declares.
 //
 // Usage:
 //   node scripts/validate-references.js
@@ -65,6 +68,12 @@ function section(title) {
 
 const marketplace = JSON.parse(fs.readFileSync(MARKETPLACE_PATH, "utf8"));
 const marketplacePluginNames = new Set(marketplace.plugins.map((p) => p.name));
+
+// Plugin namespaces this marketplace intentionally does not register: a
+// plugin-qualified reference naming one of these resolves outside the
+// marketplace instead of failing or needing a baseline entry.
+//   aikido - Aikido Security's own plugin, installed from claude-plugins-official.
+const EXTERNAL_PLUGIN_NAMESPACES = new Set(["aikido"]);
 
 function loadBaseline() {
   if (!fs.existsSync(BASELINE_PATH)) return new Set();
@@ -189,6 +198,7 @@ const unresolved = [];
 
 for (const ref of references) {
   if (ref.qualifier) {
+    if (EXTERNAL_PLUGIN_NAMESPACES.has(ref.qualifier)) continue;
     const pluginExists = marketplacePluginNames.has(ref.qualifier);
     const skillPath = path.join(
       PLUGINS_DIR,
@@ -237,11 +247,6 @@ for (const issue of dependencyIssues) {
     `${relPath(issue.manifestPath)}: dependency "${issue.dep}" does not exist in marketplace.json`,
   );
 }
-
-// Best-effort "<plugin>:<agent> subagent type" dispatch check was investigated and
-// deliberately dropped — see scripts/README.md for why (plugin-dev is a legitimate
-// external plugin not registered in this marketplace, and it was the only match the
-// pattern ever found in the current tree).
 
 if (unresolved.length === 0 && dependencyIssues.length === 0) {
   ok(
@@ -403,6 +408,131 @@ if (!bundleSectionMatch) {
       `all ${bundleNames.length} role bundles (${bundleNames.join(", ")}) are pure`,
     );
   }
+}
+
+// --- Build the agent ownership map --------------------------------------------------
+
+// pluginName -> Set of agent names declared in that plugin's plugin.json `agents`
+// field. `agents` is a single string for a plugin with one agent and an array for
+// a plugin with several, so both forms are normalized to a list here. Membership
+// is decided by each agent file's own frontmatter `name:`, not by the path or
+// filename the manifest points at.
+const pluginAgentNames = new Map();
+
+function agentFrontmatterName(agentFilePath) {
+  const text = fs.readFileSync(agentFilePath, "utf8");
+  const frontmatter = text.match(/^---\n([\s\S]*?)\n---/);
+  if (!frontmatter) return null;
+  const nameLine = frontmatter[1].match(/^name:\s*(.+)$/m);
+  return nameLine ? nameLine[1].trim() : null;
+}
+
+for (const pluginDir of fs.readdirSync(PLUGINS_DIR, { withFileTypes: true })) {
+  if (!pluginDir.isDirectory()) continue;
+  const pluginName = pluginDir.name;
+  const manifestPath = path.join(
+    PLUGINS_DIR,
+    pluginName,
+    ".claude-plugin",
+    "plugin.json",
+  );
+  if (!fs.existsSync(manifestPath)) continue;
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+  if (!manifest.agents) continue;
+  const agentPaths = Array.isArray(manifest.agents)
+    ? manifest.agents
+    : [manifest.agents];
+  const names = new Set();
+  for (const relAgentPath of agentPaths) {
+    const agentFilePath = path.join(PLUGINS_DIR, pluginName, relAgentPath);
+    const name = fs.existsSync(agentFilePath)
+      ? agentFrontmatterName(agentFilePath)
+      : null;
+    if (name) names.add(name);
+  }
+  pluginAgentNames.set(pluginName, names);
+}
+
+// --- Scan every subagent_type dispatch and agent: frontmatter value ------------------
+
+// Matches `subagent_type: "plugin:agent"` (quoted, whether it's the value or the key
+// that's wrapped in backticks) and the YAML frontmatter line `agent: plugin:agent`
+// (bare, or wrapped in matching single or double quotes) a SKILL.md or command uses
+// to dispatch straight into an agent. Both name a plugin-qualified agent the same
+// way Skill() names a plugin-qualified skill, so both are checked the same way: an
+// unqualified subagent type (a built-in like `general-purpose`, or a bare agent name
+// with no plugin prefix) names nothing this marketplace can resolve either way, so
+// it's out of scope here, the same way a bare Skill() reference is Check 1's problem
+// and not Check 2's.
+const SUBAGENT_TYPE_RE =
+  /subagent_type[`"']*\s*:\s*[`"']*([a-z0-9][a-z0-9-]*):([a-z0-9][a-z0-9-]*)/g;
+const AGENT_FRONTMATTER_RE =
+  /^agent:\s*(["']?)([a-z0-9][a-z0-9-]*):([a-z0-9][a-z0-9-]*)\1\s*$/;
+
+const agentReferences = []; // { file, line, raw, qualifier, agentName }
+
+for (const file of walkMarkdownFiles(PLUGINS_DIR)) {
+  const text = fs.readFileSync(file, "utf8");
+  const lines = text.split("\n");
+  lines.forEach((lineText, idx) => {
+    let match;
+    const re = new RegExp(SUBAGENT_TYPE_RE);
+    while ((match = re.exec(lineText)) !== null) {
+      agentReferences.push({
+        file,
+        line: idx + 1,
+        raw: `${match[1]}:${match[2]}`,
+        qualifier: match[1],
+        agentName: match[2],
+      });
+    }
+    const frontmatterMatch = AGENT_FRONTMATTER_RE.exec(lineText);
+    if (frontmatterMatch) {
+      agentReferences.push({
+        file,
+        line: idx + 1,
+        raw: `${frontmatterMatch[2]}:${frontmatterMatch[3]}`,
+        qualifier: frontmatterMatch[2],
+        agentName: frontmatterMatch[3],
+      });
+    }
+  });
+}
+
+// === Check 5: agent references resolve ===============================================
+
+section("Check 5: agent references resolve");
+
+const unresolvedAgents = [];
+
+for (const ref of agentReferences) {
+  if (EXTERNAL_PLUGIN_NAMESPACES.has(ref.qualifier)) continue;
+  const names = pluginAgentNames.get(ref.qualifier);
+  if (!names || !names.has(ref.agentName)) {
+    unresolvedAgents.push(ref);
+  }
+}
+
+for (const ref of unresolvedAgents) {
+  const key = `${relPath(ref.file)}:${ref.line}:agent(${ref.raw})`;
+  const message = `${relPath(ref.file)}:${ref.line}: agent "${ref.raw}" does not resolve to an agent declared in ${ref.qualifier}'s plugin.json`;
+  if (baseline.has(key)) {
+    baselined(message);
+  } else {
+    fail(message);
+  }
+}
+
+if (unresolvedAgents.length === 0) {
+  ok(`all ${agentReferences.length} agent references resolve`);
+} else if (
+  unresolvedAgents.every((ref) =>
+    baseline.has(`${relPath(ref.file)}:${ref.line}:agent(${ref.raw})`),
+  )
+) {
+  ok(
+    `all unresolved agent references found are pre-existing debt covered by ${relPath(BASELINE_PATH)}`,
+  );
 }
 
 // === Summary ==========================================================================

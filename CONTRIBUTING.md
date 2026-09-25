@@ -133,7 +133,7 @@ REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-plugin-structure.sh b
 REPO_ROOT=/path/to/ai-plugins validate-ai/scripts/validate-marketplace.sh
 ```
 
-Cross-plugin reference integrity — bundle purity, dependency declarations, and `Skill()`/`subagent_type` qualifiers pointing at skills and agents that actually exist — is covered by `node scripts/validate-references.js`, run from this repository's root:
+Cross-plugin reference integrity (no duplicate skill names, `Skill()`/`subagent_type`/`agent:` qualifiers pointing at skills and agents that actually exist, dependency declarations, and bundle purity) is covered by `node scripts/validate-references.js`, run from this repository's root:
 
 ```bash
 node scripts/validate-references.js
