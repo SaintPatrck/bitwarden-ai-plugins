@@ -10,7 +10,7 @@ Tech lead bundle for a Bitwarden product team. This plugin holds no skills or ag
 | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `bitwarden-architecture-tools`      | `architecting-solutions` for team-level architectural judgment that stays coherent with the holistic architecture                                                                                                |
 | `bitwarden-initiative-tools`        | `navigating-the-initiative-funnel` for funnel phase mechanics, `running-work-transitions` for ownership transitions either side, `contributing-to-technical-strategy` for surfacing team-level patterns upstream |
-| `bitwarden-code-contribution-tools` | `implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                              |
+| `bitwarden-code-contribution-tools` | `bitwarden-implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments`                                                    |
 | `bitwarden-code-review-tools`       | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                                                                                         |
 
 ## Related Plugins

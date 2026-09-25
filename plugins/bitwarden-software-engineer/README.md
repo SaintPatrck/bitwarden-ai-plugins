@@ -6,10 +6,10 @@ Software engineer bundle for a Bitwarden product team. This plugin holds no skil
 
 ## Cross-Plugin Integration
 
-| Plugin                              | How It's Used                                                                                                                                       |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `bitwarden-code-contribution-tools` | `implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments` |
-| `bitwarden-code-review-tools`       | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                            |
+| Plugin                              | How It's Used                                                                                                                                                 |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-code-contribution-tools` | `bitwarden-implementor` agent, plus `committing-changes`, `creating-pull-request`, `perform-preflight`, `labeling-changes`, `addressing-code-review-comments` |
+| `bitwarden-code-review-tools`       | `bitwarden-code-reviewer` agent and the code review skills, for reviewing teammates' PRs                                                                      |
 
 ## Related Plugins
 

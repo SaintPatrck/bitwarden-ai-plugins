@@ -17,6 +17,6 @@
     "code-review-response",
     "multi-repo"
   ],
-  "agents": "./agents/implementor.md",
+  "agents": "./agents/bitwarden-implementor.md",
   "dependencies": ["bitwarden-code-review-tools"]
 }

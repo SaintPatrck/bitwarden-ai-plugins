@@ -10,9 +10,9 @@ These skills define process, not platform. A commit message format, a PR body sh
 
 ## Agent
 
-| Agent         | What It Does                                                                                                                                                                                                                      |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `implementor` | Implements a Bitwarden engineering change end-to-end — orients in the codebase, builds incrementally, verifies before declaring done, and writes clear commits and PR summaries. See [`implementor.md`](./agents/implementor.md). |
+| Agent                   | What It Does                                                                                                                                                                                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bitwarden-implementor` | Implements a Bitwarden engineering change end-to-end — orients in the codebase, builds incrementally, verifies before declaring done, and writes clear commits and PR summaries. See [`bitwarden-implementor.md`](./agents/bitwarden-implementor.md). |
 
 ## Skills
 
