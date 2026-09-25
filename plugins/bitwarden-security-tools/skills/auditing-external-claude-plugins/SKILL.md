@@ -4,7 +4,7 @@ description: Audits an external (third-party) Claude Code plugin pinned in this 
 argument-hint: "<plugin-repo-url> <commit-sha> [output-file]"
 arguments: [plugin-repo-url, commit-sha, output-file]
 context: fork
-agent: bitwarden-security-engineer:bitwarden-security-engineer
+agent: bitwarden-security-tools:bitwarden-security-assessor
 model: fable
 background: false
 allowed-tools:

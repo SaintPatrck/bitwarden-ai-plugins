@@ -16,5 +16,6 @@
     "secrets",
     "dependencies",
     "vulnerability-triage"
-  ]
+  ],
+  "agents": ["./agents/bitwarden-security-assessor.md"]
 }
